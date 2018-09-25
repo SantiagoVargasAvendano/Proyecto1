@@ -6,8 +6,8 @@
 
 /**
  * Esta clase es para agregar el nombre y apellido de un autor al libro
- * @author Santiago Vargas, Jonathan Jimenez
- * @version 23/09/2018 
+ * @author Santiago Vargas, Jonathan Jimenez, Diego Irreño
+ * @version 24/09/2018 
  */
 public class Autor {
     private String nombre;
@@ -48,7 +48,6 @@ public class Autor {
     }
 
     /**
-     * /**
      * Metodo que asigna un apellido al autor
      * @param apellido el parametro es el apellido del autor del libro
      */

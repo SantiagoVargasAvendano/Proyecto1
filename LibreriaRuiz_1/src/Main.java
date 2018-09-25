@@ -7,8 +7,9 @@ import java.util.ArrayList;
  */
 
 /**
- *
- * @author Asus
+ * Clase main
+ * @author Santiago Vargas, Jonathan Jimenez, Diego Irreño
+ * @version 24/09/2018 
  */
 public class Main {
     
