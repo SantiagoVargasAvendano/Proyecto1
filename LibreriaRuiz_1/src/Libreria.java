@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 /**
  * Esta clase es para el control de la libreria
- * @author Santiago Vargas, Jonathan Jimenez
- * @version 23/09/2018 
+ * @author Santiago Vargas, Jonathan Jimenez, Diego Irreño
+ * @version 24/09/2018 
  */
 public class Libreria {
     private ArrayList<Estanteria> estanterias;
