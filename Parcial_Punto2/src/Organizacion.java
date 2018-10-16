@@ -14,6 +14,7 @@ public class Organizacion {
     private String nombre;
     private ArrayList<Estudiante> estudiantes;
     private ArrayList<Premio> premios;
+    private ArrayList<RegistroCarta> cartas;
 
     public Organizacion(String nombre) {
         this.nombre = nombre;
@@ -26,4 +27,13 @@ public class Organizacion {
     public boolean addEstudiante(Estudiante estudiante){
         return this.estudiantes.add(estudiante);
     }
+    
+    public boolean addCarta(RegistroCarta registroCarta){
+        return this.cartas.add(registroCarta);
+    }
+
+    public ArrayList<RegistroCarta> getCartas() {
+        return cartas;
+    }
+    
 }
