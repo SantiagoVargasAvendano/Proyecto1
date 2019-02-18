@@ -25,7 +25,17 @@ public abstract class Sede {
         programas.add(new ProgramaFormacion(tipoPrograma, nombrePrograma, descripcion));
     }
     
-    public abstract ArrayList<String> darInformacion();
+    public ArrayList darInformacion(){
+        ArrayList informacion = new ArrayList<>();
+        informacion.add(nombre);
+        informacion.add(direccion);
+        informacion.add(telefono);
+        informacion.add(areaConstruida);
+        for (int i = 0; i<programas.size(); i++) {
+            informacion.add(programas.get(i));
+        }
+        return informacion;
+    }
 
     public boolean agregarPrograma(String tipoPrograma, String nombrePrograma, String descripcion){
         return programas.add(new ProgramaFormacion(tipoPrograma, nombrePrograma, descripcion));
@@ -79,5 +89,15 @@ public abstract class Sede {
         this.programas = programas;
     }
     
-    
+    public ProgramaFormacion getPrograma(String nomPrograma){
+        for(int i=0;i<programas.size();i++){
+            if(programas.get(i).getNombre().equals(nomPrograma))
+                return programas.get(i);
+        }
+        return null;
+    }
+
+    ArrayList darinformacion() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
