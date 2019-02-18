@@ -11,6 +11,7 @@ import java.util.*;
  */
 public class Universidad {
     private String nombre;
+    private ArrayList<Estudiante> estudiantes;
     private ArrayList<Sede> sedes;
 
     public Universidad(String nombre) {

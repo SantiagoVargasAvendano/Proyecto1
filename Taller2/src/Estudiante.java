@@ -9,5 +9,19 @@
  * @author Asus
  */
 public class Estudiante {
+    private String nombre;
+    private String apellido;
+    private String colegioGrado;
+    private int annioGrado;
+    private String programaRegistrado;
+
+    public Estudiante(String nombre, String apellido, String colegioGrado, int annioGrado, String programaRegistrado) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.colegioGrado = colegioGrado;
+        this.annioGrado = annioGrado;
+        this.programaRegistrado = programaRegistrado;
+    }
+    
     
 }
