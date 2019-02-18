@@ -26,19 +26,19 @@ public class Main {
         String nombre = leer.next();
         Universidad uni = new Universidad(nombre);
         
-        File archivo = new File("archivo.txt");
-        if(!archivo.exists()){
+        File guardarTexto = new File("guardarTexto.txt");
+        if(!guardarTexto.exists()){
             try {
-                archivo.createNewFile();
-                ObjectOutputStream objecto = new ObjectOutputStream(new FileOutputStream(archivo));
-                objecto.writeObject(uni);
-                objecto.close();
+                guardarTexto.createNewFile();
+                ObjectOutputStream objeto = new ObjectOutputStream(new FileOutputStream(guardarTexto));
+                objeto.writeObject(uni);
+                objeto.close();
             } catch (IOException ex) {
                 Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
             }
         }else{
             try { 
-                ObjectInputStream entrada = new ObjectInputStream(new FileInputStream(archivo));
+                ObjectInputStream entrada = new ObjectInputStream(new FileInputStream(guardarTexto));
                 uni = (Universidad)entrada.readObject();
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
