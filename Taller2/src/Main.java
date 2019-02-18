@@ -11,10 +11,6 @@ import java.util.*;
  */
 public class Main {
     
-    void administrarSede(){
-        
-    }
-    
     public static void main(String[] args) {
         Scanner leer = new Scanner(System.in);
         System.out.println("Bienvenido, aqui podras crear tu propia universidad y administrarla\n1. Ingresa el nombre de la universidad: ");
@@ -79,6 +75,7 @@ public class Main {
                     break;
                 case 2:
                     int opcion2;
+                    do{ 
                     System.out.println("Ingresa el nombre de la sede a administrar: ");
                     String nombreSedeAdm = leer.next();
                     Sede sedeAdm = uni.buscarSede(nombreSedeAdm);
@@ -108,6 +105,7 @@ public class Main {
                             break;
                         case 5: 
                             int opcion3;
+                            do{
                             System.out.println("Desde aqui puedes administrar los programas de la sede: \n1. Crear programa\n2. Borrar programa\n3. Cambiar nombre al programa\n4. Cambiar descripcion al programa");
                             opcion3 = leer.nextInt();
                             switch(opcion3){
@@ -116,19 +114,33 @@ public class Main {
                                     String nomPrograma = leer.next();
                                     System.out.println("Ingrese la descripcion del programa: ");
                                     String descripPrograma = leer.next();
-                                    System.out.println("");
+                                    System.out.println("Ingrese el tipo del programa: ");
+                                    String tipoPrograma = leer.next();
+                                    uni.buscarSede(sedeAdm.getNombre()).agregarPrograma(tipoPrograma, nomPrograma, descripPrograma);
                                     break;
                                 case 2:
+                                    System.out.println("Ingrese el nombre del programa a eliminar: ");
+                                    String nomProgramaBorrar = leer.next();
+                                    uni.buscarSede(sedeAdm.getNombre()).eliminarPrograma(nomProgramaBorrar);
                                     break;
                                 case 3:
+                                    System.out.println("Ingrese el nombre del programa que va a cambiar: ");
+                                    String nomPrograCam = leer.next();
+                                    System.out.println("Ingrese el nuevo nombre: ");
+                                    String nuevoNombrePrograma = leer.next();
+                                    uni.buscarSede(sedeAdm.getNombre()).getPrograma(nomPrograCam).setNombre(nuevoNombrePrograma);
                                     break;
                                 case 4:
-                                    break;
-                                            
-                            }
-                                
-                            break;
-                        
+                                    System.out.println("Ingrese el nombre del programa que va a cambiar: ");
+                                    String nomPrograCam1 = leer.next();
+                                    System.out.println("Ingrese la nueva descripcion: ");
+                                    String nuevaDescPrograma = leer.next();
+                                    uni.buscarSede(sedeAdm.getNombre()).getPrograma(nomPrograCam1).setDescripcion(nuevaDescPrograma);
+                                    break;                  
+                            }    
+                            break;                        
+                            }while(opcion3>0 && opcion3<5);
+                        }
                     }while(opcion2>0 && opcion2<6);                    
                     break;
                 case 3:
