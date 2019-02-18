@@ -77,8 +77,8 @@ public class Profesional extends Sede{
     }
 
     @Override
-    public ArrayList darinformacion() {
-        ArrayList informacion = super.darinformacion(); 
+    public ArrayList darInformacion() {
+        ArrayList informacion = super.darInformacion(); 
         informacion.add(numProgramasAltaCalidad);
         return informacion;
     }

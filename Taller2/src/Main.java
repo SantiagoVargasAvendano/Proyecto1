@@ -149,12 +149,19 @@ public class Main {
                     uni.deleteSede(nombreSedeBorrar);
                     break;
                 case 4:
+                    System.out.println("Ingrese el nombre de la sede de la cual quiere obtener la informacion: ");
+                    String nomSedeInf = leer.next();
+                    ArrayList inf = new ArrayList();
+                    inf = uni.buscarSede(nomSedeInf).darInformacion();
+                    for(int i=0;i<inf.size();i++){
+                            System.out.println(inf.get(i));
+                    }
                     break;
                 case 5:
                     break;
             }
             
-        }while(opc<1 && opc>4);
+        }while(opc>0 && opc<6);
     }
     
 }

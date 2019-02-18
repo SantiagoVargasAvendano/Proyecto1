@@ -68,8 +68,8 @@ public class Tecnologica extends Sede{
     }
 
     @Override
-    public ArrayList darinformacion() {
-        ArrayList informacion = super.darinformacion();
+    public ArrayList darInformacion() {
+        ArrayList informacion = super.darInformacion();
         informacion.add(estudiantesMatriculados);
         return informacion;
     }   

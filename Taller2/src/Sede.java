@@ -32,7 +32,8 @@ public abstract class Sede {
         informacion.add(telefono);
         informacion.add(areaConstruida);
         for (int i = 0; i<programas.size(); i++) {
-            informacion.add(programas.get(i));
+            informacion.add(programas.get(i).getNombre());
+            informacion.add(programas.get(i).getDescripcion());
         }
         return informacion;
     }
@@ -95,9 +96,5 @@ public abstract class Sede {
                 return programas.get(i);
         }
         return null;
-    }
-
-    ArrayList darinformacion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
