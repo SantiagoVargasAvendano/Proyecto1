@@ -77,8 +77,10 @@ public class Profesional extends Sede{
     }
 
     @Override
-    public ArrayList<String> darInformacion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ArrayList darinformacion() {
+        ArrayList informacion = super.darinformacion(); 
+        informacion.add(numProgramasAltaCalidad);
+        return informacion;
     }
 
     
