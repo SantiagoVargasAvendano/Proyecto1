@@ -1,4 +1,5 @@
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /*
@@ -11,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author Asus
  */
-public class Profesional extends Sede{
+public class Profesional extends Sede implements Serializable{
     private int numProgramasAltaCalidad;
 
     public Profesional(int numProgramasAltaCalidad, String nombre, String direccion, int telefono, double areaConstruida, String tipoPrograma, String nombrePrograma, String descripcion) {

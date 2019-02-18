@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.util.*;
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -9,7 +10,7 @@ import java.util.*;
  *
  * @author Asus
  */
-public abstract class Sede {
+public abstract class Sede implements Serializable{
     protected String nombre;
     protected String direccion;
     protected int telefono;

@@ -1,4 +1,13 @@
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -16,6 +25,27 @@ public class Main {
         System.out.println("Bienvenido, aqui podras crear tu propia universidad y administrarla\n1. Ingresa el nombre de la universidad: ");
         String nombre = leer.next();
         Universidad uni = new Universidad(nombre);
+        
+        File archivo = new File("archivo.txt");
+        if(!archivo.exists()){
+            try {
+                archivo.createNewFile();
+                ObjectOutputStream objecto = new ObjectOutputStream(new FileOutputStream(archivo));
+                objecto.writeObject(uni);
+                objecto.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+            try { 
+                ObjectInputStream entrada = new ObjectInputStream(new FileInputStream(archivo));
+                uni = (Universidad)entrada.readObject();
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException | ClassNotFoundException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         
         int opc;
         do{
@@ -158,6 +188,13 @@ public class Main {
                     }
                     break;
                 case 5:
+                    for(int i=0;i<uni.getSedes().size();i++){
+                        ArrayList inf2 = new ArrayList();
+                        inf2 = uni.getSedes().get(i).darInformacion();
+                        for(int j=0;j<inf2.size();j++){
+                            System.out.println(inf2.get(j));
+                        }      
+                    }
                     break;
             }
             

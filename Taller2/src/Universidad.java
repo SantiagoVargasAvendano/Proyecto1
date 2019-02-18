@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.util.*;
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -9,7 +10,7 @@ import java.util.*;
  *
  * @author Asus
  */
-public class Universidad {
+public class Universidad implements Serializable{
     private String nombre;
     private ArrayList<Estudiante> estudiantes;
     private ArrayList<Sede> sedes;

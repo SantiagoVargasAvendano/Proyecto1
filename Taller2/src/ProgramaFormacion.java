@@ -1,3 +1,6 @@
+
+import java.io.Serializable;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,7 +11,7 @@
  *
  * @author Asus
  */
-public class ProgramaFormacion {
+public class ProgramaFormacion implements Serializable{
     private String tipoPrograma;
     private String nombre;
     private String descripcion;
