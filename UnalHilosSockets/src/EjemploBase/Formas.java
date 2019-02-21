@@ -22,7 +22,7 @@ Formas(){
     d.hideTurtle();    
     a.setPenColor(Color.red);
     b.setPenColor(Color.blue);
-    c.setPenColor(Color.yellow);
+    c.setPenColor(Color.green);
     d.setPenColor(Color.black);
     drawRects(a);
     drawCircle(b);
