@@ -6,8 +6,8 @@
 package EjemploBase;
 import ch.aplu.turtle.*;
 import java.awt.Color;
-import static java.lang.Math.atan;
 import static java.lang.Math.sqrt;
+import static java.lang.Math.atan;
 
 class Formas extends TurtleFrame{
 
@@ -161,3 +161,4 @@ void circulo(double r, Turtle pp){
 public static void main(String[] args){
     new Formas();    
 }
+
