@@ -3,10 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UI;
+package Exe;
 import GestionArchivos.Gestion;
 import Proceso.*;
+import java.io.IOException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Estudiante
@@ -15,6 +18,7 @@ public class Main {
             
     public static void main(String[] args) {
         Scanner lectura = new Scanner(System.in);
+        Gestion traza = new Gestion("traza.txt");
         ArrayList<Farmer> granjas = new ArrayList<>();
         ArrayList<Manufacturer> manufacturas = new ArrayList<>();
         ArrayList<DistributionCenter> distribuidoras = new ArrayList<>();
@@ -223,6 +227,11 @@ public class Main {
                             for(int i=0;i<tiendas.size() && d;i++){
                                 if(tiendas.get(i).getNombre().equals(nombre3)){
                                     tiendas.get(i).addProduVenta(precio, codVenta,productoDistribuido);
+                                    try {
+                                        traza.guardar(tiendas.get(i).getProduVenta());
+                                    } catch (IOException ex) {
+                                        Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
                                     d = false;
                                 }
                             }
