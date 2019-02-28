@@ -23,5 +23,11 @@ public class Farmer extends Eslabon{
         String granja = super.nombre;
         return produCulti.add(new MateriaPrima(nombre, destino, fechaLlegada, fechaSalida, granja));
     }
+
+    public ArrayList<MateriaPrima> getProduCulti() {
+        return produCulti;
+    }
+    
+    
     
 }

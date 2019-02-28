@@ -22,5 +22,10 @@ public class Manufacturer extends Eslabon{
     public boolean addProduManu(ArrayList<MateriaPrima> materiaPrima, String nombre, String destino, Fecha fechaLlegada, Fecha fechaSalida, int numLote){
         return produManu.add(new Producido(materiaPrima, nombre, destino, fechaLlegada, fechaSalida, numLote));
     }
+
+    public ArrayList<Producido> getProduManu() {
+        return produManu;
+    }
+    
     
 }

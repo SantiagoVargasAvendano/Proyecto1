@@ -22,5 +22,10 @@ public class DistributionCenter extends Eslabon{
     public boolean addProduDistri(Producido productoProducido, String nombre, String destino, Fecha fechaLlegada, Fecha fechaSalida){
         return produDistri.add(new Distribuido(productoProducido, nombre, destino, fechaLlegada, fechaSalida));
     }
+
+    public ArrayList<Distribuido> getProduDistri() {
+        return produDistri;
+    }
+    
     
 }

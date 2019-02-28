@@ -32,8 +32,4 @@ public class Eslabon {
     public Direccion getDireccion() {
         return direccion;
     }
-    
-    
-    
-    
 }

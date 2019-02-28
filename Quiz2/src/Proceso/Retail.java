@@ -22,5 +22,11 @@ public class Retail extends Eslabon{
     public boolean addProduVenta(float precio, int codVenta, Distribuido productoDistribuido){
         return this.produVenta.add(new Venta(precio, codVenta, productoDistribuido));
     }
+
+    public ArrayList<Venta> getProduVenta() {
+        return produVenta;
+    }
+    
+    
     
 }

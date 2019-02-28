@@ -27,25 +27,5 @@ public class Producido extends Producto{
 
     public int getNumLote() {
         return numLote;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getDestino() {
-        return destino;
-    }
-
-    public Fecha getFechaLlegada() {
-        return fechaLlegada;
-    }
-
-    public Fecha getFechaSalida() {
-        return fechaSalida;
-    }
-    
-    
-
-    
+    }    
 }

@@ -20,24 +20,5 @@ public class MateriaPrima extends Producto{
 
     public String getGranja() {
         return granja;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getDestino() {
-        return destino;
-    }
-
-    public Fecha getFechaLlegada() {
-        return fechaLlegada;
-    }
-
-    public Fecha getFechaSalida() {
-        return fechaSalida;
-    }
-    
-    
-   
+    }  
 }
