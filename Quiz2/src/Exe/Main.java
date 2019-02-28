@@ -23,13 +23,15 @@ public class Main {
         ArrayList<Manufacturer> manufacturas = new ArrayList<>();
         ArrayList<DistributionCenter> distribuidoras = new ArrayList<>();
         ArrayList<Retail> tiendas = new ArrayList<>();
-        System.out.println("1. Agregar eslabon\n 2. Agregar producto \n 3. Comprar producto");
-        int opcion = lectura.nextInt();
+        int opcion;
+        do{
+        System.out.println("1. Agregar eslabon\n 2. Agregar producto \n 3. Comprar producto\n0. salir");
+        opcion = lectura.nextInt();
         switch(opcion){
             case 1:
                 int opcion2;
                 do{
-                    System.out.println("Ingresa el tipo de eslabon que quieres agregar\n 1. Agregar granja\n 2. Agregar centro de manufactura \n3. Agregar Centro de distribucion \n 4. Agregar tienda");
+                    System.out.println("Ingresa el tipo de eslabon que quieres agregar\n 1. Agregar granja\n 2. Agregar centro de manufactura \n3. Agregar Centro de distribucion \n 4. Agregar tienda\n0. salir");
                     opcion2 = lectura.nextInt();
                     switch (opcion2) {
                         case 1:
@@ -86,7 +88,7 @@ public class Main {
             case 2:
                 int opcion3;
                 do{
-                    System.out.println("Ingresa el tipo de eslabon al cual quiere agregar un producto\n 1. Agregar granja\n 2. Agregar centro de manufactura \n3. Agregar Centro de distribucion \n 4. Agregar tienda");
+                    System.out.println("Ingresa el tipo de eslabon al cual quiere agregar un producto\n 1. Agregar a granja\n 2. Agregar a centro de manufactura \n3. Agregar a Centro de distribucion \n 4. Agregar a tienda\n0. salir");
                     opcion3 = lectura.nextInt();
                     switch (opcion3) {
                         case 1:
@@ -143,11 +145,11 @@ public class Main {
                             ArrayList<MateriaPrima> materiasPrimas = new ArrayList<>();
                             for(int i=0;i<granjas.size();i++){
                                 Farmer granjaUso = granjas.get(i);
-                                for(int j=0;j<granjaUso.getProduCulti().size();i++){
-                                    System.out.println("Desea agregar " + granjaUso.getProduCulti().get(i).getNombre() + " como materia prima a su producto: \n0. no\n1.si");
+                                for(int j=0;j<granjaUso.getProduCulti().size();j++){
+                                    System.out.println("Desea agregar " + granjaUso.getProduCulti().get(j).getNombre() + " como materia prima a su producto: \n0. no \n1.si");
                                     int l = lectura.nextInt();
                                     if(l==1){
-                                        materiasPrimas.add(granjaUso.getProduCulti().get(i));
+                                        materiasPrimas.add(granjaUso.getProduCulti().get(j));
                                     }
                                 }
                             }                            
@@ -184,11 +186,11 @@ public class Main {
                             boolean a = true;
                             for(int i=0;i<manufacturas.size() && a;i++){
                                 Manufacturer manufactura = manufacturas.get(i);
-                                for(int j=0;j<manufactura.getProduManu().size() && a;i++){
-                                    System.out.println("Desea tomar " + manufactura.getProduManu().get(i).getNombre() + " como producto producido: \n0. no\n1.si");
+                                for(int j=0;j<manufactura.getProduManu().size() && a;j++){
+                                    System.out.println("Desea tomar " + manufactura.getProduManu().get(j).getNombre() + " como producto producido: \n0. no\n1.si");
                                     int l = lectura.nextInt();
                                     if(l==1){
-                                        productoProducido = manufactura.getProduManu().get(i);
+                                        productoProducido = manufactura.getProduManu().get(j);
                                         a = false;
                                     }
                                 }
@@ -210,11 +212,11 @@ public class Main {
                             boolean c = true;
                             for(int i=0;i<distribuidoras.size() && c;i++){
                                 DistributionCenter distribuido = distribuidoras.get(i);
-                                for(int j=0;j<distribuido.getProduDistri().size() && c;i++){
-                                    System.out.println("Desea tomar " + distribuido.getProduDistri().get(i).getNombre() + " como producto distribuido: \n0. no\n1.si");
+                                for(int j=0;j<distribuido.getProduDistri().size() && c;j++){
+                                    System.out.println("Desea tomar " + distribuido.getProduDistri().get(j).getNombre() + " como producto distribuido: \n0. no\n1.si");
                                     int l = lectura.nextInt();
                                     if(l==1){
-                                        productoDistribuido = distribuido.getProduDistri().get(i);
+                                        productoDistribuido = distribuido.getProduDistri().get(j);
                                         c = false;
                                     }
                                 }
@@ -237,7 +239,7 @@ public class Main {
                             }
                             break;                        
                     }
-                } while (opcion3 >0 && opcion3 < 5);
+                }while (opcion3>0 && opcion3 <5);
                 break;
             case 3:
                 System.out.println("Escoga en cual tienda quiere comprar: ");
@@ -247,7 +249,7 @@ public class Main {
                 int tienda = lectura.nextInt();
                 System.out.println("Escoga el producto que quiere comprar: ");
                 for(int p=0;p<tiendas.get(tienda).getProduVenta().size();p++){
-                    System.out.println(p +". " + tiendas.get(tienda).getProduVenta().get(p));
+                    System.out.println(p +". " + tiendas.get(tienda).getProduVenta().get(p).getProductoDistribuido().getNombre());
                 }
                 int compra = lectura.nextInt();
                 System.out.println("Ahora conoce la traza de tu compra: ");
@@ -264,7 +266,7 @@ public class Main {
                 System.out.println("Precio" + producto.getPrecio());
                 DistributionCenter distribuidora1 = null;
                 for(int q=0;q<distribuidoras.size();q++){
-                    if(distribuidoras.get(q).equals(producto.getProductoDistribuido().getProductoProducido().getDestino()))
+                    if(distribuidoras.get(q).getNombre().equals(producto.getProductoDistribuido().getProductoProducido().getDestino()))
                         distribuidora1 = distribuidoras.get(q);
                 }
                 System.out.println("Nombre del centro de distribucion: " + distribuidora1.getNombre());
@@ -296,8 +298,7 @@ public class Main {
 
                 }                
                 break;
-        }
-        
-        
-    }
+        }    
+        }while(opcion>0 && opcion<4);  
+    }       
 }

@@ -1,0 +1,18 @@
+papa
+ pp
+ 567
+ 345.0
+ koko
+ 1 1 1
+ 1 1 1
+ alqueria
+ 1 1 1
+ 1 1 1
+ 67
+ lamaria
+ papa
+ alqueria
+ 1 1 1
+ 1 1 1
+ ;
+ 
