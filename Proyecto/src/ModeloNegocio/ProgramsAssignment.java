@@ -1,3 +1,5 @@
+package ModeloNegocio;
+
 
 import java.util.ArrayList;
 
@@ -11,14 +13,13 @@ import java.util.ArrayList;
  *
  * @author Asus
  */
-public class ProgramsAssignment {
+public class ProgramsAssignment extends Assignment{
     private String numRegistro;
     private String ID;
-    private String personalId;
-    private String campId;
-    private String role;
-    private String calification;
-    private String note;
     private ArrayList<String> campsIds;
     private ArrayList<String> Ids;
+
+    public ProgramsAssignment(String role, String calification, String note) {
+        super(role, calification, note);
+    }
 }
