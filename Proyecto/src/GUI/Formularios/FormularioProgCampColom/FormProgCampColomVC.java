@@ -4,13 +4,16 @@
  * and open the template in the editor.
  */
 package GUI.Formularios.FormularioProgCampColom;
+import GUI.Formularios.FormulariosOpc.OpcionesVC;
 import GUI.Formularios.FormulariosOpc2.Opciones2VC;
 import GUI.Singleton;
+import ModeloNegocio.ProgramsCampsColombia;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
 
 /**
  *
@@ -34,6 +37,61 @@ public class FormProgCampColomVC {
 
         @Override
         public void handle(Event event) {
+            String company = vista.getNombreCompaniaTF().getText();
+            String Id = vista.getIdTF().getText();
+            String Lugar = vista.getLugarTF().getText();
+            String poblacion = vista.getPoblacionTF().getText();
+            String duration = vista.getDuracionTF().getText();
+            boolean t = true;
+            if (company.equals("") || Id.equals("") || Lugar.equals("") || poblacion.equals("") || duration.equals("")) {
+                t = false;
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error de validacion");
+                alert.setHeaderText("No se pudo registrar la informacion");
+                alert.setContentText("Debe llenar todos los campos que se encuentran como obligatorios");
+                alert.show();
+                FormProgCampColomVC pantalla = null;
+                try {
+                    pantalla = new FormProgCampColomVC();
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(FormProgCampColomVC.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                pantalla.mostrarVista();
+            }
+            if (t) {
+                try {
+                    String fechaGrado = vista.getFechaGradoTF().getValue().toString();
+                    String tipoPrograma = vista.getTipoProgramaTF().getValue().toString();
+                    
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("Confirmacion");
+                    alert.setHeaderText("La informacion ha sido registrada");
+                    alert.show();
+                    OpcionesVC pantalla = null;
+                    try {
+                        pantalla = new OpcionesVC();
+                    } catch (FileNotFoundException ex) {
+                        Logger.getLogger(FormProgCampColomVC.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    pantalla.mostrarVista();
+                    ProgramsCampsColombia program = new ProgramsCampsColombia(tipoPrograma, company, fechaGrado, duration, Lugar, poblacion, Id);
+                    
+                } catch (NullPointerException e) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error de validacion");
+                    alert.setHeaderText("No se pudo registrar la informacion");
+                    alert.setContentText("Debe llenar todos los campos que se encuentran como obligatorios");
+                    alert.show();
+                    FormProgCampColomVC pantalla = null;
+                    try {
+                        pantalla = new FormProgCampColomVC();
+                    } catch (FileNotFoundException ex) {
+                        Logger.getLogger(FormProgCampColomVC.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    pantalla.mostrarVista();
+                }
+            }
+           
            
         }   
     }

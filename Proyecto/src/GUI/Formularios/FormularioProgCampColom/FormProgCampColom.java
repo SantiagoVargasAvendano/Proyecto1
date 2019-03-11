@@ -37,7 +37,6 @@ public class FormProgCampColom {
     private VBox vbox;
     private HBox hbox2;
     private HBox hbox3;
-    private HBox hbox4;
     private HBox hbox;
     private Label informacion;
     private Label tipoPrograma;
@@ -45,15 +44,9 @@ public class FormProgCampColom {
     private Label nombreCompania;
     private TextField nombreCompaniaTF;
     private Label Id;
-    private TextField IdTF;   
-    private Label dia;
+    private TextField IdTF; 
     private Label fechaGrado;
     private DatePicker fechaGradoTF;
-    private TextField diaTF;
-    private Label mes;
-    private TextField mesTF;
-    private Label annio;
-    private TextField annioTF;
     private Label duracion;
     private TextField duracionTF;
     private Label lugar;
@@ -73,10 +66,12 @@ public class FormProgCampColom {
         this.vbox = new VBox();
         this.hbox2 = new HBox();
         this.hbox3 = new HBox();
-        this.hbox4 = new HBox();
         vbox.setSpacing(90);
         vbox.setPadding(new Insets(100, 25, 25, 100));
-        this.informacion = new Label("Introduzca la informacion del campamento:");
+        Label info = new Label("Nota: Los campos con \"*\" son obligatorios");
+        info.setFont(Font.font(null, FontWeight.BOLD, FontPosture.REGULAR, 15));
+        this.informacion = new Label("Introduzca la informacion del campamento:", info);
+        informacion.setContentDisplay(ContentDisplay.RIGHT);
         informacion.setFont(Font.font(null, FontWeight.BOLD, FontPosture.REGULAR, 20));
         names = FXCollections.observableArrayList();
         names.add("EIP");
@@ -91,32 +86,25 @@ public class FormProgCampColom {
         names.add("Campers Abroad");
         names.add("YMCA coleaders");
         this.tipoProgramaTF = new ChoiceBox(names);
-        this.tipoPrograma = new Label("Tipo de programa:", tipoProgramaTF);
+        this.tipoPrograma = new Label("Tipo de programa: *", tipoProgramaTF);
         tipoPrograma.setContentDisplay(ContentDisplay.RIGHT);
         this.nombreCompaniaTF = new TextField();
-        this.nombreCompania = new Label("Nombre de la compania:", nombreCompaniaTF);
+        this.nombreCompania = new Label("Nombre de la compania: *", nombreCompaniaTF);
         nombreCompania.setContentDisplay(ContentDisplay.RIGHT);
         this.IdTF = new TextField();
-        this.Id = new Label("Identificacion:", IdTF);
+        this.Id = new Label("Identificacion: *", IdTF);
         Id.setContentDisplay(ContentDisplay.RIGHT);
-        this.diaTF = new TextField();
-        this.dia = new Label("Dia de realizacion:", diaTF);
-        dia.setContentDisplay(ContentDisplay.RIGHT);
-        this.mesTF = new TextField();
-        this.mes = new Label("Mes de realizacion:", mesTF);
-        mes.setContentDisplay(ContentDisplay.RIGHT);
-        this.annioTF = new TextField();
-        this.annio = new Label("Annio de realizacion:", annioTF);
-        annio.setContentDisplay(ContentDisplay.RIGHT);
+        this.fechaGradoTF = new DatePicker();
+        this.fechaGrado = new Label("Fecha de grado: *", fechaGradoTF);
+        fechaGrado.setContentDisplay(ContentDisplay.RIGHT);
         this.duracionTF = new TextField();
-        this.duracion = new Label("Duracion del campamento:", duracionTF);
+        this.duracion = new Label("Duracion del campamento: *", duracionTF);
         duracion.setContentDisplay(ContentDisplay.RIGHT);
-        this.duracionTF = new TextField();
         this.lugarTF= new TextField();
-        this.lugar = new Label("Lugar del campamento", lugarTF);
+        this.lugar = new Label("Lugar del campamento: *", lugarTF);
         lugar.setContentDisplay(ContentDisplay.RIGHT);
         this.poblacionTF= new TextField();
-        this.poblacion = new Label("Poblacion del campamento", poblacionTF);
+        this.poblacion = new Label("Poblacion del campamento: *", poblacionTF);
         poblacion.setContentDisplay(ContentDisplay.RIGHT); 
         this.hbox = new HBox();
         hbox.setSpacing(100);
@@ -125,11 +113,9 @@ public class FormProgCampColom {
         hbox.getChildren().addAll(regresar, boton);
         hbox2.getChildren().addAll(tipoPrograma, nombreCompania, Id);
         hbox2.setSpacing(50);
-        hbox3.getChildren().addAll(dia, mes, annio);
-        hbox3.setSpacing(75);
-        hbox4.getChildren().addAll(duracion,lugar,poblacion);
-        hbox4.setSpacing(50);
-        vbox.getChildren().addAll(informacion, hbox2,hbox3,hbox4,hbox);
+        hbox3.getChildren().addAll(duracion,lugar,fechaGrado);
+        hbox3.setSpacing(50);
+        vbox.getChildren().addAll(informacion, hbox2,hbox3,poblacion,hbox);
 
         this.fondo = new HBox();
         this.logo = new Image(new FileInputStream("src/GUI/Logo.png"));
@@ -159,14 +145,6 @@ public class FormProgCampColom {
         return fechaGradoTF;
     }
 
-    public TextField getDiaTF() {
-        return diaTF;
-    }
-
-    public TextField getMesTF() {
-        return mesTF;
-    }
-
     public TextField getDuracionTF() {
         return duracionTF;
     }
@@ -185,10 +163,6 @@ public class FormProgCampColom {
 
     public TextField getIdTF() {
         return IdTF;
-    }
-
-    public TextField getAnnioTF() {
-        return annioTF;
     }
 
     public Button getBoton() {
