@@ -57,6 +57,10 @@ public class FormICCPAssign {
     private DatePicker fechaInicioTF;
     private Label fechaFin;
     private DatePicker fechaFinTF;
+    private Label calificacion;
+    private TextField calificacionTF;   
+    private Label nota;
+    private TextField notaTF;   
     private Button boton;
     private Button regresar;
     private ObservableList names;
@@ -71,21 +75,24 @@ public class FormICCPAssign {
         this.hbox2 = new HBox();
         this.hbox3 = new HBox();
         this.hbox4 = new HBox();
-        vbox.setSpacing(70);
+        vbox.setSpacing(90);
         vbox.setPadding(new Insets(100, 25, 25, 100));
-        this.informacion = new Label("Introduzca la informacion de registro:");
+        Label info = new Label("Nota: Los campos con \"*\" son obligatorios");
+        info.setFont(Font.font(null, FontWeight.BOLD, FontPosture.REGULAR, 15));
+        this.informacion = new Label("Introduzca la informacion de registro:", info);
+        informacion.setContentDisplay(ContentDisplay.RIGHT);
         informacion.setFont(Font.font(null, FontWeight.BOLD, FontPosture.REGULAR, 20));
         this.numRegistroTF = new TextField();
-        this.numRegistro = new Label("Numero de registro:", numRegistroTF);
+        this.numRegistro = new Label("Numero de registro: *", numRegistroTF);
         numRegistro.setContentDisplay(ContentDisplay.RIGHT);
         this.nombreParticipanteTF = new TextField();
-        this.nombreParticipante = new Label("Nombre del participante:", nombreParticipanteTF);
+        this.nombreParticipante = new Label("Nombre del participante: *", nombreParticipanteTF);
         nombreParticipante.setContentDisplay(ContentDisplay.RIGHT);
         this.IdParticipanteTF = new TextField();
-        this.IdParticipante = new Label("Identificacion del participante:", IdParticipanteTF);
+        this.IdParticipante = new Label("Identificacion del participante: *", IdParticipanteTF);
         IdParticipante.setContentDisplay(ContentDisplay.RIGHT);
         this.codigoCampamentoTF = new TextField();
-        this.codigoCampamento = new Label("Codigo del campamento:", codigoCampamentoTF);
+        this.codigoCampamento = new Label("Codigo del campamento: *", codigoCampamentoTF);
         codigoCampamento.setContentDisplay(ContentDisplay.RIGHT);
         names = FXCollections.observableArrayList();
         names.add("Consejero");
@@ -95,11 +102,17 @@ public class FormICCPAssign {
         this.rol = new Label("Rol", rolTF);
         rol.setContentDisplay(ContentDisplay.RIGHT);
         this.fechaInicioTF = new DatePicker();
-        this.fechaInicio = new Label("Fecha de incio:", fechaInicioTF);
+        this.fechaInicio = new Label("Fecha de incio: *", fechaInicioTF);
         fechaInicio.setContentDisplay(ContentDisplay.RIGHT);
         this.fechaFinTF = new DatePicker();
-        this.fechaFin = new Label("Fecha de fin:", fechaFinTF);
+        this.fechaFin = new Label("Fecha de fin: *", fechaFinTF);
         fechaFin.setContentDisplay(ContentDisplay.RIGHT);
+        this.calificacionTF = new TextField();
+        this.calificacion = new Label("Calificacion: *", calificacionTF);
+        calificacion.setContentDisplay(ContentDisplay.RIGHT);
+        this.notaTF = new TextField();
+        this.nota = new Label("Agregar una nota: ", notaTF);
+        nota.setContentDisplay(ContentDisplay.RIGHT);
         this.hbox = new HBox();
         hbox.setSpacing(100);
         this.boton = new Button("Agregar");
@@ -107,9 +120,9 @@ public class FormICCPAssign {
         hbox.getChildren().addAll(regresar, boton);
         hbox2.getChildren().addAll(numRegistro, nombreParticipante, IdParticipante);
         hbox2.setSpacing(50);
-        hbox3.getChildren().addAll(codigoCampamento, rol);
+        hbox3.getChildren().addAll(codigoCampamento, rol, fechaInicio);
         hbox3.setSpacing(75);
-        hbox4.getChildren().addAll(fechaInicio, fechaFin);
+        hbox4.getChildren().addAll(fechaFin ,calificacion, nota);
         hbox4.setSpacing(50);
         vbox.getChildren().addAll(informacion, hbox2,hbox3,hbox4,hbox);
 
@@ -155,6 +168,18 @@ public class FormICCPAssign {
 
     public DatePicker getFechaFinTF() {
         return fechaFinTF;
+    }
+
+    public ChoiceBox getRolTF() {
+        return rolTF;
+    }
+
+    public TextField getCalificacionTF() {
+        return calificacionTF;
+    }
+
+    public TextField getNotaTF() {
+        return notaTF;
     }
 
     

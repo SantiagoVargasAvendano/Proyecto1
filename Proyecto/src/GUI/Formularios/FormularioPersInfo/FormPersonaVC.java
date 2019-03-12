@@ -51,24 +51,21 @@ public class FormPersonaVC {
             String fullNameEmergencyContact = vista.getFullNameEmergencyContactTF().getText();
             String numberEmergencyContact = vista.getNumberEmergencyContactTF().getText();
             String emailEmergencyContact = vista.getEmailEmergencyContactTF().getText();
-            String[] probar = new String[15];
+            String[] probar = new String[12];
             probar[0] = fullName;
             probar[1] = Id;
             probar[2] = mobile;
-            probar[3] = phone;
-            probar[4] = citizen;
-            probar[5] = email;
-            probar[6] = currentOcupation;
-            probar[7] = fieldsStudy;
-            probar[8] = university;
-            probar[9] = currentAdress;
-            probar[10] = currentCity;
-            probar[11] = fullNameEmergencyContact;
-            probar[12] = numberEmergencyContact;
-            probar[13] = emailEmergencyContact;
-            probar[14] = passport;
+            probar[3] = email;
+            probar[4] = currentOcupation;
+            probar[5] = fieldsStudy;
+            probar[6] = university;
+            probar[7] = currentAdress;
+            probar[8] = currentCity;
+            probar[9] = fullNameEmergencyContact;
+            probar[10] = numberEmergencyContact;
+            probar[11] = emailEmergencyContact;
             boolean t = true;
-            for(int i = 0; i < 15 && t; i++) {
+            for(int i = 0; i < 12 && t; i++) {
                 if (probar[i].equals("")) {
                     t = false;
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -91,13 +88,18 @@ public class FormPersonaVC {
             String dateBirth = vista.getDateBirthTF().getValue().toString();
             String typeDocument = vista.getTypeDocumentTF().getValue().toString();
             String graduate = vista.getGraduadoTF().getValue().toString();
-            String relationship = vista.getRelationshipTF().getValue().toString();       
+            String relationship = vista.getRelationshipTF().getValue().toString();  
+            Boolean g = true;
+            if(graduate.equals("No")) g = false;
                 
-            PersonalInformation persona = new PersonalInformation(fullName, 
-                        typeDocument, Id, gender, dateBirth, mobile, phone, 
-                    citizen, email, passport, sizeShirt, currentOcupation, 
-                        fieldsStudy, university, true, currentAdress, currentCity, fullNameEmergencyContact,
-                        numberEmergencyContact, emailEmergencyContact, relationship);
+            PersonalInformation persona = new PersonalInformation(fullName, typeDocument, Id, 
+                    gender, dateBirth, mobile, email, sizeShirt, currentOcupation, fieldsStudy, 
+                    university, g, currentAdress, currentCity, fullNameEmergencyContact, 
+                    numberEmergencyContact, emailEmergencyContact, relationship);
+            if(!passport.equals("")) persona.setPassport(passport);
+            if(!phone.equals("")) persona.setPhone(phone);
+            if(!citizen.equals("")) persona.setCitizen(citizen);            
+            
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Confirmacion");
                 alert.setHeaderText("La informacion ha sido registrada");

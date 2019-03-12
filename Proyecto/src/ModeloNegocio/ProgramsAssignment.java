@@ -15,11 +15,16 @@ import java.util.ArrayList;
  */
 public class ProgramsAssignment extends Assignment{
     private String numRegistro;
-    private String ID;
-    private ArrayList<String> campsIds;
-    private ArrayList<String> Ids;
+    private String IdPersona;
+    private String nombrePersona;
+    private String nombreCampamento;
 
-    public ProgramsAssignment(String role, String calification, String note) {
+    public ProgramsAssignment(String numRegistro, String IdPersona, String nombrePersona, 
+            String nombreCampamento, String role, String calification, String note) {
         super(role, calification, note);
+        this.numRegistro = numRegistro;
+        this.IdPersona = IdPersona;
+        this.nombrePersona = nombrePersona;
+        this.nombreCampamento = nombreCampamento;
     }
 }

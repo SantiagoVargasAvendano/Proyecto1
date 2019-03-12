@@ -17,7 +17,7 @@ public class PersonalInformation {
     private String gender;
     private String dateBirth;
     private String mobile;
-    private String phone;
+    private String phone; 
     private String citizen;    
     private String email;
     private String passport;
@@ -34,24 +34,19 @@ public class PersonalInformation {
     private String relationship;
     private String photo;
 
-    public PersonalInformation(String fullName, String typeDocument, String Id, 
-                String gender, String dateBirth, String mobile, String phone, 
-                String citizen, String email, 
-                String passport, String sizeShirt, String currentOcupation, 
-                String fieldsStudy, String university, boolean graduate,
-                String currentAdress, String currentCity, 
-                String fullNameEmergencyContact, String numberEmergencyContact, 
-                String emailEmergencyContact, String relationship) {
+
+    public PersonalInformation(String fullName, String typeDocument, String Id, String gender, 
+            String dateBirth, String mobile, String email, String sizeShirt, 
+            String currentOcupation, String fieldsStudy, String university, boolean graduate, 
+            String currentAdress, String currentCity, String fullNameEmergencyContact, 
+            String numberEmergencyContact, String emailEmergencyContact, String relationship) {
         this.fullName = fullName;
         this.typeDocument = typeDocument;
         this.Id = Id;
         this.gender = gender;
         this.dateBirth = dateBirth;
         this.mobile = mobile;
-        this.phone = phone;
-        this.citizen = citizen;
         this.email = email;
-        this.passport = passport;
         this.sizeShirt = sizeShirt;
         this.currentOcupation = currentOcupation;
         this.fieldsStudy = fieldsStudy;
@@ -64,6 +59,19 @@ public class PersonalInformation {
         this.emailEmergencyContact = emailEmergencyContact;
         this.relationship = relationship;
     }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setCitizen(String citizen) {
+        this.citizen = citizen;
+    }
+
+    public void setPassport(String passport) {
+        this.passport = passport;
+    }
+    
     
     
     

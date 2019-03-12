@@ -13,14 +13,20 @@ import java.util.ArrayList;
  * @author Asus
  */
 public class LocalVolunteerProgram extends Assignment{
-    private ArrayList<VolunteerPrograms> voluntariadoIds;
-    private ArrayList<PersonalInformation> voluntariosIds;
+    private String numRegistro;
+    private String IdPersona;
+    private String nombrePersona;
+    private String nombreCampamento;
 
-    public LocalVolunteerProgram(ArrayList<String> voluntariadoIds, ArrayList<String> Ids, String role, String calification, String note) {
+    public LocalVolunteerProgram(String numRegistro, String IdPersona, String nombrePersona, String nombreCampamento, String role, String calification, String note) {
         super(role, calification, note);
-        this.voluntariadoIds = new ArrayList<VolunteerPrograms>();
-        this.voluntariosIds= new ArrayList<PersonalInformation>();
+        this.numRegistro = numRegistro;
+        this.IdPersona = IdPersona;
+        this.nombrePersona = nombrePersona;
+        this.nombreCampamento = nombreCampamento;
     }
+
+    
 
     
 }

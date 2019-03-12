@@ -5,14 +5,17 @@
  */
 package GUI.Formularios.FormularioICCPAssign;
 import GUI.Formularios.FormularioCampsICCP.*;
+import GUI.Formularios.FormulariosOpc.OpcionesVC;
 import GUI.Formularios.FormulariosOpc2.Opciones2VC;
 import GUI.Formularios.FormulariosOpc3.Opciones3VC;
 import GUI.Singleton;
+import ModeloNegocio.ICCPAssignment;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
 
 /**
  *
@@ -23,20 +26,76 @@ public class FormICCPAssignVC {
 
     public FormICCPAssignVC() throws FileNotFoundException {
         this.vista= new FormICCPAssign();
+        vista.getBoton().setOnMousePressed(new siguiente());
+        vista.getRegresar().setOnMousePressed(new regresar());
     }
     
     public void mostrarVista(){
         Singleton singleton = Singleton.getSingleton();
         vista.mostrar(singleton.getStage());
-        vista.getBoton().setOnMousePressed(new siguiente());
-        vista.getRegresar().setOnMousePressed(new regresar());
     }
     
     class siguiente implements EventHandler<Event>{
 
         @Override
         public void handle(Event event) {
-           
+            String idParticipante = vista.getIdParticipanteTF().getText();
+            String nombreParticipante = vista.getNombreParticipanteTF().getText();
+            String codigoCampamento = vista.getCodigoCampamentoTF().getText();
+            String numRegistro = vista.getNumRegistroTF().getText();
+            String calificacion = vista.getCalificacionTF().getText();
+            String nota = vista.getNotaTF().getText();
+            boolean t = true;
+            if (idParticipante.equals("") || nombreParticipante.equals("") || codigoCampamento.equals("")
+                    || numRegistro.equals("") || calificacion.equals("")) {
+                t = false;
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error de validacion");
+                alert.setHeaderText("No se pudo registrar la informacion");
+                alert.setContentText("Debe llenar todos los campos que se encuentran como obligatorios");
+                alert.show();
+                FormICCPAssignVC pantalla = null;
+                try {
+                    pantalla = new FormICCPAssignVC();
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(FormICCPAssignVC.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                pantalla.mostrarVista();
+            }
+            if (t) {
+                try {
+                    String fechaInicio = vista.getFechaInicioTF().getValue().toString();
+                    String fechaFin = vista.getFechaFinTF().getValue().toString();
+                    String rol = vista.getRolTF().getValue().toString();
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("Confirmacion");
+                    alert.setHeaderText("La informacion ha sido registrada");
+                    alert.show();
+                    int numRegis = Integer.valueOf(numRegistro);
+                    ICCPAssignment asignacion = new ICCPAssignment(numRegis, nombreParticipante, idParticipante, codigoCampamento, fechaInicio, fechaFin, rol, calificacion, nota);
+                    
+                    OpcionesVC pantalla = null;
+                    try {
+                        pantalla = new OpcionesVC();
+                    } catch (FileNotFoundException ex) {
+                        Logger.getLogger(FormICCPAssignVC.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    pantalla.mostrarVista();
+                } catch (NullPointerException e) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error de validacion");
+                    alert.setHeaderText("No se pudo registrar la informacion");
+                    alert.setContentText("Debe llenar todos los campos que se encuentran como obligatorios");
+                    alert.show();
+                    FormICCPAssignVC pantalla = null;
+                    try {
+                        pantalla = new FormICCPAssignVC();
+                    } catch (FileNotFoundException ex) {
+                        Logger.getLogger(FormICCPAssignVC.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    pantalla.mostrarVista();
+                }
+           }
         }   
     }
     

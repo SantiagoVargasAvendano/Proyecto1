@@ -19,7 +19,6 @@ public class ICCPAssignment extends Assignment {
     private String codigoCampamento;
     private String fechaInicio;
     private String fechaFin;
-    private TreeMap<Integer, PersonalInformation> personas;
 
     public ICCPAssignment(int numRegistro, String nombreParticipante, String IdParticipante, String codigoCampamento, String fechaInicio, String fechaFin, String role, String calification, String note) {
         super(role, calification, note);

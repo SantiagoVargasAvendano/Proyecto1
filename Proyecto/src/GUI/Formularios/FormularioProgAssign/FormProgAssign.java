@@ -5,9 +5,6 @@
  */
 package GUI.Formularios.FormularioProgAssign;
 
-import GUI.Formularios.FormularioLocalVolunProg.*;
-import GUI.Formularios.FormularioICCPAssign.*;
-import GUI.Formularios.FormularioCampsICCP.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import javafx.collections.FXCollections;
@@ -17,13 +14,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ContentDisplay;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -41,15 +35,23 @@ public class FormProgAssign {
     private Scene escena;
     private VBox vbox;
     private HBox hbox;
+    private HBox hbox2;
+    private HBox hbox3;
     private Label informacion;
+    private Label numRegistro;
+    private TextField numRegistroTF;   
     private Label IdParticipante;
     private TextField IdParticipanteTF;   
     private Label nombreParticipante;
     private TextField nombreParticipanteTF;   
-    private Label IdCampamento;
-    private TextField IdCampamentoTF; 
+    private Label nombreCampamento;
+    private TextField nombreCampamentoTF; 
     private Label rol;
     private ChoiceBox rolTF;
+    private Label calificacion;
+    private TextField calificacionTF;   
+    private Label nota;
+    private TextField notaTF;   
     private Button boton;
     private Button regresar;
     private ObservableList names;
@@ -61,19 +63,29 @@ public class FormProgAssign {
 
     public FormProgAssign() throws FileNotFoundException {
         this.vbox = new VBox();
-        vbox.setSpacing(60);
+        this.hbox2 = new HBox();
+        this.hbox3 = new HBox();
+        vbox.setSpacing(100);
         vbox.setPadding(new Insets(100, 25, 25, 100));
-        this.informacion = new Label("Introduzca la informacion de registro:");
+        Label info = new Label("Nota: Los campos con \"*\" son obligatorios");
+        info.setFont(Font.font(null, FontWeight.BOLD, FontPosture.REGULAR, 15));
+        this.informacion = new Label("Introduzca la informacion de registro:", info);
+        informacion.setContentDisplay(ContentDisplay.RIGHT);
         informacion.setFont(Font.font(null, FontWeight.BOLD, FontPosture.REGULAR, 20));
+        this.numRegistroTF = new TextField();
+        this.numRegistro = new Label("Numero de registro: *", numRegistroTF);
+        numRegistro.setContentDisplay(ContentDisplay.RIGHT);
         this.IdParticipanteTF = new TextField();
-        this.IdParticipante = new Label("Identificacion del participante:", IdParticipanteTF);
+        this.IdParticipante = new Label("Identificacion del participante: *", IdParticipanteTF);
         IdParticipante.setContentDisplay(ContentDisplay.RIGHT);
         this.nombreParticipanteTF = new TextField();
-        this.nombreParticipante = new Label("Nombre del participante:", nombreParticipanteTF);
+        this.nombreParticipante = new Label("Nombre del participante: *", nombreParticipanteTF);
         nombreParticipante.setContentDisplay(ContentDisplay.RIGHT);
-        this.IdCampamentoTF = new TextField();
-        this.IdCampamento = new Label("Identificacion del campamento:", IdCampamentoTF);
-        IdCampamento.setContentDisplay(ContentDisplay.RIGHT);
+        this.nombreCampamentoTF = new TextField();
+        hbox2.getChildren().addAll(numRegistro, IdParticipante, nombreParticipante);
+        hbox2.setSpacing(50);
+        this.nombreCampamento = new Label("Identificacion del campamento: *", nombreCampamentoTF);
+        nombreCampamento.setContentDisplay(ContentDisplay.RIGHT);
         names = FXCollections.observableArrayList();
         names.add("Coordinador");
         names.add("Sub-coordinador");
@@ -92,14 +104,22 @@ public class FormProgAssign {
         names.add("Campista");
         names.add("Interno");
         this.rolTF = new ChoiceBox(names);
-        this.rol = new Label("Rol", rolTF);
+        this.rol = new Label("Rol: *", rolTF);
         rol.setContentDisplay(ContentDisplay.RIGHT);
+        this.calificacionTF = new TextField();
+        this.calificacion = new Label("Calificacion: *", calificacionTF);
+        calificacion.setContentDisplay(ContentDisplay.RIGHT);
+        hbox3.getChildren().addAll(nombreCampamento, rol, calificacion);
+        hbox3.setSpacing(70);
+        this.notaTF = new TextField();
+        this.nota = new Label("Agregar una nota: ", notaTF);
+        nota.setContentDisplay(ContentDisplay.RIGHT);
         this.hbox = new HBox();
         hbox.setSpacing(100);
         this.boton = new Button("Agregar");
         this.regresar = new Button("Regresar");
         hbox.getChildren().addAll(regresar, boton);
-        vbox.getChildren().addAll(informacion,nombreParticipante,IdParticipante,IdCampamento,rol,hbox);
+        vbox.getChildren().addAll(informacion,hbox2,hbox3,nota,hbox);
 
         this.fondo = new HBox();
         this.logo = new Image(new FileInputStream("src/GUI/Logo.png"));
@@ -116,17 +136,13 @@ public class FormProgAssign {
     }    
             
     public void mostrar(Stage stage){
-        stage.setTitle("Formulario 1");
+        stage.setTitle("Programs camps Colombia");
         stage.setScene(this.escena);
         stage.show();
     }
 
     public TextField getIdParticipanteTF() {
         return IdParticipanteTF;
-    }
-
-    public TextField getIdCampamentoTF() {
-        return IdCampamentoTF;
     }
 
     public ChoiceBox getRolTF() {
@@ -139,6 +155,26 @@ public class FormProgAssign {
 
     public Button getRegresar() {
         return regresar;
+    }
+
+    public TextField getNumRegistroTF() {
+        return numRegistroTF;
+    }
+
+    public TextField getNombreParticipanteTF() {
+        return nombreParticipanteTF;
+    }
+
+    public TextField getNombreCampamentoTF() {
+        return nombreCampamentoTF;
+    }
+
+    public TextField getCalificacionTF() {
+        return calificacionTF;
+    }
+
+    public TextField getNotaTF() {
+        return notaTF;
     }
 
     
