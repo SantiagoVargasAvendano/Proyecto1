@@ -25,6 +25,37 @@ public class VolunteerPrograms extends Programas{
         this.tipoVoluntariado = tipoVoluntariado;
     }
 
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public String getFechaGrado() {
+        return fechaGrado;
+    }
+
+    public void setFechaGrado(String fechaGrado) {
+        this.fechaGrado = fechaGrado;
+    }
+
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
+    public String getTipoVoluntariado() {
+        return tipoVoluntariado;
+    }
+
+    public void setTipoVoluntariado(String tipoVoluntariado) {
+        this.tipoVoluntariado = tipoVoluntariado;
+    }    
 
 }    
     
