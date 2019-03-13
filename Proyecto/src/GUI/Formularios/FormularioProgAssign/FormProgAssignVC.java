@@ -68,8 +68,7 @@ public class FormProgAssignVC {
                 try {
                     String rol = vista.getRolTF().getValue().toString();
                     
-                    ProgramsAssignment asignacion = new ProgramsAssignment(numRegistro,
-                            idPersona, nombrePersona, nombreCampamento, rol, calificacion, nota);
+                    ProgramsAssignment asignacion = new ProgramsAssignment(idPersona, nombrePersona, nombreCampamento, rol, calificacion, nota);
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                     alert.setTitle("Confirmacion");
                     alert.setHeaderText("La informacion ha sido registrada");

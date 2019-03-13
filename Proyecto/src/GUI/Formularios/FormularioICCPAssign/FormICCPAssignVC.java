@@ -72,7 +72,7 @@ public class FormICCPAssignVC {
                     alert.setHeaderText("La informacion ha sido registrada");
                     alert.show();
                     int numRegis = Integer.valueOf(numRegistro);
-                    ICCPAssignment asignacion = new ICCPAssignment(nombreParticipante, idParticipante, codigoCampamento, fechaInicio, fechaFin, rol, calificacion, nota);
+                    ICCPAssignment asignacion = new ICCPAssignment( nombreParticipante, idParticipante, codigoCampamento, fechaInicio, fechaFin, rol, calificacion, nota);
                     
                     OpcionesVC pantalla = null;
                     try {
