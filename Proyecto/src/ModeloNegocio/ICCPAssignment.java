@@ -20,19 +20,66 @@ public class ICCPAssignment extends Assignment {
     private String fechaInicio;
     private String fechaFin;
 
-    public ICCPAssignment(int numRegistro, String nombreParticipante, String IdParticipante, String codigoCampamento, String fechaInicio, String fechaFin, String role, String calification, String note) {
+    public ICCPAssignment(String nombreParticipante, String IdParticipante, String codigoCampamento, String fechaInicio, String fechaFin, String role, String calification, String note) {
         super(role, calification, note);
-        this.numRegistro =  numRegistro+count;
+        this.numRegistro = count;
         this.nombreParticipante = nombreParticipante;
         this.IdParticipante = IdParticipante;
         this.codigoCampamento = codigoCampamento;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
+        count++;
     }
 
-    public void addPersona(String nombre, int ID){
-        
+    public int getNumRegistro() {
+        return numRegistro;
     }
 
+    public void setNumRegistro(int numRegistro) {
+        this.numRegistro = numRegistro;
+    }
+
+    public String getNombreParticipante() {
+        return nombreParticipante;
+    }
+
+    public void setNombreParticipante(String nombreParticipante) {
+        this.nombreParticipante = nombreParticipante;
+    }
+
+    public String getIdParticipante() {
+        return IdParticipante;
+    }
+
+    public void setIdParticipante(String IdParticipante) {
+        this.IdParticipante = IdParticipante;
+    }
+
+    public String getCodigoCampamento() {
+        return codigoCampamento;
+    }
+
+    public void setCodigoCampamento(String codigoCampamento) {
+        this.codigoCampamento = codigoCampamento;
+    }
+
+    public String getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(String fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public String getFechaFin() {
+        return fechaFin;
+    }
+
+    public void setFechaFin(String fechaFin) {
+        this.fechaFin = fechaFin;
+    }
     
+    
+
+       
 }
