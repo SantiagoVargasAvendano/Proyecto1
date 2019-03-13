@@ -12,7 +12,7 @@ import java.util.*;
  * @author Asus
  */
 public class ICCPAssignment extends Assignment {
-    private int count = 1; 
+    private static int count = 1; 
     private int numRegistro;
     private String nombreParticipante;
     private String IdParticipante;
@@ -79,7 +79,4 @@ public class ICCPAssignment extends Assignment {
         this.fechaFin = fechaFin;
     }
     
-    
-
-       
 }

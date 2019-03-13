@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @author Asus
  */
 public class LocalVolunteerAssignment extends Assignment{
-    private int count = 1;
+    private static int count = 1;
     private int numRegistro;
     private String IdPersona;
     private String nombrePersona;
