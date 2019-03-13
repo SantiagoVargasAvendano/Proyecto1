@@ -15,4 +15,6 @@ public class GestorPlataforma {
     private ArrayList<PersonalInformation> personas;
     private ArrayList<ProgramsCampsColombia> programasColombia;
     private ArrayList<VolunteerPrograms> programasVoluntariado;
+    private ArrayList<CampsICCP> programasICCP;
+    
 }
