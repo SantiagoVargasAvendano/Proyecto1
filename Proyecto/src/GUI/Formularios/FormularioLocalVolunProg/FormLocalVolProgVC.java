@@ -12,6 +12,8 @@ import GUI.Formularios.FormulariosOpc.OpcionesVC;
 import GUI.Formularios.FormulariosOpc2.Opciones2VC;
 import GUI.Formularios.FormulariosOpc3.Opciones3VC;
 import GUI.Singleton;
+import ModeloNegocio.GestorPlataforma;
+import ModeloNegocio.LocalVolunteerAssignment;
 import ModeloNegocio.ProgramsAssignment;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
@@ -26,8 +28,10 @@ import javafx.scene.control.Alert;
  */
 public class FormLocalVolProgVC {
     private FormLocalVolProg vista;
+    private GestorPlataforma gestor;
 
-    public FormLocalVolProgVC() throws FileNotFoundException {
+    public FormLocalVolProgVC(GestorPlataforma gestor) throws FileNotFoundException {
+        this.gestor = gestor;
         this.vista= new FormLocalVolProg();
         vista.getBoton().setOnMousePressed(new siguiente());
         vista.getRegresar().setOnMousePressed(new regresar());
@@ -42,14 +46,13 @@ public class FormLocalVolProgVC {
 
         @Override
         public void handle(Event event) {
-            String numRegistro = vista.getNumRegistroTF().getText();
             String idPersona = vista.getIdParticipanteTF().getText();
             String nombrePersona = vista.getNombreParticipanteTF().getText();
             String nombreCampamento = vista.getNombreCampamentoTF().getText();
             String calificacion = vista.getCalificacionTF().getText();
             String nota = vista.getNotaTF().getText();
             boolean t = true;
-            if (numRegistro.equals("") || idPersona.equals("") || nombrePersona.equals("") || nombrePersona.equals("") || calificacion.equals("")) {
+            if (idPersona.equals("") || nombrePersona.equals("") || nombrePersona.equals("") || calificacion.equals("")) {
                 t = false;
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error de validacion");
@@ -58,7 +61,7 @@ public class FormLocalVolProgVC {
                 alert.show();
                 FormLocalVolProgVC pantalla = null;
                 try {
-                    pantalla = new FormLocalVolProgVC();
+                    pantalla = new FormLocalVolProgVC(gestor);
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(FormLocalVolProgVC.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -69,7 +72,8 @@ public class FormLocalVolProgVC {
                 try {
                     String rol = vista.getRolTF().getValue().toString();
                     
-                    ProgramsAssignment asignacion = new ProgramsAssignment(idPersona, nombrePersona, nombreCampamento, rol, calificacion, nota);
+                    LocalVolunteerAssignment asignacion = new LocalVolunteerAssignment(idPersona, nombrePersona, nombreCampamento, rol, calificacion, nota);
+                    gestor.addVoluntariadoAssignment(asignacion);
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                     alert.setTitle("Confirmacion");
                     alert.setHeaderText("La informacion ha sido registrada");
@@ -77,7 +81,7 @@ public class FormLocalVolProgVC {
                     
                     OpcionesVC pantalla = null;
                     try {
-                        pantalla = new OpcionesVC();
+                        pantalla = new OpcionesVC(gestor);
                     } catch (FileNotFoundException ex) {
                         Logger.getLogger(FormLocalVolProgVC.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -91,7 +95,7 @@ public class FormLocalVolProgVC {
                     alert.show();
                     FormLocalVolProgVC pantalla = null;
                     try {
-                        pantalla = new FormLocalVolProgVC();
+                        pantalla = new FormLocalVolProgVC(gestor);
                     } catch (FileNotFoundException ex) {
                         Logger.getLogger(FormLocalVolProgVC.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -107,7 +111,7 @@ public class FormLocalVolProgVC {
         public void handle(Event event) {
            Opciones3VC pantalla = null;
             try {
-                pantalla = new Opciones3VC();
+                pantalla = new Opciones3VC(gestor);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(FormLocalVolProgVC.class.getName()).log(Level.SEVERE, null, ex);
             }

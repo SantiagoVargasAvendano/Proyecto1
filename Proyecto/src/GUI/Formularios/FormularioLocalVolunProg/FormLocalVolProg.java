@@ -38,9 +38,7 @@ public class FormLocalVolProg {
     private HBox hbox;
     private HBox hbox2;
     private HBox hbox3;
-    private Label informacion;
-    private Label numRegistro;
-    private TextField numRegistroTF;   
+    private Label informacion;   
     private Label IdParticipante;
     private TextField IdParticipanteTF;   
     private Label nombreParticipante;
@@ -73,9 +71,6 @@ public class FormLocalVolProg {
         this.informacion = new Label("Introduzca la informacion de registro:", info);
         informacion.setContentDisplay(ContentDisplay.RIGHT);
         informacion.setFont(Font.font(null, FontWeight.BOLD, FontPosture.REGULAR, 20));
-        this.numRegistroTF = new TextField();
-        this.numRegistro = new Label("Numero de registro: *", numRegistroTF);
-        numRegistro.setContentDisplay(ContentDisplay.RIGHT);
         this.IdParticipanteTF = new TextField();
         this.IdParticipante = new Label("Identificacion del participante: *", IdParticipanteTF);
         IdParticipante.setContentDisplay(ContentDisplay.RIGHT);
@@ -83,7 +78,7 @@ public class FormLocalVolProg {
         this.nombreParticipante = new Label("Nombre del participante: *", nombreParticipanteTF);
         nombreParticipante.setContentDisplay(ContentDisplay.RIGHT);
         this.nombreCampamentoTF = new TextField();
-        hbox2.getChildren().addAll(numRegistro, IdParticipante, nombreParticipante);
+        hbox2.getChildren().addAll(IdParticipante, nombreParticipante);
         hbox2.setSpacing(50);
         this.nombreCampamento = new Label("Identificacion del campamento: *", nombreCampamentoTF);
         nombreCampamento.setContentDisplay(ContentDisplay.RIGHT);
@@ -156,10 +151,6 @@ public class FormLocalVolProg {
 
     public Button getRegresar() {
         return regresar;
-    }
-
-    public TextField getNumRegistroTF() {
-        return numRegistroTF;
     }
 
     public TextField getNombreParticipanteTF() {

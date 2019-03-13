@@ -40,8 +40,6 @@ public class FormICCPAssign {
     private HBox hbox3;
     private HBox hbox4;
     private Label informacion;
-    private Label numRegistro;
-    private TextField numRegistroTF;
     private Label nombreParticipante;
     private TextField nombreParticipanteTF;
     private Label IdParticipante;
@@ -79,9 +77,6 @@ public class FormICCPAssign {
         this.informacion = new Label("Introduzca la informacion de registro:", info);
         informacion.setContentDisplay(ContentDisplay.RIGHT);
         informacion.setFont(Font.font(null, FontWeight.BOLD, FontPosture.REGULAR, 20));
-        this.numRegistroTF = new TextField();
-        this.numRegistro = new Label("Numero de registro: *", numRegistroTF);
-        numRegistro.setContentDisplay(ContentDisplay.RIGHT);
         this.nombreParticipanteTF = new TextField();
         this.nombreParticipante = new Label("Nombre del participante: *", nombreParticipanteTF);
         nombreParticipante.setContentDisplay(ContentDisplay.RIGHT);
@@ -115,7 +110,7 @@ public class FormICCPAssign {
         this.boton = new Button("Agregar");
         this.regresar = new Button("Regresar");
         hbox.getChildren().addAll(regresar, boton);
-        hbox2.getChildren().addAll(numRegistro, nombreParticipante, IdParticipante);
+        hbox2.getChildren().addAll(nombreParticipante, IdParticipante);
         hbox2.setSpacing(50);
         hbox3.getChildren().addAll(codigoCampamento, rol, fechaInicio);
         hbox3.setSpacing(75);
@@ -141,10 +136,6 @@ public class FormICCPAssign {
         stage.setTitle("Formulario 1");
         stage.setScene(this.escena);
         stage.show();
-    }
-
-    public TextField getNumRegistroTF() {
-        return numRegistroTF;
     }
 
     public TextField getNombreParticipanteTF() {

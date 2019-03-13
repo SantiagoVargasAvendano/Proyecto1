@@ -6,6 +6,7 @@
 package GUI.Inicio;
 
 import GUI.Singleton;
+import ModeloNegocio.GestorPlataforma;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -18,8 +19,9 @@ public class Start1 extends Application {
     public void start(Stage primaryStage)
             throws Exception {
         Singleton singleton = Singleton.getSingleton();
+        GestorPlataforma gestor = null;
         singleton.setStage(primaryStage);
-        InicioVC pp = new InicioVC();
+        InicioVC pp = new InicioVC(gestor);
         pp.mostrarVista();
         
     }

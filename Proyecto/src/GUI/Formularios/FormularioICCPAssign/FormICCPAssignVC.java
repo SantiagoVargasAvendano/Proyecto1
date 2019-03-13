@@ -45,12 +45,11 @@ public class FormICCPAssignVC {
             String idParticipante = vista.getIdParticipanteTF().getText();
             String nombreParticipante = vista.getNombreParticipanteTF().getText();
             String codigoCampamento = vista.getCodigoCampamentoTF().getText();
-            String numRegistro = vista.getNumRegistroTF().getText();
             String calificacion = vista.getCalificacionTF().getText();
             String nota = vista.getNotaTF().getText();
             boolean t = true;
             if (idParticipante.equals("") || nombreParticipante.equals("") || codigoCampamento.equals("")
-                    || numRegistro.equals("") || calificacion.equals("")) {
+                    || calificacion.equals("")) {
                 t = false;
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error de validacion");
@@ -74,7 +73,6 @@ public class FormICCPAssignVC {
                     alert.setTitle("Confirmacion");
                     alert.setHeaderText("La informacion ha sido registrada");
                     alert.show();
-                    int numRegis = Integer.valueOf(numRegistro);
                     ICCPAssignment asignacion = new ICCPAssignment( nombreParticipante, idParticipante, codigoCampamento, fechaInicio, fechaFin, rol, calificacion, nota);
                     gestor.addICCPAssignment(asignacion);
                     OpcionesVC pantalla = null;

@@ -11,6 +11,7 @@ import GUI.Formularios.FormulariosOpc.OpcionesVC;
 import GUI.Formularios.FormulariosOpc2.Opciones2VC;
 import GUI.Formularios.FormulariosOpc3.Opciones3VC;
 import GUI.Singleton;
+import ModeloNegocio.GestorPlataforma;
 import ModeloNegocio.ProgramsAssignment;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
@@ -25,8 +26,10 @@ import javafx.scene.control.Alert;
  */
 public class FormProgAssignVC {
     private FormProgAssign vista;
+    private GestorPlataforma gestor;
 
-    public FormProgAssignVC() throws FileNotFoundException {
+    public FormProgAssignVC(GestorPlataforma gestor) throws FileNotFoundException {
+        this.gestor = gestor;
         this.vista= new FormProgAssign();
         vista.getBoton().setOnMousePressed(new siguiente());
         vista.getRegresar().setOnMousePressed(new regresar());
@@ -41,14 +44,13 @@ public class FormProgAssignVC {
 
         @Override
         public void handle(Event event) {
-            String numRegistro = vista.getNumRegistroTF().getText();
             String idPersona = vista.getIdParticipanteTF().getText();
             String nombrePersona = vista.getNombreParticipanteTF().getText();
             String nombreCampamento = vista.getNombreCampamentoTF().getText();
             String calificacion = vista.getCalificacionTF().getText();
             String nota = vista.getNotaTF().getText();
             boolean t = true;
-            if (numRegistro.equals("") || idPersona.equals("") || nombrePersona.equals("") || nombrePersona.equals("") || calificacion.equals("")) {
+            if (idPersona.equals("") || nombrePersona.equals("") || nombrePersona.equals("") || calificacion.equals("")) {
                 t = false;
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error de validacion");
@@ -57,7 +59,7 @@ public class FormProgAssignVC {
                 alert.show();
                 FormProgAssignVC pantalla = null;
                 try {
-                    pantalla = new FormProgAssignVC();
+                    pantalla = new FormProgAssignVC(gestor);
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(FormProgAssignVC.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -69,6 +71,7 @@ public class FormProgAssignVC {
                     String rol = vista.getRolTF().getValue().toString();
                     
                     ProgramsAssignment asignacion = new ProgramsAssignment(idPersona, nombrePersona, nombreCampamento, rol, calificacion, nota);
+                    gestor.addColombiaAssignment(asignacion);
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                     alert.setTitle("Confirmacion");
                     alert.setHeaderText("La informacion ha sido registrada");
@@ -76,7 +79,7 @@ public class FormProgAssignVC {
                     
                     OpcionesVC pantalla = null;
                     try {
-                        pantalla = new OpcionesVC();
+                        pantalla = new OpcionesVC(gestor);
                     } catch (FileNotFoundException ex) {
                         Logger.getLogger(FormProgAssignVC.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -90,7 +93,7 @@ public class FormProgAssignVC {
                     alert.show();
                     FormProgAssignVC pantalla = null;
                     try {
-                        pantalla = new FormProgAssignVC();
+                        pantalla = new FormProgAssignVC(gestor);
                     } catch (FileNotFoundException ex) {
                         Logger.getLogger(FormProgAssignVC.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -106,7 +109,7 @@ public class FormProgAssignVC {
         public void handle(Event event) {
            Opciones3VC pantalla = null;
             try {
-                pantalla = new Opciones3VC();
+                pantalla = new Opciones3VC(gestor);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(FormProgAssignVC.class.getName()).log(Level.SEVERE, null, ex);
             }
