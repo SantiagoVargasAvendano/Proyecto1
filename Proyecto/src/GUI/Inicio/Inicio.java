@@ -57,7 +57,7 @@ public class Inicio {
         this.boton3 = new Button("Formularios", new ImageView(imagen2));
         FileInputStream input3 = new FileInputStream("src/GUI/Inicio/lupa.png");
         this.imagen3 = new Image(input3);
-        this.boton4 = new Button("Buscar", new ImageView(imagen3));
+        this.boton4 = new Button("Consulta", new ImageView(imagen3));
         vbox.getChildren().addAll(boton, boton2);
         vbox.setAlignment(Pos.CENTER);
         vbox.setSpacing(100);

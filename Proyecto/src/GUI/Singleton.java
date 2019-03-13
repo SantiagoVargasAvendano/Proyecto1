@@ -40,14 +40,16 @@ public class Singleton {
     
         this.fondo = new HBox();
         this.logo = new Image(new FileInputStream("src/GUI/Logo.png"));
-        this.nombreE = new Text("YMCA");
-        nombreE.setFont(Font.font(50));       
+        this.nombreE = new Text("Base de datos YMCA");
+        nombreE.setFont(Font.font(50));
         fondo.getChildren().addAll(nombreE, new ImageView(logo));
         fondo.setPadding(new Insets(5, 10, 0, 10));
-        fondo.setSpacing(900);
+        fondo.setSpacing(600);
         this.fondos = new StackPane();
-        fondos.getChildren().addAll(fondo,hbox);
-        escena = new Scene(fondos, 1200, 670);   
+        Image pp = new Image(new FileInputStream("src/GUI/Fondo.png"));
+        ImageView imagen = new ImageView(pp);
+        fondos.getChildren().addAll(imagen, fondo, hbox);
+        escena = new Scene(fondos, 1200, 670);
     
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error de validacion");
