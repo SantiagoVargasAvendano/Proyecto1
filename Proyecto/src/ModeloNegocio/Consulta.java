@@ -31,4 +31,14 @@ public class Consulta {
         }
         return valorConsulta;
     }
+
+    public String getConsulta() {
+        return consulta;
+    }
+
+    public void setConsulta(String consulta) {
+        this.consulta = consulta;
+    }
+    
+    
 }
