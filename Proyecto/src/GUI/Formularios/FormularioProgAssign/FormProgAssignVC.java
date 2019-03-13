@@ -65,6 +65,34 @@ public class FormProgAssignVC {
                 }
                 pantalla.mostrarVista();
             }
+            boolean l = false;
+            for(int i=0;i<gestor.getPersonas().size() && !l;i++){
+                if(gestor.getPersonas().get(i).getId().equals(idPersona) && 
+                        gestor.getPersonas().get(i).getFullName().equals(nombrePersona)){
+                    t = true;
+                }
+            }
+            boolean q = false;
+            for(int j=0;j<gestor.getProgramasColombia().size() && !q;j++){
+                if(gestor.getProgramasColombia().get(j).getNombre().equals(nombreCampamento) ){
+                    q = true;
+                }
+            }
+            if(l==false || q==false){
+                t = false;
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error de validacion");
+                alert.setHeaderText("No se pudo registrar la informacion");
+                alert.setContentText("Puede que la persona o el campamento que ingreso no existan");
+                alert.show();
+                FormProgAssignVC pantalla = null;
+                try {
+                    pantalla = new FormProgAssignVC(gestor);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(FormProgAssignVC.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                pantalla.mostrarVista();
+            }
 
             if (t) {
                 try {

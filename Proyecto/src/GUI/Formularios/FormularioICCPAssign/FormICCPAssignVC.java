@@ -71,13 +71,13 @@ public class FormICCPAssignVC {
                     t = true;
                 }
             }
-            boolean e = false;
-            for(int j=0;j<gestor.getProgramasICCP().size() && !e;j++){
+            boolean q = false;
+            for(int j=0;j<gestor.getProgramasICCP().size() && !q;j++){
                 if(gestor.getProgramasICCP().get(j).getCampYear().equals(codigoCampamento)){
-                    e = true;
+                    q = true;
                 }
             }
-            if(l==false || e==false){
+            if(l==false || q==false){
                 t = false;
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error de validacion");
@@ -91,8 +91,7 @@ public class FormICCPAssignVC {
                     Logger.getLogger(FormICCPAssignVC.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 pantalla.mostrarVista();
-            }
-            
+            }            
             if (t) {
                 try {
                     String fechaInicio = vista.getFechaInicioTF().getValue().toString();
