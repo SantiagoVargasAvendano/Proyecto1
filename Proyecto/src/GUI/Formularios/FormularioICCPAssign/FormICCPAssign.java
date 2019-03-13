@@ -5,7 +5,6 @@
  */
 package GUI.Formularios.FormularioICCPAssign;
 
-import GUI.Formularios.FormularioCampsICCP.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import javafx.collections.FXCollections;
@@ -17,11 +16,9 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;

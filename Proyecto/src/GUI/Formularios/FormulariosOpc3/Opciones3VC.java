@@ -45,7 +45,7 @@ public class Opciones3VC {
         public void handle(Event event) {
             FormProgAssignVC vista1 = null;
             try {
-                vista1 = new FormProgAssignVC();
+                vista1 = new FormProgAssignVC(gestor);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(Opciones3VC.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -58,7 +58,7 @@ public class Opciones3VC {
         public void handle(Event event) {
             FormLocalVolProgVC vista1 = null;
             try {
-                vista1 = new FormLocalVolProgVC();
+                vista1 = new FormLocalVolProgVC(gestor);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(Opciones3VC.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -71,7 +71,7 @@ public class Opciones3VC {
         public void handle(Event event) {
             FormICCPAssignVC vista1 = null;
             try {
-                vista1 = new FormICCPAssignVC();
+                vista1 = new FormICCPAssignVC(gestor);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(Opciones3VC.class.getName()).log(Level.SEVERE, null, ex);
             }
