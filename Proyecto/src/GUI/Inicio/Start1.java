@@ -19,7 +19,7 @@ public class Start1 extends Application {
     public void start(Stage primaryStage)
             throws Exception {
         Singleton singleton = Singleton.getSingleton();
-        GestorPlataforma gestor = null;
+        GestorPlataforma gestor = new GestorPlataforma();
         singleton.setStage(primaryStage);
         InicioVC pp = new InicioVC(gestor);
         pp.mostrarVista();

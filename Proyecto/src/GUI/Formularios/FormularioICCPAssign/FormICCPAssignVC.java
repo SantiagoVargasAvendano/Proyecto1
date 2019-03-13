@@ -64,17 +64,47 @@ public class FormICCPAssignVC {
                 }
                 pantalla.mostrarVista();
             }
+            boolean l = false;
+            for(int i=0;i<gestor.getPersonas().size() && !l;i++){
+                if(gestor.getPersonas().get(i).getId().equals(idParticipante) && 
+                        gestor.getPersonas().get(i).getFullName().equals(nombreParticipante)){
+                    t = true;
+                }
+            }
+            boolean e = false;
+            for(int j=0;j<gestor.getProgramasICCP().size() && !e;j++){
+                if(gestor.getProgramasICCP().get(j).getCampYear().equals(codigoCampamento)){
+                    e = true;
+                }
+            }
+            if(l==false || e==false){
+                t = false;
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error de validacion");
+                alert.setHeaderText("No se pudo registrar la informacion");
+                alert.setContentText("Puede que la persona o el campamento que ingreso no existan");
+                alert.show();
+                FormICCPAssignVC pantalla = null;
+                try {
+                    pantalla = new FormICCPAssignVC(gestor);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(FormICCPAssignVC.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                pantalla.mostrarVista();
+            }
+            
             if (t) {
                 try {
                     String fechaInicio = vista.getFechaInicioTF().getValue().toString();
                     String fechaFin = vista.getFechaFinTF().getValue().toString();
                     String rol = vista.getRolTF().getValue().toString();
+                    
+                    ICCPAssignment asignacion = new ICCPAssignment( nombreParticipante, idParticipante, codigoCampamento, fechaInicio, fechaFin, rol, calificacion, nota);
+                    gestor.addICCPAssignment(asignacion);
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                     alert.setTitle("Confirmacion");
                     alert.setHeaderText("La informacion ha sido registrada");
                     alert.show();
-                    ICCPAssignment asignacion = new ICCPAssignment( nombreParticipante, idParticipante, codigoCampamento, fechaInicio, fechaFin, rol, calificacion, nota);
-                    gestor.addICCPAssignment(asignacion);
                     OpcionesVC pantalla = null;
                     try {
                         pantalla = new OpcionesVC(gestor);
