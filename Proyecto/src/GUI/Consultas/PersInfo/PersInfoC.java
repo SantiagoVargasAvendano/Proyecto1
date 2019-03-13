@@ -43,6 +43,45 @@ public class PersInfoC {
     private RadioButton gender;
     private TextField genderTF;
     
+    private HBox hbox2;
+    private RadioButton dateBirth;
+    private TextField dateBirthTF;
+    private RadioButton mobile;
+    private TextField mobileTF;
+    private RadioButton phone;
+    private TextField phoneTF;
+    private RadioButton citizen;
+    private TextField citizenTF;
+    
+    private HBox hbox3;
+    private RadioButton email;
+    private TextField emailTF;
+    private RadioButton sizeShirt;
+    private TextField sizeShirtTF;
+    private RadioButton currentOcu;
+    private TextField currentOcuTF;
+    private RadioButton fieldsStudy;
+    private TextField fieldsStudyTF;
+    
+    private HBox hbox4;
+    private RadioButton university;
+    private TextField universityTF;
+    private RadioButton graduate;
+    private TextField graduateTF;
+    private RadioButton currentAddress;
+    private TextField currentAddressTF;
+    private RadioButton currentCity;
+    private TextField currentCityTF;
+    
+    private HBox hbox5;
+    private RadioButton nameEmCon;
+    private TextField nameEmConTF;
+    private RadioButton numberEmCon;
+    private TextField numberEmConTF;
+    private RadioButton emailEmCon;
+    private TextField emailEmConTF;
+    private RadioButton relationship;
+    private TextField relationshipTF;
     
     private HBox menu;
     private ComboBox<String> opciones;
@@ -56,7 +95,7 @@ public class PersInfoC {
     public PersInfoC() throws FileNotFoundException {
         this.vbox = new VBox();
         vbox.setSpacing(50);
-        vbox.setPadding(new Insets(100, 0, 0, 50));
+        vbox.setPadding(new Insets(100, 0, 0, 20));
         this.opciones = new ComboBox<>();
         opciones.getItems().addAll("Informacion personal","Programas Colombia",
                 "programas voluntariado","Programas ICCP", "Asignacion programas Colombia"
@@ -83,6 +122,58 @@ public class PersInfoC {
         this.genderTF = new TextField();
         hbox.getChildren().addAll(name,nameTF,id,idTF,typeDocument,typeDocumentTF,gender,genderTF);
         vbox.getChildren().add(hbox);
+        
+        this.hbox2 = new HBox();
+        hbox2.setSpacing(20);
+        this.dateBirth = new RadioButton("Fecha nacimiento: ");
+        this.dateBirthTF = new TextField();
+        this.mobile = new RadioButton("Celular: ");
+        this.mobileTF = new TextField();
+        this.phone = new RadioButton("Telefono: ");
+        this.phoneTF = new TextField();
+        this.citizen = new RadioButton("Nacionalidad: ");
+        this.citizenTF = new TextField();
+        hbox2.getChildren().addAll(dateBirth,dateBirthTF,mobile,mobileTF,phone,phoneTF,citizen,citizenTF);
+        vbox.getChildren().add(hbox2);
+        
+        this.hbox3 = new HBox();
+        hbox3.setSpacing(20);
+        this.email = new RadioButton("Email: ");
+        this.emailTF = new TextField();
+        this.sizeShirt = new RadioButton("Talla camisa: ");
+        this.sizeShirtTF = new TextField();
+        this.currentOcu = new RadioButton("Ocupacion actual: ");
+        this.currentOcuTF = new TextField();
+        this.fieldsStudy = new RadioButton("Carrera: ");
+        this.fieldsStudyTF = new TextField();
+        hbox3.getChildren().addAll(email, emailTF,sizeShirt,sizeShirtTF,currentOcu,currentOcuTF, fieldsStudy,fieldsStudyTF);
+        vbox.getChildren().add(hbox3);
+        
+        this.hbox4 = new HBox();
+        hbox4.setSpacing(20);
+        this.university = new RadioButton("Universidad: ");
+        this.universityTF = new TextField();
+        this.graduate = new RadioButton("Graduado: ");
+        this.graduateTF = new TextField();
+        this.currentAddress = new RadioButton("Direccion acutal: ");
+        this.currentAddressTF = new TextField();
+        this.currentCity = new RadioButton("Ciudad actual: ");
+        this.currentCityTF = new TextField();
+        hbox4.getChildren().addAll(university,universityTF,graduate,graduateTF,currentAddress,currentAddressTF,currentCity, currentCityTF);
+        vbox.getChildren().add(hbox4);
+        
+        this.hbox5 = new HBox();
+        hbox5.setSpacing(5);
+        this.nameEmCon = new RadioButton("Nombre Con. Emer.: ");
+        this.nameEmConTF = new TextField();
+        this.numberEmCon = new RadioButton("Numero Con. Emer.: ");
+        this.numberEmConTF = new TextField();
+        this.emailEmCon = new RadioButton("Email Con. Emer.: ");
+        this.emailEmConTF = new TextField();
+        this.relationship = new RadioButton("Relacion Con. Emer.: ");
+        this.relationshipTF = new TextField();
+        hbox5.getChildren().addAll(nameEmCon,nameEmConTF,numberEmCon,numberEmConTF,emailEmCon,emailEmConTF,relationship,relationshipTF);
+        vbox.getChildren().add(hbox5);
         
         this.fondo = new HBox();
         this.logo = new Image(new FileInputStream("src/GUI/Logo.png"));
