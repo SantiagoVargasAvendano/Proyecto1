@@ -70,6 +70,10 @@ public class PersonalInformation {
         return typeDocument;
     }
 
+    public void setTypeDocument(String typeDocument) {
+        this.typeDocument = typeDocument;
+    }
+
     public String getId() {
         return Id;
     }
