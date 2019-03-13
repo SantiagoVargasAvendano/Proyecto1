@@ -13,21 +13,51 @@ import java.util.ArrayList;
  * @author Asus
  */
 public class LocalVolunteerAssignment extends Assignment{
-    private int 
+    private int count = 1;
     private int numRegistro;
     private String IdPersona;
     private String nombrePersona;
     private String nombreCampamento;
 
-    public LocalVolunteerAssignment(int numRegistro, String IdPersona, String nombrePersona, String nombreCampamento, String role, String calification, String note) {
+    public LocalVolunteerAssignment(String IdPersona, String nombrePersona, String nombreCampamento, String role, String calification, String note) {
         super(role, calification, note);
-        this.numRegistro = numRegistro;
+        this.numRegistro = count;
         this.IdPersona = IdPersona;
         this.nombrePersona = nombrePersona;
         this.nombreCampamento = nombreCampamento;
+        count++;
     }
 
-    
+    public int getNumRegistro() {
+        return numRegistro;
+    }
 
-    
+    public void setNumRegistro(int numRegistro) {
+        this.numRegistro = numRegistro;
+    }
+
+    public String getIdPersona() {
+        return IdPersona;
+    }
+
+    public void setIdPersona(String IdPersona) {
+        this.IdPersona = IdPersona;
+    }
+
+    public String getNombrePersona() {
+        return nombrePersona;
+    }
+
+    public void setNombrePersona(String nombrePersona) {
+        this.nombrePersona = nombrePersona;
+    }
+
+    public String getNombreCampamento() {
+        return nombreCampamento;
+    }
+
+    public void setNombreCampamento(String nombreCampamento) {
+        this.nombreCampamento = nombreCampamento;
+    }
+
 }
