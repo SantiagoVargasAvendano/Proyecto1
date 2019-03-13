@@ -10,6 +10,7 @@ import GUI.Formularios.FormularioLocalVolunProg.FormLocalVolProgVC;
 import GUI.Formularios.FormulariosOpc.*;
 import GUI.Formularios.FormularioProgAssign.FormProgAssignVC;
 import GUI.Singleton;
+import ModeloNegocio.GestorPlataforma;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,8 +23,10 @@ import javafx.event.EventHandler;
  */
 public class Opciones3VC {
     private Opciones3 vista;
+    private GestorPlataforma gestor;
 
-    public Opciones3VC() throws FileNotFoundException {
+    public Opciones3VC(GestorPlataforma gestor) throws FileNotFoundException {
+        this.gestor = gestor;
         this.vista = new Opciones3();
         vista.getB1().setOnMousePressed(new b1Pressed());
         vista.getB2().setOnMousePressed(new b2Pressed());
@@ -82,7 +85,7 @@ public class Opciones3VC {
         public void handle(Event event) {
             OpcionesVC vista = null;
             try {
-                vista = new OpcionesVC();
+                vista = new OpcionesVC(gestor);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(Opciones3VC.class.getName()).log(Level.SEVERE, null, ex);
             }

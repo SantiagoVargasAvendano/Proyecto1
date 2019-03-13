@@ -10,6 +10,7 @@ import GUI.Formularios.FormulariosOpc2.Opciones2VC;
 import GUI.Formularios.FormulariosOpc3.Opciones3VC;
 import GUI.Inicio.InicioVC;
 import GUI.Singleton;
+import ModeloNegocio.GestorPlataforma;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,9 +22,11 @@ import javafx.event.EventHandler;
  * @author Asus
  */
 public class OpcionesVC {
+    private GestorPlataforma gestor;
     private Opciones vista;
 
-    public OpcionesVC() throws FileNotFoundException {
+    public OpcionesVC(GestorPlataforma gestor) throws FileNotFoundException {
+        this.gestor = gestor;
         this.vista = new Opciones();
         vista.getB1().setOnMousePressed(new b1Pressed());
         vista.getB2().setOnMousePressed(new b2Pressed());
@@ -43,7 +46,7 @@ public class OpcionesVC {
         public void handle(Event event) {
             FormPersonaVC pantalla = null;
             try {
-                pantalla = new FormPersonaVC();
+                pantalla = new FormPersonaVC(gestor);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(OpcionesVC.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -56,7 +59,7 @@ public class OpcionesVC {
         public void handle(Event event) {
             Opciones3VC pantalla = null;
             try {
-                pantalla = new Opciones3VC();
+                pantalla = new Opciones3VC(gestor);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(OpcionesVC.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -69,7 +72,7 @@ public class OpcionesVC {
         public void handle(Event event) {
             Opciones2VC pantalla = null;
             try {
-                pantalla = new Opciones2VC();
+                pantalla = new Opciones2VC(gestor);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(OpcionesVC.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -83,7 +86,7 @@ public class OpcionesVC {
         public void handle(Event event) {
             InicioVC vista = null;
             try {
-                vista = new InicioVC();
+                vista = new InicioVC(gestor);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(OpcionesVC.class.getName()).log(Level.SEVERE, null, ex);
             }

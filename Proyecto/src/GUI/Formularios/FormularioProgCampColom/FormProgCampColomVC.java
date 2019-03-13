@@ -7,6 +7,7 @@ package GUI.Formularios.FormularioProgCampColom;
 import GUI.Formularios.FormulariosOpc.OpcionesVC;
 import GUI.Formularios.FormulariosOpc2.Opciones2VC;
 import GUI.Singleton;
+import ModeloNegocio.GestorPlataforma;
 import ModeloNegocio.ProgramsCampsColombia;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
@@ -21,16 +22,19 @@ import javafx.scene.control.Alert;
  */
 public class FormProgCampColomVC {
     private FormProgCampColom vista;
+    private GestorPlataforma gestor;
 
-    public FormProgCampColomVC() throws FileNotFoundException {
+    public FormProgCampColomVC(GestorPlataforma gestor) throws FileNotFoundException {
+        this.gestor = gestor;
         this.vista= new FormProgCampColom();
+        vista.getBoton().setOnMousePressed(new siguiente());
+        vista.getRegresar().setOnMousePressed(new regresar());
     }
     
     public void mostrarVista(){
         Singleton singleton = Singleton.getSingleton();
         vista.mostrar(singleton.getStage());
-        vista.getBoton().setOnMousePressed(new siguiente());
-        vista.getRegresar().setOnMousePressed(new regresar());
+        
     }
     
     class siguiente implements EventHandler<Event>{
@@ -52,7 +56,7 @@ public class FormProgCampColomVC {
                 alert.show();
                 FormProgCampColomVC pantalla = null;
                 try {
-                    pantalla = new FormProgCampColomVC();
+                    pantalla = new FormProgCampColomVC(gestor);
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(FormProgCampColomVC.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -67,14 +71,17 @@ public class FormProgCampColomVC {
                     alert.setTitle("Confirmacion");
                     alert.setHeaderText("La informacion ha sido registrada");
                     alert.show();
+                    ProgramsCampsColombia program = new ProgramsCampsColombia(tipoPrograma, company, fechaGrado, duration, Lugar, poblacion, Id);
+                    gestor.addProgramaColombia(program);
                     OpcionesVC pantalla = null;
                     try {
-                        pantalla = new OpcionesVC();
+                        pantalla = new OpcionesVC(gestor);
                     } catch (FileNotFoundException ex) {
                         Logger.getLogger(FormProgCampColomVC.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     pantalla.mostrarVista();
-                    ProgramsCampsColombia program = new ProgramsCampsColombia(tipoPrograma, company, fechaGrado, duration, Lugar, poblacion, Id);
+                    
+                    
                     
                 } catch (NullPointerException e) {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -84,7 +91,7 @@ public class FormProgCampColomVC {
                     alert.show();
                     FormProgCampColomVC pantalla = null;
                     try {
-                        pantalla = new FormProgCampColomVC();
+                        pantalla = new FormProgCampColomVC(gestor);
                     } catch (FileNotFoundException ex) {
                         Logger.getLogger(FormProgCampColomVC.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -102,7 +109,7 @@ public class FormProgCampColomVC {
         public void handle(Event event) {
            Opciones2VC pantalla = null;
             try {
-                pantalla = new Opciones2VC();
+                pantalla = new Opciones2VC(gestor);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(FormProgCampColomVC.class.getName()).log(Level.SEVERE, null, ex);
             }

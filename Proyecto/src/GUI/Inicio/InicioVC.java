@@ -7,6 +7,7 @@ package GUI.Inicio;
 
 import GUI.Formularios.FormulariosOpc.OpcionesVC;
 import GUI.Singleton;
+import ModeloNegocio.GestorPlataforma;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,8 +22,10 @@ import javafx.scene.control.Alert;
  */
 public class InicioVC {
     private Inicio inicio;
+    private GestorPlataforma gestor;
 
-    public InicioVC() throws FileNotFoundException{
+    public InicioVC(GestorPlataforma gestor) throws FileNotFoundException {
+        this.gestor = gestor;
         this.inicio = new Inicio();
         inicio.getBoton3().setOnMousePressed(new EventoFormulario());
         
@@ -39,7 +42,7 @@ public class InicioVC {
         public void handle(Event event) {
             OpcionesVC vista = null;
             try {
-                vista = new OpcionesVC();
+                vista = new OpcionesVC(gestor);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(InicioVC.class.getName()).log(Level.SEVERE, null, ex);
             }

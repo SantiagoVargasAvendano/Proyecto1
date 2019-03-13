@@ -6,6 +6,7 @@
 package GUI.Formularios.FormularioPersInfo;
 import GUI.Formularios.FormulariosOpc.OpcionesVC;
 import GUI.Singleton;
+import ModeloNegocio.GestorPlataforma;
 import ModeloNegocio.PersonalInformation;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
@@ -20,8 +21,10 @@ import javafx.scene.control.Alert;
  */
 public class FormPersonaVC {
     private FormPersona vista;
+    private GestorPlataforma gestor;
 
-    public FormPersonaVC() throws FileNotFoundException {
+    public FormPersonaVC(GestorPlataforma gestor) throws FileNotFoundException {
+        this.gestor = gestor;
         this.vista= new FormPersona();
         vista.getBoton().setOnMousePressed(new Guardar());
         vista.getRegresar().setOnMousePressed(new regresar());
@@ -75,7 +78,7 @@ public class FormPersonaVC {
                     alert.show();
                     FormPersonaVC pantalla = null;
                     try {
-                        pantalla = new FormPersonaVC();
+                        pantalla = new FormPersonaVC(gestor);
                     } catch (FileNotFoundException ex) {
                         Logger.getLogger(FormPersonaVC.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -98,7 +101,8 @@ public class FormPersonaVC {
                     numberEmergencyContact, emailEmergencyContact, relationship);
             if(!passport.equals("")) persona.setPassport(passport);
             if(!phone.equals("")) persona.setPhone(phone);
-            if(!citizen.equals("")) persona.setCitizen(citizen);            
+            if(!citizen.equals("")) persona.setCitizen(citizen);  
+            gestor.addPersona(persona);
             
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Confirmacion");
@@ -106,7 +110,7 @@ public class FormPersonaVC {
                 alert.show();
                 OpcionesVC pantalla = null;
                 try {
-                    pantalla = new OpcionesVC();
+                    pantalla = new OpcionesVC(gestor);
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(FormPersonaVC.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -119,7 +123,7 @@ public class FormPersonaVC {
                 alert.show();
                 FormPersonaVC pantalla = null;
                 try {
-                    pantalla = new FormPersonaVC();
+                    pantalla = new FormPersonaVC(gestor);
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(FormPersonaVC.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -136,7 +140,7 @@ public class FormPersonaVC {
         public void handle(Event event) {
             OpcionesVC vista = null;
             try {
-                vista = new OpcionesVC();
+                vista = new OpcionesVC(gestor);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(FormPersonaVC.class.getName()).log(Level.SEVERE, null, ex);
             }

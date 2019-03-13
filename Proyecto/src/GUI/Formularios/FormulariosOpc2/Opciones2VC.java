@@ -10,6 +10,7 @@ import GUI.Formularios.FormulariosOpc.*;
 import GUI.Formularios.FormularioProgCampColom.FormProgCampColomVC;
 import GUI.Formularios.FormularioVolunteerPrograms.FormVoluntProgVC;
 import GUI.Singleton;
+import ModeloNegocio.GestorPlataforma;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,9 +22,11 @@ import javafx.event.EventHandler;
  * @author Asus
  */
 public class Opciones2VC {
+    private GestorPlataforma gestor;
     private Opciones2 vista;
 
-    public Opciones2VC() throws FileNotFoundException {
+    public Opciones2VC(GestorPlataforma gestor) throws FileNotFoundException {
+        this.gestor = gestor;
         this.vista = new Opciones2();
         vista.getB1().setOnMousePressed(new b1Pressed());
         vista.getB2().setOnMousePressed(new b2Pressed());
@@ -42,7 +45,7 @@ public class Opciones2VC {
         public void handle(Event event) {
             FormProgCampColomVC pantalla = null;
             try {
-                pantalla = new FormProgCampColomVC();
+                pantalla = new FormProgCampColomVC(gestor);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(Opciones2VC.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -55,7 +58,7 @@ public class Opciones2VC {
         public void handle(Event event) {
             FormVoluntProgVC pantalla = null;
             try {
-                pantalla = new FormVoluntProgVC();
+                pantalla = new FormVoluntProgVC(gestor);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(Opciones2VC.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -68,7 +71,7 @@ public class Opciones2VC {
         public void handle(Event event) {
             FormCampICCPVC vista1 = null;
             try {
-                vista1 = new FormCampICCPVC();
+                vista1 = new FormCampICCPVC(gestor);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(Opciones2VC.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -82,7 +85,7 @@ public class Opciones2VC {
         public void handle(Event event) {
             OpcionesVC vista = null;
             try {
-                vista = new OpcionesVC();
+                vista = new OpcionesVC(gestor);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(Opciones2VC.class.getName()).log(Level.SEVERE, null, ex);
             }

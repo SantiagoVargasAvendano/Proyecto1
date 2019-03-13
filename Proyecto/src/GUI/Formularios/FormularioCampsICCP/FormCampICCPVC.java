@@ -9,6 +9,7 @@ import GUI.Formularios.FormulariosOpc.OpcionesVC;
 import GUI.Formularios.FormulariosOpc2.Opciones2VC;
 import GUI.Singleton;
 import ModeloNegocio.CampsICCP;
+import ModeloNegocio.GestorPlataforma;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,16 +23,18 @@ import javafx.scene.control.Alert;
  */
 public class FormCampICCPVC {
     private FormCampICCP vista;
+    private GestorPlataforma gestor;
 
-    public FormCampICCPVC() throws FileNotFoundException {
+    public FormCampICCPVC(GestorPlataforma gestor) throws FileNotFoundException {
+        this.gestor = gestor;
         this.vista= new FormCampICCP();
+        vista.getBoton().setOnMousePressed(new siguiente());
+        vista.getRegresar().setOnMousePressed(new regresar());
     }
     
     public void mostrarVista(){
         Singleton singleton = Singleton.getSingleton();
-        vista.mostrar(singleton.getStage());
-        vista.getBoton().setOnMousePressed(new siguiente());
-        vista.getRegresar().setOnMousePressed(new regresar());
+        vista.mostrar(singleton.getStage());      
     }
     
     class siguiente implements EventHandler<Event>{
@@ -50,16 +53,17 @@ public class FormCampICCPVC {
                 alert.show();
                 FormCampICCPVC pantalla = null;
                 try {
-                    pantalla = new FormCampICCPVC();
+                    pantalla = new FormCampICCPVC(gestor);
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(FormCampICCPVC.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 pantalla.mostrarVista();
             } else {
                 CampsICCP camp = new CampsICCP(Annio, Direccion, Id, nombreCamp);
+                gestor.addProgramaICCP(camp);
                 OpcionesVC pantalla = null;
                 try {
-                    pantalla = new OpcionesVC();
+                    pantalla = new OpcionesVC(gestor);
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(FormPersonaVC.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -79,7 +83,7 @@ public class FormCampICCPVC {
         public void handle(Event event) {
            Opciones2VC pantalla = null;
             try {
-                pantalla = new Opciones2VC();
+                pantalla = new Opciones2VC(gestor);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(FormCampICCPVC.class.getName()).log(Level.SEVERE, null, ex);
             }

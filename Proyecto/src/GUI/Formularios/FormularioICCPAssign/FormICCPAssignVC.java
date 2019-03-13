@@ -9,6 +9,7 @@ import GUI.Formularios.FormulariosOpc.OpcionesVC;
 import GUI.Formularios.FormulariosOpc2.Opciones2VC;
 import GUI.Formularios.FormulariosOpc3.Opciones3VC;
 import GUI.Singleton;
+import ModeloNegocio.GestorPlataforma;
 import ModeloNegocio.ICCPAssignment;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
@@ -23,8 +24,10 @@ import javafx.scene.control.Alert;
  */
 public class FormICCPAssignVC {
     private FormICCPAssign vista;
+    private GestorPlataforma gestor;
 
-    public FormICCPAssignVC() throws FileNotFoundException {
+    public FormICCPAssignVC(GestorPlataforma gestor) throws FileNotFoundException {
+        this.gestor = gestor;
         this.vista= new FormICCPAssign();
         vista.getBoton().setOnMousePressed(new siguiente());
         vista.getRegresar().setOnMousePressed(new regresar());
@@ -56,7 +59,7 @@ public class FormICCPAssignVC {
                 alert.show();
                 FormICCPAssignVC pantalla = null;
                 try {
-                    pantalla = new FormICCPAssignVC();
+                    pantalla = new FormICCPAssignVC(gestor);
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(FormICCPAssignVC.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -73,10 +76,10 @@ public class FormICCPAssignVC {
                     alert.show();
                     int numRegis = Integer.valueOf(numRegistro);
                     ICCPAssignment asignacion = new ICCPAssignment( nombreParticipante, idParticipante, codigoCampamento, fechaInicio, fechaFin, rol, calificacion, nota);
-                    
+                    gestor.addICCPAssignment(asignacion);
                     OpcionesVC pantalla = null;
                     try {
-                        pantalla = new OpcionesVC();
+                        pantalla = new OpcionesVC(gestor);
                     } catch (FileNotFoundException ex) {
                         Logger.getLogger(FormICCPAssignVC.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -89,7 +92,7 @@ public class FormICCPAssignVC {
                     alert.show();
                     FormICCPAssignVC pantalla = null;
                     try {
-                        pantalla = new FormICCPAssignVC();
+                        pantalla = new FormICCPAssignVC(gestor);
                     } catch (FileNotFoundException ex) {
                         Logger.getLogger(FormICCPAssignVC.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -105,7 +108,7 @@ public class FormICCPAssignVC {
         public void handle(Event event) {
            Opciones3VC pantalla = null;
             try {
-                pantalla = new Opciones3VC();
+                pantalla = new Opciones3VC(gestor);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(FormICCPAssignVC.class.getName()).log(Level.SEVERE, null, ex);
             }

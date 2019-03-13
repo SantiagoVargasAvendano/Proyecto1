@@ -7,6 +7,7 @@ package GUI.Formularios.FormularioVolunteerPrograms;
 import GUI.Formularios.FormulariosOpc.OpcionesVC;
 import GUI.Formularios.FormulariosOpc2.Opciones2VC;
 import GUI.Singleton;
+import ModeloNegocio.GestorPlataforma;
 import ModeloNegocio.VolunteerPrograms;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
@@ -21,8 +22,10 @@ import javafx.scene.control.Alert;
  */
 public class FormVoluntProgVC {
     private FormVoluntProg vista;
+    private GestorPlataforma gestor;
 
-    public FormVoluntProgVC() throws FileNotFoundException {
+    public FormVoluntProgVC(GestorPlataforma gestor) throws FileNotFoundException {
+        this.gestor = gestor;
         this.vista= new FormVoluntProg();
     }
     
@@ -50,7 +53,7 @@ public class FormVoluntProgVC {
                 alert.show();
                 FormVoluntProgVC pantalla = null;
                 try {
-                    pantalla = new FormVoluntProgVC();
+                    pantalla = new FormVoluntProgVC(gestor);
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(FormVoluntProgVC.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -66,9 +69,10 @@ public class FormVoluntProgVC {
                     alert.setHeaderText("La informacion ha sido registrada");
                     alert.show();
                     VolunteerPrograms volun = new VolunteerPrograms(company, FechaGrado, duracion, tipoVoluntariado, Id);
+                    gestor.addVoluntariado(volun);
                     OpcionesVC pantalla = null;
                     try {
-                        pantalla = new OpcionesVC();
+                        pantalla = new OpcionesVC(gestor);
                     } catch (FileNotFoundException ex) {
                         Logger.getLogger(FormVoluntProgVC.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -81,7 +85,7 @@ public class FormVoluntProgVC {
                     alert.show();
                     FormVoluntProgVC pantalla = null;
                     try {
-                        pantalla = new FormVoluntProgVC();
+                        pantalla = new FormVoluntProgVC(gestor);
                     } catch (FileNotFoundException ex) {
                         Logger.getLogger(FormVoluntProgVC.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -97,7 +101,7 @@ public class FormVoluntProgVC {
         public void handle(Event event) {
            Opciones2VC pantalla = null;
             try {
-                pantalla = new Opciones2VC();
+                pantalla = new Opciones2VC(gestor);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(FormVoluntProgVC.class.getName()).log(Level.SEVERE, null, ex);
             }
