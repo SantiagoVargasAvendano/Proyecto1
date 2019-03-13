@@ -10,8 +10,7 @@ package ModeloNegocio;
  * @author Asus
  */
 public class ICCPAssignment extends Assignment {
-    private static int count = 1; 
-    private int numRegistro;
+
     private String nombreParticipante;
     private String IdParticipante;
     private String codigoCampamento;
@@ -20,21 +19,11 @@ public class ICCPAssignment extends Assignment {
 
     public ICCPAssignment(String nombreParticipante, String IdParticipante, String codigoCampamento, String fechaInicio, String fechaFin, String role, String calification, String note) {
         super(role, calification, note);
-        this.numRegistro = count;
         this.nombreParticipante = nombreParticipante;
         this.IdParticipante = IdParticipante;
         this.codigoCampamento = codigoCampamento;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
-        count++;
-    }
-
-    public int getNumRegistro() {
-        return numRegistro;
-    }
-
-    public void setNumRegistro(int numRegistro) {
-        this.numRegistro = numRegistro;
     }
 
     public String getNombreParticipante() {

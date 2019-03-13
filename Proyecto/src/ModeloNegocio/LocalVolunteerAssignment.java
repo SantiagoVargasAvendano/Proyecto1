@@ -13,27 +13,15 @@ import java.util.ArrayList;
  * @author Asus
  */
 public class LocalVolunteerAssignment extends Assignment{
-    private static int count = 1;
-    private int numRegistro;
     private String IdPersona;
     private String nombrePersona;
     private String nombreCampamento;
 
     public LocalVolunteerAssignment(String IdPersona, String nombrePersona, String nombreCampamento, String role, String calification, String note) {
         super(role, calification, note);
-        this.numRegistro = count;
         this.IdPersona = IdPersona;
         this.nombrePersona = nombrePersona;
         this.nombreCampamento = nombreCampamento;
-        count++;
-    }
-
-    public int getNumRegistro() {
-        return numRegistro;
-    }
-
-    public void setNumRegistro(int numRegistro) {
-        this.numRegistro = numRegistro;
     }
 
     public String getIdPersona() {
