@@ -16,15 +16,11 @@ public abstract class Assignment {
     protected String role;
     protected String calification;
     protected String note;
-    protected TreeMap<Integer, String> personas;
-    protected TreeMap<Integer, String> campamentos;
-
+    
     public Assignment(String role, String calification, String note) {
         this.role = role;
         this.calification = calification;
         this.note = note;
-        this.personas = new TreeMap<>();
-        this.campamentos = new TreeMap<>();
     }
 
     public String getRole() {
@@ -49,14 +45,6 @@ public abstract class Assignment {
 
     public void setNote(String note) {
         this.note = note;
-    }
-    
-    public void addPersona(String nombre, int ID){
-        personas.put(ID, nombre);
-    }
-    
-    public void addCampamentos(String nombre, int ID){
-        campamentos.put(ID, nombre);
     }
     
 }
