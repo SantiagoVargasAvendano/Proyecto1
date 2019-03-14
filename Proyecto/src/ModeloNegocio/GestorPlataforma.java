@@ -196,58 +196,8 @@ public class GestorPlataforma {
         }
         return valorConsulta;
     }
-
-    public boolean addPersInfFromDb(ArrayList<PersonalInformation> personasBd){
-        for(int i=0;i<personasBd.size();i++){
-            this.personas.add(personasBd.get(i));
-        }
-        return true;
-    }
     
-    public boolean addCampsICCPFromDb(ArrayList<CampsICCP> campsICCPBd){
-        for(int i=0;i<campsICCPBd.size();i++){
-            this.programasICCP.add(campsICCPBd.get(i));
-        }
-        return true;
-    }
-    
-    public boolean addICCPAssignFromDb(ArrayList<ICCPAssignment> ICCPAssignBd){
-        for(int i=0;i<ICCPAssignBd.size();i++){
-            this.ICCPAssignments.add(ICCPAssignBd.get(i));
-        }
-        return true;
-    }
-    
-    public boolean addLocVolunAssignFromDb(ArrayList<LocalVolunteerAssignment> LocalVolunAssignBd){
-        for(int i=0;i<LocalVolunAssignBd.size();i++){
-            this.volunteerAssignment.add(LocalVolunAssignBd.get(i));
-        }
-        return true;
-    }
-    
-    public boolean addVolunteerProgFromDb(ArrayList<VolunteerPrograms> VolunteerProgBd){
-        for(int i=0;i<VolunteerProgBd.size();i++){
-            this.programasVoluntariado.add(VolunteerProgBd.get(i));
-        }
-        return true;
-    }
-    
-    public boolean addProgCampsColomFromDb(ArrayList<ProgramsCampsColombia> ProgCampsColomBd){
-        for(int i=0;i<ProgCampsColomBd.size();i++){
-            this.programasColombia.add(ProgCampsColomBd.get(i));
-        }
-        return true;
-    }
-    
-    public boolean addProgramsAssignFromDb(ArrayList<ProgramsAssignment> ProgramsAssignBd){
-        for(int i=0;i<ProgramsAssignBd.size();i++){
-            this.programasColombiaAssignment.add(ProgramsAssignBd.get(i));
-        }
-        return true;
-    }
-    
-    public ArrayList<PersonalInformation> getPersona() throws IOException{
-        ArrayList<PersonalInformation> persona=new ArrayList<>();
+    public void getPersona() throws IOException{
         Table personaInformation = bd.getTable("Personal Information");
         String fullName;
         String typeDocument;
@@ -294,13 +244,11 @@ public class GestorPlataforma {
             passport=row.getString("Passport");
             PersonalInformation personaAgregar=new PersonalInformation(fullName, typeDocument, Id, gender, dateBirth, mobile, email, sizeShirt, currentOcupation, fieldsStudy, university, graduate, currentAdress, currentCity, fullNameEmergencyContact, numberEmergencyContact, emailEmergencyContact, relationship);
             personaAgregar.setPassport(passport);
-            persona.add(personaAgregar);
+            this.personas.add(personaAgregar);
         }
-        return persona;
     }
     
-    public ArrayList<CampsICCP> getCampamentosICCP() throws IOException{
-        ArrayList<CampsICCP> iccp=new ArrayList<>();
+    public void getCampamentosICCP() throws IOException{
         String nombre;
         String codigo;
         String year;
@@ -315,13 +263,11 @@ public class GestorPlataforma {
             campyear=row.getString("Camp year");
             CampsICCP Agregar=new CampsICCP(year, direccion,codigo,nombre);
             Agregar.setCampYear(campyear);
-            iccp.add(Agregar);
+            this.programasICCP.add(Agregar);
         }
-        return iccp;
     }
     
-    public ArrayList<ICCPAssignment> getAssignmentICCP() throws IOException{
-        ArrayList<ICCPAssignment> iccp=new ArrayList<>();
+    public void getAssignmentICCP() throws IOException{
         String nombreParticipante;
         String codigoParticipante;
         String codigoCampamento;
@@ -341,13 +287,11 @@ public class GestorPlataforma {
             calificacion=row.getString("Calification");
             note=row.getString("Note");
             ICCPAssignment Agregar=new ICCPAssignment(nombreParticipante, codigoParticipante, codigoCampamento, fechaInicio, fechaFin, role, calificacion, note);
-            iccp.add(Agregar);
+            this.ICCPAssignments.add(Agregar);
         }
-        return iccp;
     }
     
-    public ArrayList<ProgramsAssignment> getAssignmentColombia() throws IOException{
-        ArrayList<ProgramsAssignment> asignacionProgramas=new ArrayList<>();
+    public void getAssignmentColombia() throws IOException{
         String nombreParticipante;
         String codigoParticipante;
         String codigoCampamento;
@@ -363,13 +307,11 @@ public class GestorPlataforma {
             calificacion=row.getString("Calification");
             note=row.getString("Note");
             ProgramsAssignment Agregar=new ProgramsAssignment(codigoParticipante,nombreParticipante, codigoCampamento, role, calificacion, note);
-            asignacionProgramas.add(Agregar);
+            this.programasColombiaAssignment.add(Agregar);
         }
-        return asignacionProgramas;
     }
     
-    public ArrayList<ProgramsCampsColombia> getCampsColombia() throws IOException{
-        ArrayList<ProgramsCampsColombia> campamentosColombia=new ArrayList<>();
+    public void getCampsColombia() throws IOException{
         String campID;
         String nameCamp;
         String tipoPrograma;
@@ -390,13 +332,11 @@ public class GestorPlataforma {
             population=row.getString("Population");
             ProgramsCampsColombia Agregar=new ProgramsCampsColombia(tipoPrograma, company, campDate, duration, placeDeveloped, population, campID);
             Agregar.setNombre(nameCamp);
-            campamentosColombia.add(Agregar);
+            this.programasColombia.add(Agregar);
         }
-        return campamentosColombia;
     }
     
-    public ArrayList<VolunteerPrograms> getVoluntariado() throws IOException{
-        ArrayList<VolunteerPrograms> voluntariado=new ArrayList<>();
+    public void getVoluntariado() throws IOException{
         String voluntariadoID;
         String nameProgram;
         String tipoVoluntariado;
@@ -413,13 +353,11 @@ public class GestorPlataforma {
             tipoVoluntariado=row.getString("Tipo Voluntariado");
             VolunteerPrograms Agregar=new VolunteerPrograms(company, fechaGrado, duration, tipoVoluntariado, voluntariadoID);
             Agregar.setNombre(nameProgram);
-            voluntariado.add(Agregar);
+            this.programasVoluntariado.add(Agregar);
         }
-        return voluntariado;
     }
     
-    public ArrayList<LocalVolunteerAssignment> getAssignmentVoluntariado() throws IOException{
-        ArrayList<LocalVolunteerAssignment> asignacionVoluntariado=new ArrayList<>();
+    public void getAssignmentVoluntariado() throws IOException{
         String nombreVoluntario;
         String codigoVoluntario;
         String codigoVoluntariado;
@@ -435,9 +373,8 @@ public class GestorPlataforma {
             calificacion=row.getString("Calification");
             note=row.getString("Note");
             LocalVolunteerAssignment Agregar=new LocalVolunteerAssignment(codigoVoluntario, nombreVoluntario, codigoVoluntariado, role, calificacion, note);
-            asignacionVoluntariado.add(Agregar);
+            this.volunteerAssignment.add(Agregar);
         }
-        return asignacionVoluntariado;
     }
     
 }
