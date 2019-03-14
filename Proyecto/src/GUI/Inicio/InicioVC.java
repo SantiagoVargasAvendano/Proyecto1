@@ -12,6 +12,7 @@ import GUI.Estadisticas.Torta.TortaVC;
 import GUI.Singleton;
 import ModeloNegocio.GestorPlataforma;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
@@ -31,7 +32,7 @@ public class InicioVC {
         this.gestor = gestor;
         this.inicio = new Inicio();
         inicio.getBoton().setOnMousePressed(new EventoEstadistica());
-        //inicio.getBoton2().setOnMousePressed(new EventoGuardar());
+        inicio.getBoton2().setOnMousePressed(new EventoGuardar());
         inicio.getBoton3().setOnMousePressed(new EventoFormulario());
         inicio.getBoton4().setOnMousePressed(new EventoConsulta());
     }
@@ -83,11 +84,30 @@ public class InicioVC {
         }      
    }
     
-    /*class EventoGuardar implements EventHandler<Event>{
+    class EventoGuardar implements EventHandler<Event>{
 
         @Override
         public void handle(Event event) {
-            gestor.addColombiaAssignmentDb(asignacion);
+            try {
+                gestor.addPersonaDb(gestor.getNuevaspersonas());
+                gestor.addColombiaAssignmentDb(gestor.getNuevosprogramasColombiaAssignment());
+                gestor.addICCPAssignmentDb(gestor.getNuevosICCPAssignments());
+                gestor.addVoluntariadoAssignmentDb(gestor.getNuevosvolunteerAssignment());
+                gestor.addProgramaColombiaDb(gestor.getNuevosprogramasColombia());
+                gestor.addVoluntariadoDb(gestor.getNuevosprogramasVoluntariado());
+                gestor.addProgramaICCPDb(gestor.getNuevosprogramasICCP());
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Confirmacion");
+                alert.setHeaderText("La informacion ha sido registrada");
+                alert.show();
+            } catch (IOException ex) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error de validacion");
+                alert.setHeaderText("No se pudo registrar la informacion");
+                alert.setContentText("Debe llenar todos los campos que se encuentran como obligatorios");
+                alert.show();
+                Logger.getLogger(InicioVC.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }      
-   }*/
+   }
 }

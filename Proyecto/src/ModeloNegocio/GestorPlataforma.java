@@ -136,7 +136,28 @@ public class GestorPlataforma {
     
     public void addPersonaDb(ArrayList<PersonalInformation> persona) throws IOException{
         for (int i = 0; i < persona.size(); i++) {
-            personaInformation.addRow(persona.get(i));
+            String fullName=persona.get(i).getFullName();
+       String typeDocument;
+       String Id;
+       String gender;
+       String dateBirth;
+       String mobile;
+       String phone; 
+       String citizen;    
+       String email;
+       String passport;
+       String sizeShirt;
+       String currentOcupation;
+       String fieldsStudy;
+       String university;
+       boolean graduate;
+       String currentAdress;
+       String currentCity;
+       String fullNameEmergencyContact;
+       String numberEmergencyContact;
+       String emailEmergencyContact;
+       String relationship;
+            personaInformation.addRow(fullName,);
         }
     }
     
@@ -164,12 +185,16 @@ public class GestorPlataforma {
         }
     }
     
-    public void addVoluntariadoAssignmentDb(LocalVolunteerAssignment asignacion) throws IOException{
-        voluntariadoAssignment.addRow(asignacion);
+    public void addVoluntariadoAssignmentDb(ArrayList<LocalVolunteerAssignment> asignacion) throws IOException{
+        for (int i = 0; i < asignacion.size(); i++) {
+            voluntariadoAssignment.addRow(asignacion.get(i));
+        }
     }
     
-    public void addICCPAssignmentDb(ICCPAssignment asignacion) throws IOException{
-        ICCPAssignment.addRow(asignacion);
+    public void addICCPAssignmentDb(ArrayList<ICCPAssignment> asignacion) throws IOException{
+        for (int i = 0; i < asignacion.size(); i++) {
+            ICCPAssignment.addRow(asignacion.get(i));
+        }
     }
     
     public boolean borrarPersona(String id){
@@ -180,6 +205,36 @@ public class GestorPlataforma {
         }
         return false;
     }
+
+    public ArrayList<PersonalInformation> getNuevaspersonas() {
+        return nuevaspersonas;
+    }
+
+    public ArrayList<ProgramsCampsColombia> getNuevosprogramasColombia() {
+        return nuevosprogramasColombia;
+    }
+
+    public ArrayList<VolunteerPrograms> getNuevosprogramasVoluntariado() {
+        return nuevosprogramasVoluntariado;
+    }
+
+    public ArrayList<CampsICCP> getNuevosprogramasICCP() {
+        return nuevosprogramasICCP;
+    }
+
+    public ArrayList<ProgramsAssignment> getNuevosprogramasColombiaAssignment() {
+        return nuevosprogramasColombiaAssignment;
+    }
+
+    public ArrayList<ICCPAssignment> getNuevosICCPAssignments() {
+        return nuevosICCPAssignments;
+    }
+
+    public ArrayList<LocalVolunteerAssignment> getNuevosvolunteerAssignment() {
+        return nuevosvolunteerAssignment;
+    }
+    
+    
     
     public ArrayList<PersonalInformation> getPersonas() {
         return personas;
