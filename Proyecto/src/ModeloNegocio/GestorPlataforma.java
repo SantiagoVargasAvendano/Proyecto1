@@ -57,7 +57,7 @@ public class GestorPlataforma {
         this.programasColombiaAssignment = new ArrayList<>();
         this.ICCPAssignments = new ArrayList<>();
         this.volunteerAssignment = new ArrayList<>();
-        this. lectura = new Scanner(System.in);
+        
         // variables
         this. connection = null;
         this.statement = null;
