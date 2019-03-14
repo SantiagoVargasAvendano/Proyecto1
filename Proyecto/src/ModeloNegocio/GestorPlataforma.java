@@ -387,7 +387,7 @@ public class GestorPlataforma {
         }
     }
     
-    private ResultSet generarConsulta(String consulta) throws SQLException{
+    public ResultSet generarConsulta(String consulta) throws SQLException{
             String msAccDB = "bd proyecto final.accdb";
             String dbURL = "jdbc:ucanaccess://"+ msAccDB; 
             // Step 2.A: Create and 
