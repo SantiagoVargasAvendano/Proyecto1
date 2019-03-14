@@ -85,14 +85,15 @@ public class FormPersonaVC {
                     }
                     pantalla.mostrarVista();
                 }
-            }if(t){
+            }
+            if(t){
             try{      
             String sizeShirt = vista.getSizeShirtTF().getValue().toString();
             String gender = vista.getGenderTF().getValue().toString();    
             String dateBirth = vista.getDateBirthTF().getValue().toString();
             String typeDocument = vista.getTypeDocumentTF().getValue().toString();
             String graduate = vista.getGraduadoTF().getValue().toString();
-            String relationship = vista.getRelationshipTF().getValue().toString();  
+            String relationship = vista.getRelationshipTF().getValue().toString(); 
             Boolean g = true;
             if(graduate.equals("No")) g = false;
                 
@@ -104,11 +105,11 @@ public class FormPersonaVC {
             if(!phone.equals("")) persona.setPhone(phone);
             if(!citizen.equals("")) persona.setCitizen(citizen);  
                 try {
-                    gestor.addPersona(persona);
+                    boolean r = gestor.addPersona(persona);
                 } catch (IOException ex) {
                     Logger.getLogger(FormPersonaVC.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            
+
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Confirmacion");
                 alert.setHeaderText("La informacion ha sido registrada");
@@ -120,6 +121,7 @@ public class FormPersonaVC {
                     Logger.getLogger(FormPersonaVC.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 pantalla.mostrarVista();
+                
             } catch (NullPointerException e) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error de validacion");
