@@ -11,6 +11,7 @@ import GUI.Singleton;
 import ModeloNegocio.CampsICCP;
 import ModeloNegocio.GestorPlataforma;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.Event;
@@ -60,7 +61,11 @@ public class FormCampICCPVC {
                 pantalla.mostrarVista();
             } else {
                 CampsICCP camp = new CampsICCP(Annio, Direccion, Id, nombreCamp);
-                gestor.addProgramaICCP(camp);
+               try {
+                   gestor.addProgramaICCP(camp);
+               } catch (IOException ex) {
+                   Logger.getLogger(FormCampICCPVC.class.getName()).log(Level.SEVERE, null, ex);
+               }
                 OpcionesVC pantalla = null;
                 try {
                     pantalla = new OpcionesVC(gestor);

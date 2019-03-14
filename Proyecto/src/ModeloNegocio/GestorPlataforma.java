@@ -188,7 +188,7 @@ public class GestorPlataforma {
             for (int i = 0; i < (nombreAtributos.length)-1 ; i++){
                 condicion=condicion+" "+nombreTabla+"."+nombreAtributos[i]+"="+condiciones[i]+" "+condicional;
             }
-            condicion=condicion+" "+nombreTabla+"."+nombreAtributos[nombreAtributos.length]+"="+condiciones[condiciones.length]+"";
+            condicion=condicion+" "+nombreTabla+"."+nombreAtributos[nombreAtributos.length-1]+"="+condiciones[condiciones.length-1]+"";
         }
         valorConsulta=valorConsulta+condicion;
         return valorConsulta;

@@ -14,6 +14,7 @@ import GUI.Singleton;
 import ModeloNegocio.GestorPlataforma;
 import ModeloNegocio.ProgramsAssignment;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.Event;
@@ -99,7 +100,11 @@ public class FormProgAssignVC {
                     String rol = vista.getRolTF().getValue().toString();
                     
                     ProgramsAssignment asignacion = new ProgramsAssignment(idPersona, nombrePersona, nombreCampamento, rol, calificacion, nota);
-                    gestor.addColombiaAssignment(asignacion);
+                    try {
+                        gestor.addColombiaAssignment(asignacion);
+                    } catch (IOException ex) {
+                        Logger.getLogger(FormProgAssignVC.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                     alert.setTitle("Confirmacion");
                     alert.setHeaderText("La informacion ha sido registrada");

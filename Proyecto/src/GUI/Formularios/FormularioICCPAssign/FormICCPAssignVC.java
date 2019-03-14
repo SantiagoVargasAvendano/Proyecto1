@@ -12,6 +12,7 @@ import GUI.Singleton;
 import ModeloNegocio.GestorPlataforma;
 import ModeloNegocio.ICCPAssignment;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.Event;
@@ -99,7 +100,11 @@ public class FormICCPAssignVC {
                     String rol = vista.getRolTF().getValue().toString();
                     
                     ICCPAssignment asignacion = new ICCPAssignment( nombreParticipante, idParticipante, codigoCampamento, fechaInicio, fechaFin, rol, calificacion, nota);
-                    gestor.addICCPAssignment(asignacion);
+                    try {
+                        gestor.addICCPAssignment(asignacion);
+                    } catch (IOException ex) {
+                        Logger.getLogger(FormICCPAssignVC.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                     alert.setTitle("Confirmacion");
                     alert.setHeaderText("La informacion ha sido registrada");
