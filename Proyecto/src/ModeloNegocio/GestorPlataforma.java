@@ -45,9 +45,9 @@ public class GestorPlataforma {
     private Table voluntariadoAssignment;
     
         // variables
-    private static Connection connection;
-    private static Statement statement;
-    private static ResultSet resultSet;
+    private  Connection connection;
+    private Statement statement;
+    private ResultSet resultSet;
 
     public GestorPlataforma() {
         this.personas = new ArrayList<>();
@@ -375,15 +375,7 @@ public class GestorPlataforma {
         }
     }
     
-<<<<<<< HEAD
-    public ResultSet generarConsulta(String consulta) throws SQLException{
-        try {
-
-            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-        } catch (ClassNotFoundException cnfex) {
-
-=======
-    public static void generarConsulta(String consulta){
+    public  void generarConsulta(String consulta){
             try{
                 String msAccDB = "bd proyecto final.accdb";
                  String dbURL = "jdbc:ucanaccess://"+ msAccDB; 
@@ -407,18 +399,17 @@ public class GestorPlataforma {
             }
     }    
     
-    public static void ejecutarConexion(){
+    public void ejecutarConexion(String consulta) throws SQLException{
         try{
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
         }
         catch(ClassNotFoundException cnfex) {
  
->>>>>>> b956c21eeb3085f7092ff6a70600c542887518cd
+
             System.out.println("Problem in loading or "
                     + "registering MS Access JDBC driver");
             cnfex.printStackTrace();
         }
-<<<<<<< HEAD
         String msAccDB = "bd proyecto final.accdb";
         String dbURL = "jdbc:ucanaccess://" + msAccDB;
         // Step 2.A: Create and 
@@ -429,11 +420,21 @@ public class GestorPlataforma {
         // Step 2.C: Executing SQL and 
         // retrieve data into ResultSet
         resultSet = statement.executeQuery(consulta);
-        return resultSet;
-=======
+         System.out.println("ID\tName");
+            System.out.println("==\t================\t===\t=======");
+ 
+            // processing returned data and printing into console
+            while(resultSet.next()) {
+                
+                 //Escribe en EXCEL    
+                
+                
+                System.out.println(resultSet.getString(1));
+            
+            }
     }
     
-    public static void cerrarConexion(){
+    public  void cerrarConexion(){
         try {
                 if(null != connection) {
                     // cleanup resources, once after processing
@@ -447,6 +448,6 @@ public class GestorPlataforma {
             catch (SQLException sqlex) {
                 sqlex.printStackTrace();
             }
->>>>>>> b956c21eeb3085f7092ff6a70600c542887518cd
+
     }
 }

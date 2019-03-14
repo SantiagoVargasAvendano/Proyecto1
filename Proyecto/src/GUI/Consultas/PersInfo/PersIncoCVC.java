@@ -133,7 +133,7 @@ public class PersIncoCVC {
             }
             String nombre = "Personal Information"; 
             ResultSet result = null;
-            GestorPlataforma.generarConsulta(gestor.getStringConsulta(nombre, nombreAtributo, condiciones, "AND"));
+            gestor.generarConsulta(gestor.getStringConsulta(nombre, nombreAtributo, condiciones, "AND"));
             try {
                 while(result.next()){
                     System.out.println(result.getString(1));
