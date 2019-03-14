@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI.Consultas.ProgramsAssignC;
+package GUI.Consultas.ICCPAssign;
 
+import GUI.Consultas.ProgramsAssignC.*;
 import GUI.Consultas.Opciones.OpcionesCVC;
 import GUI.Consultas.PersInfo.PersIncoCVC;
 import GUI.Singleton;
@@ -20,13 +21,13 @@ import javafx.event.EventHandler;
  *
  * @author Asus
  */
-public class ProgramsAssignCVC {
+public class ICCPAssignCVC {
     private GestorPlataforma gestor;
-    private ProgramsAssignC vista;
+    private ICCPAssignC vista;
 
-    public ProgramsAssignCVC(GestorPlataforma gestor) throws FileNotFoundException {
+    public ICCPAssignCVC(GestorPlataforma gestor) throws FileNotFoundException {
         this.gestor = gestor;
-        this.vista = new ProgramsAssignC();
+        this.vista = new ICCPAssignC();
         this.vista.getAtras().setOnMousePressed(new atras());
         this.vista.getConsultar().setOnMousePressed(new consultar());
     }
@@ -43,7 +44,7 @@ public class ProgramsAssignCVC {
             ArrayList<String> tabla = new ArrayList<>();
             ArrayList<String> condicion = new ArrayList<>();
             if(vista.getNamePers().isSelected()){
-                tabla.add("Personal ID");
+                tabla.add("Nombre Participante/ ID Participant");
                 condicion.add(vista.getNamePersTF().getText());
             }            
             if(vista.getIdPers().isSelected()){
@@ -51,7 +52,7 @@ public class ProgramsAssignCVC {
                 condicion.add(vista.getIdPersTF().getText());
             }
             if(vista.getNameCamp().isSelected()){
-                tabla.add("Camp ID");
+                tabla.add("Codigo/ Camp ICCP ID");
                 condicion.add(vista.getNameCampTF().getText());
             }
             if(vista.getRol().isSelected()){
@@ -66,6 +67,14 @@ public class ProgramsAssignCVC {
                 tabla.add("Note");
                 condicion.add(vista.getNoteTF().getText());
             }
+            if(vista.getFechaIni().isSelected()){
+                tabla.add("Fecha inicio");
+                condicion.add(vista.getFechaIniTF().getText());
+            }
+            if(vista.getFechaFin().isSelected()){
+                tabla.add("Fecha inicio");
+                condicion.add(vista.getFechaFinTF().getText());
+            }
             String[] nombreAtributo = new String[tabla.size()];
             String[] condiciones = new String[condicion.size()];
             for(int i=0;i<tabla.size();i++){
@@ -76,7 +85,7 @@ public class ProgramsAssignCVC {
                 condiciones[j] = condicion.get(j);
                 System.out.println(condiciones[j]);
             }
-            String nombre = "Programs Assignment";
+            String nombre = "ICCP Assignment";
             System.out.println(nombre);
         }
         
