@@ -187,7 +187,7 @@ public class GestorPlataforma {
         if (nombreAtributos.length==condiciones.length) {
             valorConsulta="SELECT * FROM "+nombreTabla+" WHERE";
             for (int i = 0; i < (nombreAtributos.length)-1 ; i++){
-                condicion=condicion+" "+nombreTabla+"."+nombreAtributos[i]+"="+condiciones[i]+" "+condicional;
+                condicion= condicion+" "+nombreTabla+"."+nombreAtributos[i]+" = '"+condiciones[i]+"' ";
             }
             condicion=condicion+" "+nombreTabla+"."+nombreAtributos[nombreAtributos.length-1]+"="+condiciones[condiciones.length-1]+"";
         }
@@ -375,6 +375,14 @@ public class GestorPlataforma {
         }
     }
     
+<<<<<<< HEAD
+    public ResultSet generarConsulta(String consulta) throws SQLException{
+        try {
+
+            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+        } catch (ClassNotFoundException cnfex) {
+
+=======
     public static void generarConsulta(String consulta){
             try{
                 String msAccDB = "bd proyecto final.accdb";
@@ -405,10 +413,24 @@ public class GestorPlataforma {
         }
         catch(ClassNotFoundException cnfex) {
  
+>>>>>>> b956c21eeb3085f7092ff6a70600c542887518cd
             System.out.println("Problem in loading or "
                     + "registering MS Access JDBC driver");
             cnfex.printStackTrace();
         }
+<<<<<<< HEAD
+        String msAccDB = "bd proyecto final.accdb";
+        String dbURL = "jdbc:ucanaccess://" + msAccDB;
+        // Step 2.A: Create and 
+        // get connection using DriverManager class
+        connection = DriverManager.getConnection(dbURL);
+        // Step 2.B: Creating JDBC Statement 
+        statement = connection.createStatement();
+        // Step 2.C: Executing SQL and 
+        // retrieve data into ResultSet
+        resultSet = statement.executeQuery(consulta);
+        return resultSet;
+=======
     }
     
     public static void cerrarConexion(){
@@ -425,5 +447,6 @@ public class GestorPlataforma {
             catch (SQLException sqlex) {
                 sqlex.printStackTrace();
             }
+>>>>>>> b956c21eeb3085f7092ff6a70600c542887518cd
     }
 }
