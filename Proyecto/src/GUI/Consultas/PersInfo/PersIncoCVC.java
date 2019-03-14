@@ -9,6 +9,7 @@ import GUI.Consultas.Opciones.OpcionesCVC;
 import GUI.Singleton;
 import ModeloNegocio.GestorPlataforma;
 import java.io.FileNotFoundException;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -129,7 +130,8 @@ public class PersIncoCVC {
             for(int j=0;j<condicion.size();j++){
                 condiciones[j] = condicion.get(j);
             }
-            String nombre = "Personal Information";                
+            String nombre = "Personal Information"; 
+            //ResultSet result = gestor
         }
         
     }
