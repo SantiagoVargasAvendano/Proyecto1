@@ -18,6 +18,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -44,14 +45,58 @@ public class BaseDatos {
         }
     }
     
-    public Table getTabla(String nomTabla){
-        Table tabla = null;
-        try {
-            tabla = bd.getTable(nomTabla);
-        } catch (IOException ex) {
-            Logger.getLogger(BaseDatos.class.getName()).log(Level.SEVERE, null, ex);
+    public ArrayList<PersonalInformation> getPersona() throws IOException{
+        ArrayList<PersonalInformation> persona=new ArrayList<>();
+        Table personaInformation = bd.getTable("Personal Information");
+        String fullName;
+        String typeDocument;
+        String Id;
+        String gender;
+        String dateBirth;
+        String mobile;
+        String phone; 
+        String citizen;    
+        String email;
+        String passport;
+        String sizeShirt;
+        String currentOcupation;
+        String fieldsStudy;
+        String university;
+        boolean graduate;
+        String currentAdress;
+        String currentCity;
+        String fullNameEmergencyContact;
+        String numberEmergencyContact;
+        String emailEmergencyContact;
+        String relationship;
+        
+        for(Row row : personaInformation) {
+            fullName =row.getString("Full Name");
+            typeDocument=row.getString("Type of Document");
+            Id=row.getString("ID");
+            gender=row.getString("Gender");
+            dateBirth=row.getString("Date of Birth");
+            mobile=row.getString("Mobile");
+            phone=row.getString("Phone");
+            citizen=row.getString("Citizen");
+            email=row.getString("E-Mail");
+            sizeShirt=row.getString("Size of Shirt");
+            currentOcupation=row.getString("Current Ocupation");
+            fieldsStudy=row.getString("Field of Study");
+            university=row.getString("University");
+            graduate=row.getBoolean("Graduate");
+            currentAdress=row.getString("Current Adress");
+            currentCity=row.getString("Current City");
+            fullNameEmergencyContact=row.getString("Full Name Emergency Contact");
+            numberEmergencyContact=row.getString("Number Emergency Contact");
+            emailEmergencyContact=row.getString("Email Emergency Contact");
+            relationship=row.getString("Relationship");
+            passport=row.getString("Passport");
+            PersonalInformation personaAgregar=new PersonalInformation(fullName, typeDocument, Id, gender, dateBirth, mobile, email, sizeShirt, currentOcupation, fieldsStudy, university, graduate, currentAdress, currentCity, fullNameEmergencyContact, numberEmergencyContact, emailEmergencyContact, relationship);
+            personaAgregar.setPassport(passport);
+            persona.add(personaAgregar);
         }
-        return tabla;
+        return persona;
     }
     
     /*public static void main(String[] args) {
