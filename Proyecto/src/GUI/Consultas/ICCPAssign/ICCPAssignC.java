@@ -115,7 +115,7 @@ public class ICCPAssignC {
         this.fechaIniTF = new TextField();
         this.fechaFin = new RadioButton("Fecha Fin: ");
         this.fechaFinTF = new TextField();
-        hbox3.getChildren().addAll(fechaFin,fechaIniTF,fechaFin,fechaFinTF);
+        hbox3.getChildren().addAll(fechaIni, fechaIniTF, fechaFin, fechaFinTF);
         vbox.getChildren().add(hbox3);
         
         this.consultar = new Button("Consultar");

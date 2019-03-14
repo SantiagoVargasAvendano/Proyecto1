@@ -5,6 +5,7 @@
  */
 package GUI.Consultas.Opciones;
 
+import GUI.Consultas.ICCPAssign.ICCPAssignCVC;
 import GUI.Consultas.LocalVolunAssign.LocalVolunAssignCVC;
 import GUI.Consultas.PersInfo.PersIncoCVC;
 import GUI.Consultas.ProgramasColombia.ProgramsColombiaCVC;
@@ -102,6 +103,13 @@ public class OpcionesCVC {
                     pantalla5.mostrarVista();
                     break;
                 case "Asignacion programas ICCP":
+                    ICCPAssignCVC pantalla6 = null;
+            try {
+                pantalla6 = new ICCPAssignCVC(gestor);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(OpcionesCVC.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                    pantalla6.mostrarVista();
                     break;
             }
         }
