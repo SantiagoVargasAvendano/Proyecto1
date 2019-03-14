@@ -388,7 +388,7 @@ public class GestorPlataforma {
     }
     
     private ResultSet generarConsulta(String consulta) throws SQLException{
-            String msAccDB = "Contacts_Demo_V1.01.mdb";
+            String msAccDB = "bd proyecto final.accdb";
             String dbURL = "jdbc:ucanaccess://"+ msAccDB; 
             // Step 2.A: Create and 
             // get connection using DriverManager class
@@ -397,8 +397,6 @@ public class GestorPlataforma {
             statement = connection.createStatement();
             // Step 2.C: Executing SQL and 
             // retrieve data into ResultSet
-            System.out.println("Ingrese el apellido");
-            String apellido = lectura.next();
             resultSet = statement.executeQuery(consulta);
             return resultSet;
     }    
