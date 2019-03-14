@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI.Consultas.ProgramasColombia;
+package GUI.Consultas.ProgramasICCP;
 
+import GUI.Consultas.ProgramasVoluntariado.*;
+import GUI.Consultas.ProgramasColombia.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import javafx.geometry.Insets;
@@ -28,7 +30,7 @@ import javafx.stage.Stage;
  *
  * @author Asus
  */
-public class ProgramsColombiaC {
+public class ProgramsICCPC {
     private Scene escena;
     
     private VBox vbox;
@@ -37,22 +39,14 @@ public class ProgramsColombiaC {
     private TextField nameCampTF;
     private RadioButton idCamp;
     private TextField idCampTF;
-    private RadioButton typeProgram;
-    private TextField typeProgramTF;
+    private RadioButton year;
+    private TextField yearTF;
     
     private HBox hbox2;
-    private RadioButton company;
-    private TextField companyTF;
     private RadioButton campDate;
     private TextField campDateTF;
     private RadioButton duration;
     private TextField durationTF;
-    
-    private HBox hbox3;
-    private RadioButton placeDeveloped;
-    private TextField placeDevelopedTF;
-    private RadioButton population;
-    private TextField populationTF;
     
     private Button consultar;
     private Button atras;
@@ -66,17 +60,17 @@ public class ProgramsColombiaC {
     private Text nombreE;
     private StackPane fondos;
 
-    public ProgramsColombiaC() throws FileNotFoundException {
+    public ProgramsICCPC() throws FileNotFoundException {
         this.vbox = new VBox();
         vbox.setSpacing(60);
         vbox.setPadding(new Insets(100, 0, 0, 20));
         this.opciones = new ComboBox<>();
         opciones.getItems().addAll("Informacion personal","Programas Colombia",
-                "programas voluntariado","Programas ICCP", "Asignacion programas Colombia"
+                "Programas voluntariado","Programas ICCP", "Asignacion programas Colombia"
                 ,"Asignacion programas voluntariado","Asignacion programas ICCP");
         this.seleccionar = new Button("Seleccionar tabla");
         this.atras = new Button("Atras");
-        opciones.setPromptText("Programas Colombia");
+        opciones.setPromptText("Programas voluntariado");
         this.menu = new HBox();
         menu.setSpacing(100);
         Label info = new Label("Ingrese la tabla en la cual quiere hacer la consulta: ", opciones);
@@ -91,30 +85,19 @@ public class ProgramsColombiaC {
         this.nameCampTF = new TextField();
         this.idCamp = new RadioButton("Id del campamento: ");
         this.idCampTF = new TextField();
-        this.typeProgram = new RadioButton("Tipo de programa: ");
-        this.typeProgramTF = new TextField();
-        hbox.getChildren().addAll(nameCamp,nameCampTF,idCamp,idCampTF,typeProgram,typeProgramTF);
+        this.year = new RadioButton("Annio del programa: ");
+        this.yearTF = new TextField();
+        hbox.getChildren().addAll(nameCamp,nameCampTF,idCamp,idCampTF,year,yearTF);
         vbox.getChildren().add(hbox);
         
         this.hbox2 = new HBox();
         hbox2.setSpacing(20);
-        this.company = new RadioButton("Compania del campamento: ");
-        this.companyTF = new TextField();
         this.campDate = new RadioButton("fecha del campamento: ");
         this.campDateTF = new TextField();
         this.duration = new RadioButton("Duracion del campamento: ");
         this.durationTF = new TextField();
-        hbox2.getChildren().addAll(company, companyTF, campDate,campDateTF, duration,durationTF);
+        hbox2.getChildren().addAll(campDate,campDateTF, duration,durationTF);
         vbox.getChildren().add(hbox2);
-        
-        this.hbox3 = new HBox();
-        hbox3.setSpacing(20);
-        this.placeDeveloped = new RadioButton("Lugar del campamento: ");
-        this.placeDevelopedTF = new TextField();
-        this.population = new RadioButton("Poblacion del campamento: ");
-        this.populationTF = new TextField();
-        hbox3.getChildren().addAll(placeDeveloped,placeDevelopedTF,population,populationTF);
-        vbox.getChildren().add(hbox3);
 
         this.consultar = new Button("Consultar");
         vbox.getChildren().add(consultar);
@@ -163,22 +146,6 @@ public class ProgramsColombiaC {
         return idCampTF;
     }
 
-    public RadioButton getTypeProgram() {
-        return typeProgram;
-    }
-
-    public TextField getTypeProgramTF() {
-        return typeProgramTF;
-    }
-
-    public RadioButton getCompany() {
-        return company;
-    }
-
-    public TextField getCompanyTF() {
-        return companyTF;
-    }
-
     public RadioButton getCampDate() {
         return campDate;
     }
@@ -193,22 +160,6 @@ public class ProgramsColombiaC {
 
     public TextField getDurationTF() {
         return durationTF;
-    }
-
-    public RadioButton getPlaceDeveloped() {
-        return placeDeveloped;
-    }
-
-    public TextField getPlaceDevelopedTF() {
-        return placeDevelopedTF;
-    }
-
-    public RadioButton getPopulation() {
-        return population;
-    }
-
-    public TextField getPopulationTF() {
-        return populationTF;
     }
 
     public Button getConsultar() {

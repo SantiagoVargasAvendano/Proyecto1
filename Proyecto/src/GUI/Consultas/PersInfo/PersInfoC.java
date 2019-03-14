@@ -88,6 +88,7 @@ public class PersInfoC {
     private HBox menu;
     private ComboBox<String> opciones;
     private Button seleccionar;
+    private Button atras;
     private HBox fondo;
     private Label label;
     private Image logo;
@@ -103,12 +104,13 @@ public class PersInfoC {
                 "programas voluntariado","Programas ICCP", "Asignacion programas Colombia"
                 ,"Asignacion programas voluntariado","Asignacion programas ICCP");
         this.seleccionar = new Button("Seleccionar tabla");
+        this.atras = new Button("Atras");
         opciones.setPromptText("Informacion personal");
         this.menu = new HBox();
-        menu.setSpacing(300);
+        menu.setSpacing(100);
         Label info = new Label("Ingrese la tabla en la cual quiere hacer la consulta: ", opciones);
         info.setContentDisplay(ContentDisplay.RIGHT);
-        menu.getChildren().addAll(info, seleccionar);
+        menu.getChildren().addAll(info, seleccionar,atras);
         Label info2= new Label("Seleccione los atributos de la consulta, y sus criterios de busqueda: ");
         vbox.getChildren().addAll(menu, info2);
         
@@ -202,6 +204,10 @@ public class PersInfoC {
 
     public Button getSeleccionar() {
         return seleccionar;
+    }
+
+    public Button getAtras() {
+        return atras;
     }
 
     public ComboBox<String> getOpciones() {

@@ -5,9 +5,13 @@
  */
 package GUI.Consultas.PersInfo;
 
+import GUI.Consultas.Opciones.OpcionesCVC;
 import GUI.Singleton;
+import ModeloNegocio.GestorPlataforma;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 
@@ -16,16 +20,19 @@ import javafx.event.EventHandler;
  * @author Asus
  */
 public class PersIncoCVC {
+    private GestorPlataforma gestor;
     private PersInfoC vista;
 
-    public PersIncoCVC() throws FileNotFoundException {
+    public PersIncoCVC(GestorPlataforma gestor) throws FileNotFoundException {
+        this.gestor = gestor;
         this.vista= new PersInfoC();
+        vista.getConsultar().setOnMousePressed(new consulta());
+        vista.getAtras().setOnMousePressed(new atras());
     }
     
     public void mostrarVista(){
         Singleton singleton = Singleton.getSingleton();
         vista.mostrar(singleton.getStage());
-        vista.getConsultar().setOnMousePressed(new consulta());
     }
     
     class consulta implements EventHandler<Event>{
@@ -120,10 +127,23 @@ public class PersIncoCVC {
                 nombreAtributo[i] = tabla.get(i);
             }
             for(int j=0;j<condicion.size();j++){
-                nombreAtributo[j] = condicion.get(j);
+                condiciones[j] = condicion.get(j);
             }
-            String nombre = "Personal Information";
-                
+            String nombre = "Personal Information";                
+        }
+        
+    }
+    class atras implements EventHandler<Event>{
+
+        @Override
+        public void handle(Event event) {
+            OpcionesCVC pantalla = null;
+            try {
+                pantalla = new OpcionesCVC(gestor);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(PersIncoCVC.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            pantalla.mostrarVista();
         }
         
     }

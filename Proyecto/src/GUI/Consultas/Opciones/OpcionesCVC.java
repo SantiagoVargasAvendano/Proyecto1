@@ -7,6 +7,8 @@ package GUI.Consultas.Opciones;
 
 import GUI.Consultas.PersInfo.PersIncoCVC;
 import GUI.Consultas.ProgramasColombia.ProgramsColombiaCVC;
+import GUI.Consultas.ProgramasVoluntariado.ProgramsVoluntariadoCVC;
+import GUI.Inicio.InicioVC;
 import GUI.Singleton;
 import ModeloNegocio.GestorPlataforma;
 import java.io.FileNotFoundException;
@@ -27,6 +29,7 @@ public class OpcionesCVC {
         this.gestor = gestor;
         this.vista = new OpcionesC();
         vista.getSeleccionar().setOnMousePressed(new opcion());
+        vista.getRegresar().setOnMousePressed(new atras());
     }
     
     public void mostrarVista(){
@@ -43,7 +46,7 @@ public class OpcionesCVC {
                 case "Informacion personal":
                     PersIncoCVC pantalla = null;
             try {
-                pantalla = new PersIncoCVC();
+                pantalla = new PersIncoCVC(gestor);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(OpcionesCVC.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -52,15 +55,41 @@ public class OpcionesCVC {
                 case "Programas Colombia":
                     ProgramsColombiaCVC pantalla1 = null;
             try {
-                pantalla1 = new ProgramsColombiaCVC();
+                pantalla1 = new ProgramsColombiaCVC(gestor);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(OpcionesCVC.class.getName()).log(Level.SEVERE, null, ex);
             }
                     pantalla1.mostrarVista();
                     break;
+                case "Programas voluntariado":
+                    ProgramsVoluntariadoCVC pantalla2 = null;
+            try {
+                pantalla2 = new ProgramsVoluntariadoCVC(gestor);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(OpcionesCVC.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                    pantalla2.mostrarVista();
+                    break;
                 case "":
                     break;
+                case "1":
+                    break;
             }
+        }
+        
+    }
+    
+    class atras implements EventHandler<Event>{
+
+        @Override
+        public void handle(Event event) {
+            InicioVC pantalla = null;
+            try {
+                pantalla = new InicioVC(gestor);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(PersIncoCVC.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            pantalla.mostrarVista();
         }
         
     }

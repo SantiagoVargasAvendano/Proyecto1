@@ -33,6 +33,7 @@ public class OpcionesC {
     private HBox menu;
     private ComboBox<String> opciones;
     private Button seleccionar;
+    private Button regresar;
     private HBox fondo;
     private Image logo;
     private Text nombreE;
@@ -41,16 +42,17 @@ public class OpcionesC {
     public OpcionesC() throws FileNotFoundException {
         this.opciones = new ComboBox<>();
         opciones.getItems().addAll("Informacion personal","Programas Colombia",
-                "programas voluntariado","Programas ICCP", "Asignacion programas Colombia"
+                "Programas voluntariado","Programas ICCP", "Asignacion programas Colombia"
                 ,"Asignacion programas voluntariado","Asignacion programas ICCP");
         this.seleccionar = new Button("Seleccionar tabla");
+        this.regresar = new Button("Atras");
         this.menu = new HBox();
         this.vbox = new VBox();
-        vbox.setPadding(new Insets(100, 0, 0, 50));
-        menu.setSpacing(300);
+        vbox.setPadding(new Insets(100, 0, 0, 20));
+        menu.setSpacing(100);
         Label label = new Label("Ingrese la tabla en la cual quiere hacer la consulta: ", opciones);
         label.setContentDisplay(ContentDisplay.RIGHT);
-        menu.getChildren().addAll(label, seleccionar);
+        menu.getChildren().addAll(label, seleccionar, regresar);
         vbox.getChildren().add(menu);
         
         this.fondo = new HBox();
@@ -81,7 +83,8 @@ public class OpcionesC {
         return opciones;
     }
 
-    
-    
+    public Button getRegresar() {
+        return regresar;
+    }    
 
 }

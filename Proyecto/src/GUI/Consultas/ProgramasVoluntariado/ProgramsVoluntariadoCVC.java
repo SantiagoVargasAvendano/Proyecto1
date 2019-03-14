@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI.Consultas.ProgramasColombia;
+package GUI.Consultas.ProgramasVoluntariado;
 
+import GUI.Consultas.ProgramasColombia.*;
 import GUI.Consultas.Opciones.OpcionesCVC;
 import GUI.Consultas.PersInfo.PersIncoCVC;
 import GUI.Singleton;
@@ -20,13 +21,13 @@ import javafx.event.EventHandler;
  *
  * @author Asus
  */
-public class ProgramsColombiaCVC {
+public class ProgramsVoluntariadoCVC {
     private GestorPlataforma gestor;
-    private ProgramsColombiaC vista;
+    private ProgramsVoluntariadoC vista;
 
-    public ProgramsColombiaCVC(GestorPlataforma gestor) throws FileNotFoundException {
+    public ProgramsVoluntariadoCVC(GestorPlataforma gestor) throws FileNotFoundException {
         this.gestor = gestor;
-        this.vista = new ProgramsColombiaC();
+        this.vista = new ProgramsVoluntariadoC();
         this.vista.getAtras().setOnMousePressed(new atras());
         this.vista.getConsultar().setOnMousePressed(new consultar());
     }
@@ -66,14 +67,6 @@ public class ProgramsColombiaCVC {
                 tabla.add("Duration");
                 condicion.add(vista.getDurationTF().getText());
             }
-            if(vista.getPlaceDeveloped().isSelected()){
-                tabla.add("Place developed");
-                condicion.add(vista.getPlaceDevelopedTF().getText());
-            }
-            if(vista.getPopulation().isSelected()){
-                tabla.add("Population");
-                condicion.add(vista.getPopulationTF().getText());
-            }
             String[] nombreAtributo = new String[tabla.size()];
             String[] condiciones = new String[condicion.size()];
             for(int i=0;i<tabla.size();i++){
@@ -84,9 +77,9 @@ public class ProgramsColombiaCVC {
                 condiciones[j] = condicion.get(j);
                 System.out.println(condiciones[j]);
             }
-            String nombre = "Programs - Camps Colombia";
+            String nombre = "Volunteer Programs";
             System.out.println(nombre);
-        }
+            }
         
     }
     
