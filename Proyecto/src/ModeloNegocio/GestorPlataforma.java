@@ -461,11 +461,11 @@ private String excelFilePath = "JavaBooks.xls";
     }
     
     public void crearEscrituraExcel() throws FileNotFoundException, IOException{
-        FileInputStream inputStream = new FileInputStream(new File(excelFilePath));
+        FileInputStream inputStream = new FileInputStream(new File(this.excelFilePath));
             //Referencia al libro
             Workbook workbook = WorkbookFactory.create(inputStream);
             //Referencia a la primera hoja
-            Sheet sheet = workbook.getSheetAt(0);
+            Sheet sheet = workbook.getSheetAt(1);
 
             //Capturar los datos que le ingresan de la interfaz.
             //Armar el Vector y listo.
