@@ -75,53 +75,38 @@ public class GestorPlataforma {
         }
     }
 
-    public boolean addPersona(PersonalInformation persona){
-        String fullName=persona.getFullName();
-        String typeDocument=persona.getTypeDocument();
-        String Id=persona.getId();
-        String gender=persona.getGender();
-        String dateBirth=persona.getDateBirth();
-        String mobile=persona.getMobile();
-        String phone=persona.getPhone(); 
-        String citizen=persona.getCitizen();    
-        String email=persona.getEmail();
-        String passport=persona.getPassport();
-        String sizeShirt=persona.getSizeShirt();
-        String currentOcupation=persona.getCurrentOcupation();
-        String fieldsStudy=persona.getFieldsStudy();
-        String university=persona.getUniversity();
-        boolean graduate=persona.isGraduate();
-        String currentAdress=persona.getCurrentAdress();
-        String currentCity=persona.getCurrentCity();
-        String fullNameEmergencyContact=persona.getFullNameEmergencyContact();
-        String numberEmergencyContact=persona.getNumberEmergencyContact();
-        String emailEmergencyContact=persona.getEmailEmergencyContact();
-        String relationship=persona.getRelationship();
-        
+    public boolean addPersona(PersonalInformation persona) throws IOException{
+        personaInformation.addRow(persona);
         return this.personas.add(persona);
     }
     
-    public boolean addProgramaColombia(ProgramsCampsColombia programa){
+    public boolean addProgramaColombia(ProgramsCampsColombia programa) throws IOException{
+        programasBDColombia.addRow(programa);
         return this.programasColombia.add(programa);
     }
     
-    public boolean addVoluntariado(VolunteerPrograms voluntariado){
+    public boolean addVoluntariado(VolunteerPrograms voluntariado) throws IOException{
+        programasBDVoluntariado.addRow(voluntariado);
         return this.programasVoluntariado.add(voluntariado);
     }
     
-    public boolean addProgramaICCP(CampsICCP campamento){
+    public boolean addProgramaICCP(CampsICCP campamento) throws IOException{
+        campsICCP.addRow(campamento);
         return this.programasICCP.add(campamento);
     }
     
-    public boolean addColombiaAssignment(ProgramsAssignment asignacion){
+    public boolean addColombiaAssignment(ProgramsAssignment asignacion) throws IOException{
+        programsAssignment.addRow(asignacion);
         return this.programasColombiaAssignment.add(asignacion);
     }
     
-    public boolean addVoluntariadoAssignment(LocalVolunteerAssignment asignacion){
+    public boolean addVoluntariadoAssignment(LocalVolunteerAssignment asignacion) throws IOException{
+        voluntariadoAssignment.addRow(asignacion);
         return this.volunteerAssignment.add(asignacion);
     }
     
-    public boolean addICCPAssignment(ICCPAssignment asignacion){
+    public boolean addICCPAssignment(ICCPAssignment asignacion) throws IOException{
+        ICCPAssignment.addRow(asignacion);
         return this.ICCPAssignments.add(asignacion);
     }
     
@@ -199,7 +184,7 @@ public class GestorPlataforma {
         String valorConsulta=null;
         if (nombreAtributos.length==condiciones.length) {
             valorConsulta="SELECT * FROM "+nombreTabla+" WHERE ";
-            for (int i = 0; i < nombreAtributos.length-1 ; i++){
+            for (int i = 0; i < (nombreAtributos.length)-1 ; i++){
                 valorConsulta=valorConsulta+" "+nombreTabla+"."+nombreAtributos[i]+"='"+condiciones[i]+"' "+condicional;
             }
             valorConsulta=valorConsulta+" "+nombreTabla+"."+nombreAtributos[nombreAtributos.length]+"='"+condiciones[condiciones.length]+"'";
