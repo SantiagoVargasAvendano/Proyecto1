@@ -31,6 +31,14 @@ public class BaseDatos {
     public BaseDatos(String url) {
         try {
             this.bd = DatabaseBuilder.open(new File(url));
+            Table personaInformation = bd.getTable("Personal Information");
+            Table campsICCP = bd.getTable("Camps ICCP");
+            Table ICCPAssignment = bd.getTable("ICCP Assignment");
+            Table programasColombia = bd.getTable("Programs - Camps Colombia");
+            Table programsAssignment= bd.getTable("Programs Assignment");
+            Table programasVoluntariado = bd.getTable("Volunteer Programs");
+            Table voluntariadoAssignment = bd.getTable("Local Volunteer Programs Assignment");
+            
         } catch (IOException ex) {
             Logger.getLogger(BaseDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
