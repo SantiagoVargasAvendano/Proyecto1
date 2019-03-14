@@ -167,4 +167,30 @@ public class BaseDatos {
         return asignacionProgramas;
     }
     
+    public ArrayList<ProgramsCampsColombia> getCampsColombia() throws IOException{
+        ArrayList<ProgramsCampsColombia> campamentosColombia=new ArrayList<>();
+        String campID;
+        String nameCamp;
+        String tipoPrograma;
+        String company;
+        String campDate;
+        String duration;
+        String placeDeveloped;
+        String population;
+        Table programasColombia = bd.getTable("Programs - Camps Colombia");
+        for(Row row : programasColombia) {
+            campID=row.getString("Camp ID");
+            nameCamp=row.getString("Name Camp");
+            tipoPrograma=row.getString("Type of Program");
+            company=row.getString("Company");
+            campDate=row.getString("Camp Date");
+            duration=row.getString("Duration");
+            placeDeveloped=row.getString("Place developed");
+            population=row.getString("Population");
+            ProgramsCampsColombia Agregar=new ProgramsCampsColombia(tipoPrograma, company, campDate, duration, placeDeveloped, population, campID);
+            Agregar.setNombre(nameCamp);
+            campamentosColombia.add(Agregar);
+        }
+        return campamentosColombia;
+    }
 }
