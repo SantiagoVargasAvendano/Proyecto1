@@ -27,7 +27,8 @@ import java.util.logging.Logger;
  * @author Lenovo
  */
 public class GestorPlataforma {
-    private Database bd;
+    
+    private static Database bd;
     private ArrayList<PersonalInformation> personas;
     private ArrayList<ProgramsCampsColombia> programasColombia;
     private ArrayList<VolunteerPrograms> programasVoluntariado;
@@ -42,11 +43,11 @@ public class GestorPlataforma {
     private Table programsAssignment;
     private Table programasBDVoluntariado;
     private Table voluntariadoAssignment;
-    private Scanner lectura;
+    
         // variables
-    private Connection connection;
-    private Statement statement;
-    private ResultSet resultSet;
+    private static Connection connection;
+    private static Statement statement;
+    private static ResultSet resultSet;
 
     public GestorPlataforma() {
         this.personas = new ArrayList<>();
@@ -56,7 +57,7 @@ public class GestorPlataforma {
         this.programasColombiaAssignment = new ArrayList<>();
         this.ICCPAssignments = new ArrayList<>();
         this.volunteerAssignment = new ArrayList<>();
-        this. lectura = new Scanner(System.in);
+        
         // variables
         this. connection = null;
         this.statement = null;
@@ -374,16 +375,50 @@ public class GestorPlataforma {
         }
     }
     
+<<<<<<< HEAD
     public ResultSet generarConsulta(String consulta) throws SQLException{
         try {
 
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
         } catch (ClassNotFoundException cnfex) {
 
+=======
+    public static void generarConsulta(String consulta){
+            try{
+                String msAccDB = "bd proyecto final.accdb";
+                 String dbURL = "jdbc:ucanaccess://"+ msAccDB; 
+            // Step 2.A: Create and 
+            // get connection using DriverManager class
+            connection = DriverManager.getConnection(dbURL); 
+            // Step 2.B: Creating JDBC Statement 
+            statement = connection.createStatement();
+            // Step 2.C: Executing SQL and 
+            // retrieve data into ResultSet
+            resultSet = statement.executeQuery(consulta);
+            while(resultSet.next()) {
+                
+                 //Escribe en EXCEL    
+                
+                
+                System.out.println(resultSet.getString(1));
+            }
+            }catch(SQLException sqlex){
+                sqlex.printStackTrace();
+            }
+    }    
+    
+    public static void ejecutarConexion(){
+        try{
+            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+        }
+        catch(ClassNotFoundException cnfex) {
+ 
+>>>>>>> b956c21eeb3085f7092ff6a70600c542887518cd
             System.out.println("Problem in loading or "
                     + "registering MS Access JDBC driver");
             cnfex.printStackTrace();
         }
+<<<<<<< HEAD
         String msAccDB = "bd proyecto final.accdb";
         String dbURL = "jdbc:ucanaccess://" + msAccDB;
         // Step 2.A: Create and 
@@ -395,5 +430,23 @@ public class GestorPlataforma {
         // retrieve data into ResultSet
         resultSet = statement.executeQuery(consulta);
         return resultSet;
+=======
+    }
+    
+    public static void cerrarConexion(){
+        try {
+                if(null != connection) {
+                    // cleanup resources, once after processing
+                    resultSet.close();
+                    statement.close();
+ 
+                    // and then finally close connection
+                    connection.close();
+                }
+            }
+            catch (SQLException sqlex) {
+                sqlex.printStackTrace();
+            }
+>>>>>>> b956c21eeb3085f7092ff6a70600c542887518cd
     }
 }
