@@ -118,26 +118,53 @@ public class BaseDatos {
         }
         return iccp;
     }
-    /*public static void main(String[] args) {
-        try {
-            //Datos
-            Database db = DatabaseBuilder.open(new File("Contacts_Demo_V1.01.mdb"));
-            Table table = db.getTable("lst_Salutations");
-             for(Row row : table) {
-                System.out.println(row.getString("Salutation"));
-            }
-                     
-            //Metadatos 
-            for(Column column : table.getColumns()) {
-                String columnName = column.getName();
-                System.out.println("Column " + columnName + "(" + column.getType() + ")");
-            }
-              
-              
-            
-        } catch (IOException ex) {
-            Logger.getLogger(BaseDatos.class.getName()).log(Level.SEVERE, null, ex);
+    
+    public ArrayList<ICCPAssignment> getAssignmentICCP() throws IOException{
+        ArrayList<ICCPAssignment> iccp=new ArrayList<>();
+        String nombreParticipante;
+        String codigoParticipante;
+        String codigoCampamento;
+        String fechaInicio;
+        String fechaFin;
+        String role;
+        String calificacion;
+        String note;
+        Table ICCPAssignment = bd.getTable("ICCP Assignment");
+        for(Row row : ICCPAssignment) {
+            nombreParticipante=row.getString("Nombre Participante/ ID Participant");
+            codigoParticipante=row.getString("ID");
+            codigoCampamento=row.getString("Codigo/ Camp ICCP ID");
+            fechaInicio=row.getString("Fecha inicio");
+            fechaFin=row.getString("Fecha fin");
+            role=row.getString("Role");
+            calificacion=row.getString("Calification");
+            note=row.getString("Note");
+            ICCPAssignment Agregar=new ICCPAssignment(nombreParticipante, codigoParticipante, codigoCampamento, fechaInicio, fechaFin, role, calificacion, note);
+            iccp.add(Agregar);
         }
-        
-    }*/
+        return iccp;
+    }
+    
+    public ArrayList<ProgramsAssignment> getAssignmentColombia() throws IOException{
+        ArrayList<ProgramsAssignment> asignacionProgramas=new ArrayList<>();
+        String nombreParticipante;
+        String codigoParticipante;
+        String codigoCampamento;
+        String role;
+        String calificacion;
+        String note;
+        Table programsAssignment= bd.getTable("Programs Assignment");
+        for(Row row : programsAssignment) {
+            nombreParticipante=row.getString("Personal ID");
+            codigoParticipante=row.getString("ID");
+            codigoCampamento=row.getString("Camp ID");
+            role=row.getString("Role");
+            calificacion=row.getString("Calification");
+            note=row.getString("Note");
+            ProgramsAssignment Agregar=new ProgramsAssignment(codigoParticipante,nombreParticipante, codigoCampamento, role, calificacion, note);
+            asignacionProgramas.add(Agregar);
+        }
+        return asignacionProgramas;
+    }
+    
 }

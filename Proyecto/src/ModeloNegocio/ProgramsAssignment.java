@@ -18,8 +18,7 @@ public class ProgramsAssignment extends Assignment{
     private String nombrePersona;
     private String nombreCampamento;
 
-    public ProgramsAssignment(String IdPersona, String nombrePersona, 
-            String nombreCampamento, String role, String calification, String note) {
+    public ProgramsAssignment(String IdPersona, String nombrePersona,String nombreCampamento, String role, String calification, String note) {
         super(role, calification, note);
         this.IdPersona = IdPersona;
         this.nombrePersona = nombrePersona;
