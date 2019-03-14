@@ -6,6 +6,7 @@
 package GUI.Consultas.PersInfo;
 
 import GUI.Consultas.Opciones.OpcionesCVC;
+import GUI.Consultas.Resultado.ResultadoVC;
 import GUI.Singleton;
 import ModeloNegocio.GestorPlataforma;
 import ModeloNegocio.PersonalInformation;
@@ -160,11 +161,13 @@ public class PersIncoCVC {
                     personas.add(gestor.getPersonas().get(i));
                 }
             }
+            ResultadoVC pantalla = null;
             try {
-                gestor.crearEscrituraExcelPI(personas);
-            } catch (IOException ex) {
+                pantalla = new ResultadoVC(gestor, personas);
+            } catch (FileNotFoundException ex) {
                 Logger.getLogger(PersIncoCVC.class.getName()).log(Level.SEVERE, null, ex);
             }
+            pantalla.mostrarVista();
         }
         
     }
