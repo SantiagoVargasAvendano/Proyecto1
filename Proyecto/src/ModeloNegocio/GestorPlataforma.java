@@ -387,29 +387,17 @@ public class GestorPlataforma {
         }
     }
     
-    public ResultSet generarConsulta(String consulta) {
+    public ResultSet generarConsulta(String consulta) throws SQLException{
             String msAccDB = "bd proyecto final.accdb";
             String dbURL = "jdbc:ucanaccess://"+ msAccDB; 
-        try {
-            // Step 2.A: Create and
+            // Step 2.A: Create and 
             // get connection using DriverManager class
             connection = DriverManager.getConnection(dbURL); 
-        } catch (SQLException ex) {
-            Logger.getLogger(GestorPlataforma.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-            // Step 2.B: Creating JDBC Statement
+            // Step 2.B: Creating JDBC Statement 
             statement = connection.createStatement();
-        } catch (SQLException ex) {
-            Logger.getLogger(GestorPlataforma.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-            // Step 2.C: Executing SQL and
+            // Step 2.C: Executing SQL and 
             // retrieve data into ResultSet
             resultSet = statement.executeQuery(consulta);
-        } catch (SQLException ex) {
-            Logger.getLogger(GestorPlataforma.class.getName()).log(Level.SEVERE, null, ex);
-        }
             return resultSet;
     }    
 }
