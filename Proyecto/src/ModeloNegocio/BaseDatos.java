@@ -69,7 +69,6 @@ public class BaseDatos {
         String numberEmergencyContact;
         String emailEmergencyContact;
         String relationship;
-        
         for(Row row : personaInformation) {
             fullName =row.getString("Full Name");
             typeDocument=row.getString("Type of Document");
@@ -99,6 +98,26 @@ public class BaseDatos {
         return persona;
     }
     
+    public ArrayList<CampsICCP> getCampamentosICCP() throws IOException{
+        ArrayList<CampsICCP> iccp=new ArrayList<>();
+        String nombre;
+        String codigo;
+        String year;
+        String direccion;
+        String campyear;
+        Table campsICCP = bd.getTable("Camps ICCP");
+        for(Row row : campsICCP) {
+            nombre=row.getString("Nombre");
+            codigo=row.getString("Codigo/ Camp ICCP ID");
+            year=row.getString("Año");
+            direccion=row.getString("Direccion");
+            campyear=row.getString("Camp year");
+            CampsICCP Agregar=new CampsICCP(year, direccion,codigo,nombre);
+            Agregar.setCampYear(campyear);
+            iccp.add(Agregar);
+        }
+        return iccp;
+    }
     /*public static void main(String[] args) {
         try {
             //Datos
