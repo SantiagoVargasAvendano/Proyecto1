@@ -11,6 +11,7 @@ import GUI.Singleton;
 import ModeloNegocio.GestorPlataforma;
 import ModeloNegocio.LocalVolunteerAssignment;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.Event;
@@ -96,7 +97,11 @@ public class FormLocalVolProgVC {
                     String rol = vista.getRolTF().getValue().toString();
                     
                     LocalVolunteerAssignment asignacion = new LocalVolunteerAssignment(idPersona, nombrePersona, nombreCampamento, rol, calificacion, nota);
-                    gestor.addVoluntariadoAssignment(asignacion);
+                    try {
+                        gestor.addVoluntariadoAssignment(asignacion);
+                    } catch (IOException ex) {
+                        Logger.getLogger(FormLocalVolProgVC.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                     alert.setTitle("Confirmacion");
                     alert.setHeaderText("La informacion ha sido registrada");

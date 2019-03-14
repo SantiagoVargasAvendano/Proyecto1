@@ -9,6 +9,7 @@ import GUI.Singleton;
 import ModeloNegocio.GestorPlataforma;
 import ModeloNegocio.PersonalInformation;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.Event;
@@ -102,7 +103,11 @@ public class FormPersonaVC {
             if(!passport.equals("")) persona.setPassport(passport);
             if(!phone.equals("")) persona.setPhone(phone);
             if(!citizen.equals("")) persona.setCitizen(citizen);  
-            gestor.addPersona(persona);
+                try {
+                    gestor.addPersona(persona);
+                } catch (IOException ex) {
+                    Logger.getLogger(FormPersonaVC.class.getName()).log(Level.SEVERE, null, ex);
+                }
             
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Confirmacion");

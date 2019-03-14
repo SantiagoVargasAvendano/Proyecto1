@@ -10,6 +10,7 @@ import GUI.Singleton;
 import ModeloNegocio.GestorPlataforma;
 import ModeloNegocio.ProgramsCampsColombia;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.Event;
@@ -72,7 +73,11 @@ public class FormProgCampColomVC {
                     alert.setHeaderText("La informacion ha sido registrada");
                     alert.show();
                     ProgramsCampsColombia program = new ProgramsCampsColombia(tipoPrograma, company, fechaGrado, duration, Lugar, poblacion, Id);
-                    gestor.addProgramaColombia(program);
+                    try {
+                        gestor.addProgramaColombia(program);
+                    } catch (IOException ex) {
+                        Logger.getLogger(FormProgCampColomVC.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     OpcionesVC pantalla = null;
                     try {
                         pantalla = new OpcionesVC(gestor);

@@ -10,6 +10,7 @@ import GUI.Singleton;
 import ModeloNegocio.GestorPlataforma;
 import ModeloNegocio.VolunteerPrograms;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.Event;
@@ -69,7 +70,11 @@ public class FormVoluntProgVC {
                     alert.setHeaderText("La informacion ha sido registrada");
                     alert.show();
                     VolunteerPrograms volun = new VolunteerPrograms(company, FechaGrado, duracion, tipoVoluntariado, Id);
-                    gestor.addVoluntariado(volun);
+                    try {
+                        gestor.addVoluntariado(volun);
+                    } catch (IOException ex) {
+                        Logger.getLogger(FormVoluntProgVC.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     OpcionesVC pantalla = null;
                     try {
                         pantalla = new OpcionesVC(gestor);
