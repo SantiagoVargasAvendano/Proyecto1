@@ -50,8 +50,6 @@ public class Torta {
                 new PieChart.Data("Female", 155));
         final PieChart chart = new PieChart(pieChartData);
         chart.setTitle("Relacion Generos");
-          
-        //((Group) escena.getRoot()).getChildren().add(chart);
         this.vbox = new VBox(atras,chart);
         this.fondo = new HBox();
         this.logo = new Image(new FileInputStream("src/GUI/Logo.png"));

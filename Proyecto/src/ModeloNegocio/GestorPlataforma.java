@@ -84,40 +84,33 @@ public class GestorPlataforma {
             Logger.getLogger(GestorPlataforma.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    public boolean addPersona(PersonalInformation persona) throws IOException{
-        // personaInformation.addRow(persona);
-        return this.personas.add(persona);
+    
+    public void addPersonaDb(PersonalInformation persona) throws IOException{
+        personaInformation.addRow(persona);
     }
     
-    public boolean addProgramaColombia(ProgramsCampsColombia programa) throws IOException{
-        //programasBDColombia.addRow(programa);
-        return this.programasColombia.add(programa);
+    public void addProgramaColombiaDb(ProgramsCampsColombia programa) throws IOException{
+        programasBDColombia.addRow(programa);
     }
     
-    public boolean addVoluntariado(VolunteerPrograms voluntariado) throws IOException{
-        //programasBDVoluntariado.addRow(voluntariado);
-        return this.programasVoluntariado.add(voluntariado);
+    public void addVoluntariadoDb(VolunteerPrograms voluntariado) throws IOException{
+        programasBDVoluntariado.addRow(voluntariado);
     }
     
-    public boolean addProgramaICCP(CampsICCP campamento) throws IOException{
-        //campsICCP.addRow(campamento);
-        return this.programasICCP.add(campamento);
+    public void addProgramaICCPDb(CampsICCP campamento) throws IOException{
+        campsICCP.addRow(campamento);
     }
     
-    public boolean addColombiaAssignment(ProgramsAssignment asignacion) throws IOException{
-        //programsAssignment.addRow(asignacion);
-        return this.programasColombiaAssignment.add(asignacion);
+    public void addColombiaAssignmentDb(ProgramsAssignment asignacion) throws IOException{
+        programsAssignment.addRow(asignacion);
     }
     
-    public boolean addVoluntariadoAssignment(LocalVolunteerAssignment asignacion) throws IOException{
-        //voluntariadoAssignment.addRow(asignacion);
-        return this.volunteerAssignment.add(asignacion);
+    public void addVoluntariadoAssignmentDb(LocalVolunteerAssignment asignacion) throws IOException{
+        voluntariadoAssignment.addRow(asignacion);
     }
     
-    public boolean addICCPAssignment(ICCPAssignment asignacion) throws IOException{
-        //ICCPAssignment.addRow(asignacion);
-        return this.ICCPAssignments.add(asignacion);
+    public void addICCPAssignmentDb(ICCPAssignment asignacion) throws IOException{
+        ICCPAssignment.addRow(asignacion);
     }
     
     public boolean borrarPersona(String id){
