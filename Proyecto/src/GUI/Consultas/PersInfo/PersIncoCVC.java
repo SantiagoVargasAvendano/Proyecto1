@@ -10,6 +10,7 @@ import GUI.Singleton;
 import ModeloNegocio.GestorPlataforma;
 import ModeloNegocio.PersonalInformation;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -155,13 +156,14 @@ public class PersIncoCVC {
                         p++;
                     }
                 }
-                System.out.println(c + " " + p);
                 if(c==p){
                     personas.add(gestor.getPersonas().get(i));
                 }
             }
-            for(int l =0;l<personas.size();l++){
-                System.out.println(personas.get(l).getFullName());
+            try {
+                gestor.crearEscrituraExcelPI(personas);
+            } catch (IOException ex) {
+                Logger.getLogger(PersIncoCVC.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         

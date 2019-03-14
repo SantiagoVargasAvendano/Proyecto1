@@ -21,6 +21,12 @@ public class Start1 extends Application {
         Singleton singleton = Singleton.getSingleton();
         GestorPlataforma gestor = new GestorPlataforma();
         gestor.getPersona();
+        gestor.getAssignmentColombia();
+        gestor.getAssignmentICCP();
+        gestor.getAssignmentVoluntariado();
+        gestor.getCampamentosICCP();
+        gestor.getCampsColombia();
+        gestor.getVoluntariado();
         singleton.setStage(primaryStage);
         InicioVC pp = new InicioVC(gestor);
         pp.mostrarVista();

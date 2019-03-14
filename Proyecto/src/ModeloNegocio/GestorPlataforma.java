@@ -36,7 +36,7 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
  * @author Lenovo
  */
 public class GestorPlataforma {
-private String excelFilePath = "JavaBooks.xls";
+    private String excelFilePath = "JavaBooks.xls";
     private static Database bd;
     private ArrayList<PersonalInformation> personas;
     private ArrayList<ProgramsCampsColombia> programasColombia;
@@ -470,6 +470,45 @@ private String excelFilePath = "JavaBooks.xls";
             //Capturar los datos que le ingresan de la interfaz.
             //Armar el Vector y listo.
             Object[] bookData = {"Fabian", "Giraldo.", 16};
+          
+            //Ir a la ultima final
+            int rowCount = sheet.getLastRowNum();
+            //Crear una nueva fila
+            org.apache.poi.ss.usermodel.Row row = sheet.createRow(++rowCount);
+
+            int columnCount = 0;
+            Cell cell = row.createCell(columnCount);
+            cell.setCellValue(rowCount);
+
+            //Almacenar los datos existentes
+            for (Object field : bookData) {
+                cell = row.createCell(++columnCount);
+                if (field instanceof String) {
+                    cell.setCellValue((String) field);
+                } else if (field instanceof Integer) {
+                    cell.setCellValue((Integer) field);
+                }
+            }
+            inputStream.close();
+            FileOutputStream outputStream = new FileOutputStream("Fabian.xls");
+            workbook.write(outputStream);
+            workbook.close();
+            outputStream.close();
+    }
+    
+    public void crearEscrituraExcelPI(ArrayList<PersonalInformation> personas) throws FileNotFoundException, IOException{
+        FileInputStream inputStream = new FileInputStream(new File(this.excelFilePath));
+            //Referencia al libro
+            Workbook workbook = WorkbookFactory.create(inputStream);
+            //Referencia a la primera hoja
+            Sheet sheet = workbook.getSheetAt(1);
+
+            //Capturar los datos que le ingresan de la interfaz.
+            //Armar el Vector y listo.
+            Object[] bookData = new Object[personas.size()];
+            for(int i=0;i<personas.size();i++){
+                bookData[i] = personas.get(i);
+            }
           
             //Ir a la ultima final
             int rowCount = sheet.getLastRowNum();
