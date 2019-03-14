@@ -27,8 +27,7 @@ import java.util.logging.Logger;
  */
 public class BaseDatos {
     private Database bd;
-    
-    
+   
     public BaseDatos(String url) {
         try {
             this.bd = DatabaseBuilder.open(new File(url));

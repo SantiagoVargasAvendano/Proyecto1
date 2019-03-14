@@ -122,5 +122,22 @@ public class GestorPlataforma {
     public void setVolunteerAssignment(ArrayList<LocalVolunteerAssignment> volunteerAssignment) {
         this.volunteerAssignment = volunteerAssignment;
     }
+    
+    public String getStringConsulta(String nombreTabla){
+        String consulta=null;
+        return consulta="SELECT * FROM "+nombreTabla;
+    }
+    
+    public String getStringConsulta(String nombreTabla, String[] nombreAtributos, String[] condiciones, String condicional){
+        String valorConsulta=null;
+        if (nombreAtributos.length==condiciones.length) {
+            valorConsulta="SELECT * FROM "+nombreTabla+" WHERE ";
+            for (int i = 0; i < nombreAtributos.length-1 ; i++){
+                valorConsulta=valorConsulta+" "+nombreTabla+"."+nombreAtributos[i]+"='"+condiciones[i]+"' "+condicional;
+            }
+            valorConsulta=valorConsulta+" "+nombreTabla+"."+nombreAtributos[nombreAtributos.length]+"='"+condiciones[condiciones.length]+"'";
+        }
+        return valorConsulta;
+    }
 
 }
