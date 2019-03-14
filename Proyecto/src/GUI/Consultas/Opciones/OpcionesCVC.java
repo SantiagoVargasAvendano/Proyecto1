@@ -7,6 +7,8 @@ package GUI.Consultas.Opciones;
 
 import GUI.Consultas.PersInfo.PersIncoCVC;
 import GUI.Consultas.ProgramasColombia.ProgramsColombiaCVC;
+import GUI.Consultas.ProgramasICCP.ProgramsICCPC;
+import GUI.Consultas.ProgramasICCP.ProgramsICCPCVC;
 import GUI.Consultas.ProgramasVoluntariado.ProgramsVoluntariadoCVC;
 import GUI.Inicio.InicioVC;
 import GUI.Singleton;
@@ -70,9 +72,18 @@ public class OpcionesCVC {
             }
                     pantalla2.mostrarVista();
                     break;
-                case "":
+                case "Programas ICCP":
+                    ProgramsICCPCVC pantalla3 = null;
+            try {
+                pantalla3 = new ProgramsICCPCVC(gestor);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(OpcionesCVC.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                    pantalla3.mostrarVista();
                     break;
-                case "1":
+                case "Asignacion programas Colombia":
+                    break;
+                case "":
                     break;
             }
         }

@@ -45,8 +45,8 @@ public class ProgramsICCPC {
     private HBox hbox2;
     private RadioButton campDate;
     private TextField campDateTF;
-    private RadioButton duration;
-    private TextField durationTF;
+    private RadioButton direccion;
+    private TextField direccionTF;
     
     private Button consultar;
     private Button atras;
@@ -70,7 +70,7 @@ public class ProgramsICCPC {
                 ,"Asignacion programas voluntariado","Asignacion programas ICCP");
         this.seleccionar = new Button("Seleccionar tabla");
         this.atras = new Button("Atras");
-        opciones.setPromptText("Programas voluntariado");
+        opciones.setPromptText("Programas ICCP");
         this.menu = new HBox();
         menu.setSpacing(100);
         Label info = new Label("Ingrese la tabla en la cual quiere hacer la consulta: ", opciones);
@@ -92,11 +92,11 @@ public class ProgramsICCPC {
         
         this.hbox2 = new HBox();
         hbox2.setSpacing(20);
-        this.campDate = new RadioButton("fecha del campamento: ");
+        this.campDate = new RadioButton("Edicion del campamento: ");
         this.campDateTF = new TextField();
-        this.duration = new RadioButton("Duracion del campamento: ");
-        this.durationTF = new TextField();
-        hbox2.getChildren().addAll(campDate,campDateTF, duration,durationTF);
+        this.direccion = new RadioButton("Duracion del campamento: ");
+        this.direccionTF = new TextField();
+        hbox2.getChildren().addAll(campDate,campDateTF, direccion,direccionTF);
         vbox.getChildren().add(hbox2);
 
         this.consultar = new Button("Consultar");
@@ -154,12 +154,20 @@ public class ProgramsICCPC {
         return campDateTF;
     }
 
-    public RadioButton getDuration() {
-        return duration;
+    public RadioButton getYear() {
+        return year;
     }
 
-    public TextField getDurationTF() {
-        return durationTF;
+    public TextField getYearTF() {
+        return yearTF;
+    }
+
+    public RadioButton getDireccion() {
+        return direccion;
+    }
+
+    public TextField getDireccionTF() {
+        return direccionTF;
     }
 
     public Button getConsultar() {
