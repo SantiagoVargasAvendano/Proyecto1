@@ -83,6 +83,8 @@ public class PersInfoC {
     private RadioButton relationship;
     private TextField relationshipTF;
     
+    private Button consultar;
+    
     private HBox menu;
     private ComboBox<String> opciones;
     private Button seleccionar;
@@ -175,6 +177,9 @@ public class PersInfoC {
         hbox5.getChildren().addAll(nameEmCon,nameEmConTF,numberEmCon,numberEmConTF,emailEmCon,emailEmConTF,relationship,relationshipTF);
         vbox.getChildren().add(hbox5);
         
+        this.consultar = new Button("Consultar");
+        vbox.getChildren().add(consultar);
+        
         this.fondo = new HBox();
         this.logo = new Image(new FileInputStream("src/GUI/Logo.png"));
         this.nombreE = new Text("Base de datos YMCA");
@@ -201,6 +206,178 @@ public class PersInfoC {
 
     public ComboBox<String> getOpciones() {
         return opciones;
+    }
+
+    public RadioButton getName() {
+        return name;
+    }
+
+    public TextField getNameTF() {
+        return nameTF;
+    }
+
+    public RadioButton getId() {
+        return id;
+    }
+
+    public TextField getIdTF() {
+        return idTF;
+    }
+
+    public RadioButton getTypeDocument() {
+        return typeDocument;
+    }
+
+    public TextField getTypeDocumentTF() {
+        return typeDocumentTF;
+    }
+
+    public RadioButton getGender() {
+        return gender;
+    }
+
+    public TextField getGenderTF() {
+        return genderTF;
+    }
+
+    public RadioButton getDateBirth() {
+        return dateBirth;
+    }
+
+    public TextField getDateBirthTF() {
+        return dateBirthTF;
+    }
+
+    public RadioButton getMobile() {
+        return mobile;
+    }
+
+    public TextField getMobileTF() {
+        return mobileTF;
+    }
+
+    public RadioButton getPhone() {
+        return phone;
+    }
+
+    public TextField getPhoneTF() {
+        return phoneTF;
+    }
+
+    public RadioButton getCitizen() {
+        return citizen;
+    }
+
+    public TextField getCitizenTF() {
+        return citizenTF;
+    }
+
+    public HBox getHbox3() {
+        return hbox3;
+    }
+
+    public RadioButton getEmail() {
+        return email;
+    }
+
+    public TextField getEmailTF() {
+        return emailTF;
+    }
+
+    public RadioButton getSizeShirt() {
+        return sizeShirt;
+    }
+
+    public TextField getSizeShirtTF() {
+        return sizeShirtTF;
+    }
+
+    public RadioButton getCurrentOcu() {
+        return currentOcu;
+    }
+
+    public TextField getCurrentOcuTF() {
+        return currentOcuTF;
+    }
+
+    public RadioButton getFieldsStudy() {
+        return fieldsStudy;
+    }
+
+    public TextField getFieldsStudyTF() {
+        return fieldsStudyTF;
+    }
+
+    public RadioButton getUniversity() {
+        return university;
+    }
+
+    public TextField getUniversityTF() {
+        return universityTF;
+    }
+
+    public RadioButton getGraduate() {
+        return graduate;
+    }
+
+    public TextField getGraduateTF() {
+        return graduateTF;
+    }
+
+    public RadioButton getCurrentAddress() {
+        return currentAddress;
+    }
+
+    public TextField getCurrentAddressTF() {
+        return currentAddressTF;
+    }
+
+    public RadioButton getCurrentCity() {
+        return currentCity;
+    }
+
+    public TextField getCurrentCityTF() {
+        return currentCityTF;
+    }
+
+    public RadioButton getNameEmCon() {
+        return nameEmCon;
+    }
+
+    public TextField getNameEmConTF() {
+        return nameEmConTF;
+    }
+
+    public RadioButton getNumberEmCon() {
+        return numberEmCon;
+    }
+
+    public TextField getNumberEmConTF() {
+        return numberEmConTF;
+    }
+
+    public RadioButton getEmailEmCon() {
+        return emailEmCon;
+    }
+
+    public TextField getEmailEmConTF() {
+        return emailEmConTF;
+    }
+
+    public RadioButton getRelationship() {
+        return relationship;
+    }
+
+    public TextField getRelationshipTF() {
+        return relationshipTF;
+    }
+
+    public Button getConsultar() {
+        return consultar;
+    }
+
+    public HBox getMenu() {
+        return menu;
     }
     
 }

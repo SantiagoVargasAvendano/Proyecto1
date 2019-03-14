@@ -57,7 +57,7 @@ public class InicioVC {
         public void handle(Event event) {
             OpcionesCVC vista = null;
             try {
-                vista = new OpcionesCVC();
+                vista = new OpcionesCVC(gestor);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(InicioVC.class.getName()).log(Level.SEVERE, null, ex);
             }

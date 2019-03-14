@@ -6,7 +6,9 @@
 package GUI.Consultas.Opciones;
 
 import GUI.Consultas.PersInfo.PersIncoCVC;
+import GUI.Consultas.ProgramasColombia.ProgramsColombiaCVC;
 import GUI.Singleton;
+import ModeloNegocio.GestorPlataforma;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,15 +21,17 @@ import javafx.event.EventHandler;
  */
 public class OpcionesCVC {
     private OpcionesC vista;
+    private GestorPlataforma gestor;
 
-    public OpcionesCVC() throws FileNotFoundException {
+    public OpcionesCVC(GestorPlataforma gestor) throws FileNotFoundException {
+        this.gestor = gestor;
         this.vista = new OpcionesC();
+        vista.getSeleccionar().setOnMousePressed(new opcion());
     }
     
     public void mostrarVista(){
         Singleton singleton = Singleton.getSingleton();
         vista.mostrar(singleton.getStage());
-        vista.getSeleccionar().setOnMousePressed(new opcion());
     }
     
     class opcion implements EventHandler<Event>{
@@ -45,7 +49,16 @@ public class OpcionesCVC {
             }
                     pantalla.mostrarVista();
                     break;
-                case "P":
+                case "Programas Colombia":
+                    ProgramsColombiaCVC pantalla1 = null;
+            try {
+                pantalla1 = new ProgramsColombiaCVC();
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(OpcionesCVC.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                    pantalla1.mostrarVista();
+                    break;
+                case "":
                     break;
             }
         }
