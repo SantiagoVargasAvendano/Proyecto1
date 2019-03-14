@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI.Consultas.ProgramasICCP;
+package GUI.Consultas.ICCPAssign;
 
-import GUI.Consultas.ProgramasVoluntariado.*;
-import GUI.Consultas.ProgramasColombia.*;
+import GUI.Consultas.ProgramsAssignC.*;
 import GUI.Consultas.Opciones.OpcionesCVC;
 import GUI.Consultas.PersInfo.PersIncoCVC;
 import GUI.Singleton;
@@ -22,13 +21,13 @@ import javafx.event.EventHandler;
  *
  * @author Asus
  */
-public class ProgramsICCPCVC {
+public class ICCPAssignCVC {
     private GestorPlataforma gestor;
-    private ProgramsICCPC vista;
+    private ICCPAssignC vista;
 
-    public ProgramsICCPCVC(GestorPlataforma gestor) throws FileNotFoundException {
+    public ICCPAssignCVC(GestorPlataforma gestor) throws FileNotFoundException {
         this.gestor = gestor;
-        this.vista = new ProgramsICCPC();
+        this.vista = new ICCPAssignC();
         this.vista.getAtras().setOnMousePressed(new atras());
         this.vista.getConsultar().setOnMousePressed(new consultar());
     }
@@ -44,25 +43,37 @@ public class ProgramsICCPCVC {
         public void handle(Event event) {
             ArrayList<String> tabla = new ArrayList<>();
             ArrayList<String> condicion = new ArrayList<>();
+            if(vista.getNamePers().isSelected()){
+                tabla.add("Nombre Participante/ ID Participant");
+                condicion.add(vista.getNamePersTF().getText());
+            }            
+            if(vista.getIdPers().isSelected()){
+                tabla.add("ID");
+                condicion.add(vista.getIdPersTF().getText());
+            }
             if(vista.getNameCamp().isSelected()){
-                tabla.add("Nombre");
+                tabla.add("Codigo/ Camp ICCP ID");
                 condicion.add(vista.getNameCampTF().getText());
             }
-            if(vista.getIdCamp().isSelected()){
-                tabla.add("Codigo/ Camp ICCP ID");
-                condicion.add(vista.getIdCampTF().getText());
+            if(vista.getRol().isSelected()){
+                tabla.add("Role");
+                condicion.add(vista.getRolTF().getText());
             }
-            if(vista.getYear().isSelected()){
-                tabla.add("Año");
-                condicion.add(vista.getYearTF().getText());
-            }            
-            if(vista.getCampDate().isSelected()){
-                tabla.add("Camp year");
-                condicion.add(vista.getCampDateTF().getText());
+            if(vista.getCalification().isSelected()){
+                tabla.add("Calification");
+                condicion.add(vista.getCalificationTF().getText());
             }
-            if(vista.getDireccion().isSelected()){
-                tabla.add("Direccion");
-                condicion.add(vista.getDireccionTF().getText());
+            if(vista.getNote().isSelected()){
+                tabla.add("Note");
+                condicion.add(vista.getNoteTF().getText());
+            }
+            if(vista.getFechaIni().isSelected()){
+                tabla.add("Fecha inicio");
+                condicion.add(vista.getFechaIniTF().getText());
+            }
+            if(vista.getFechaFin().isSelected()){
+                tabla.add("Fecha inicio");
+                condicion.add(vista.getFechaFinTF().getText());
             }
             String[] nombreAtributo = new String[tabla.size()];
             String[] condiciones = new String[condicion.size()];
@@ -74,9 +85,9 @@ public class ProgramsICCPCVC {
                 condiciones[j] = condicion.get(j);
                 System.out.println(condiciones[j]);
             }
-            String nombre = "Camps ICCP";
+            String nombre = "ICCP Assignment";
             System.out.println(nombre);
-            }
+        }
         
     }
     

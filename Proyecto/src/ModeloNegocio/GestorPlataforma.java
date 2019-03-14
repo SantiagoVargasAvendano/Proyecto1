@@ -140,4 +140,11 @@ public class GestorPlataforma {
         return valorConsulta;
     }
 
+    public boolean addPersInfFormDb(ArrayList<PersonalInformation> personas){
+        for(int i=0;i<personas.size();i++){
+            this.personas.add(personas.get(i));
+        }
+        return true;
+    }
+    
 }

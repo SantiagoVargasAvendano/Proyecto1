@@ -5,6 +5,7 @@
  */
 package GUI.Consultas.ProgramsAssignC;
 
+import GUI.Consultas.ProgramasColombia.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import javafx.geometry.Insets;
@@ -33,9 +34,23 @@ public class ProgramsAssignC {
     
     private VBox vbox;
     private HBox hbox;
-    private RadioButton name;
-    private TextField nameTF;
+    private RadioButton namePers;
+    private TextField namePersTF;
+    private RadioButton idPers;
+    private TextField idPersTF;
+    private RadioButton nameCamp;
+    private TextField nameCampTF;
     
+    private HBox hbox2;
+    private RadioButton rol;
+    private TextField rolTF;
+    private RadioButton calification;
+    private TextField calificationTF;
+    private RadioButton note;
+    private TextField noteTF;
+    
+    private Button consultar;
+    private Button atras;
     
     private HBox menu;
     private ComboBox<String> opciones;
@@ -48,27 +63,47 @@ public class ProgramsAssignC {
 
     public ProgramsAssignC() throws FileNotFoundException {
         this.vbox = new VBox();
-        vbox.setSpacing(50);
-        vbox.setPadding(new Insets(100, 0, 0, 50));
+        vbox.setSpacing(60);
+        vbox.setPadding(new Insets(100, 0, 0, 20));
         this.opciones = new ComboBox<>();
         opciones.getItems().addAll("Informacion personal","Programas Colombia",
                 "programas voluntariado","Programas ICCP", "Asignacion programas Colombia"
                 ,"Asignacion programas voluntariado","Asignacion programas ICCP");
         this.seleccionar = new Button("Seleccionar tabla");
-        opciones.setPromptText("Informacion personal");
+        this.atras = new Button("Atras");
+        opciones.setPromptText("Asignacion programas Colombia");
         this.menu = new HBox();
-        menu.setSpacing(300);
+        menu.setSpacing(100);
         Label info = new Label("Ingrese la tabla en la cual quiere hacer la consulta: ", opciones);
         info.setContentDisplay(ContentDisplay.RIGHT);
-        menu.getChildren().addAll(info, seleccionar);
+        menu.getChildren().addAll(info, seleccionar, atras);
         Label info2= new Label("Seleccione los atributos de la consulta, y sus criterios de busqueda: ");
         vbox.getChildren().addAll(menu, info2);
         
         this.hbox = new HBox();
-        this.name = new RadioButton("Nombre completo");
-        this.nameTF = new TextField();
-        hbox.getChildren().addAll(name,nameTF);
+        hbox.setSpacing(20);
+        this.namePers = new RadioButton("Nombre de la persona: ");
+        this.namePersTF = new TextField();
+        this.idPers = new RadioButton("Id de la persona: ");
+        this.idPersTF = new TextField();
+        this.nameCamp = new RadioButton("Nombre del campamento: ");
+        this.nameCampTF = new TextField();
+        hbox.getChildren().addAll(namePers,namePersTF,idPers,idPersTF, nameCamp,nameCampTF);
         vbox.getChildren().add(hbox);
+        
+        this.hbox2 = new HBox();
+        hbox2.setSpacing(20);
+        this.rol = new RadioButton("Rol: ");
+        this.rolTF = new TextField();
+        this.calification = new RadioButton("Calificacion: ");
+        this.calificationTF = new TextField();
+        this.note = new RadioButton("Nota: ");
+        this.noteTF = new TextField();
+        hbox2.getChildren().addAll(rol, rolTF,calification,calificationTF,note,noteTF);
+        vbox.getChildren().add(hbox2);
+        
+        this.consultar = new Button("Consultar");
+        vbox.getChildren().add(consultar);
         
         this.fondo = new HBox();
         this.logo = new Image(new FileInputStream("src/GUI/Logo.png"));
@@ -97,4 +132,66 @@ public class ProgramsAssignC {
     public ComboBox<String> getOpciones() {
         return opciones;
     }
+
+    public RadioButton getNameCamp() {
+        return nameCamp;
+    }
+
+    public TextField getNameCampTF() {
+        return nameCampTF;
+    }
+
+    public RadioButton getNamePers() {
+        return namePers;
+    }
+
+    public TextField getNamePersTF() {
+        return namePersTF;
+    }
+
+    public RadioButton getIdPers() {
+        return idPers;
+    }
+
+    public TextField getIdPersTF() {
+        return idPersTF;
+    }
+
+    public RadioButton getRol() {
+        return rol;
+    }
+
+    public TextField getRolTF() {
+        return rolTF;
+    }
+
+    public RadioButton getCalification() {
+        return calification;
+    }
+
+    public TextField getCalificationTF() {
+        return calificationTF;
+    }
+
+    public RadioButton getNote() {
+        return note;
+    }
+
+    public TextField getNoteTF() {
+        return noteTF;
+    }
+    
+    public Button getConsultar() {
+        return consultar;
+    }
+
+    public Button getAtras() {
+        return atras;
+    }
+
+    public Text getNombreE() {
+        return nombreE;
+    }
+    
+    
 }

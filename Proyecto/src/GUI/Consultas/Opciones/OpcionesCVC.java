@@ -5,9 +5,14 @@
  */
 package GUI.Consultas.Opciones;
 
+import GUI.Consultas.ICCPAssign.ICCPAssignCVC;
+import GUI.Consultas.LocalVolunAssign.LocalVolunAssignCVC;
 import GUI.Consultas.PersInfo.PersIncoCVC;
 import GUI.Consultas.ProgramasColombia.ProgramsColombiaCVC;
+import GUI.Consultas.ProgramasICCP.ProgramsICCPC;
+import GUI.Consultas.ProgramasICCP.ProgramsICCPCVC;
 import GUI.Consultas.ProgramasVoluntariado.ProgramsVoluntariadoCVC;
+import GUI.Consultas.ProgramsAssignC.ProgramsAssignCVC;
 import GUI.Inicio.InicioVC;
 import GUI.Singleton;
 import ModeloNegocio.GestorPlataforma;
@@ -70,9 +75,41 @@ public class OpcionesCVC {
             }
                     pantalla2.mostrarVista();
                     break;
-                case "":
+                case "Programas ICCP":
+                    ProgramsICCPCVC pantalla3 = null;
+            try {
+                pantalla3 = new ProgramsICCPCVC(gestor);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(OpcionesCVC.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                    pantalla3.mostrarVista();
                     break;
-                case "1":
+                case "Asignacion programas Colombia":
+                    ProgramsAssignCVC pantalla4 = null;
+            try {
+                pantalla4 = new ProgramsAssignCVC(gestor);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(OpcionesCVC.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                    pantalla4.mostrarVista();
+                    break;
+                case "Asignacion programas voluntariado":
+                    LocalVolunAssignCVC pantalla5 = null;
+            try {
+                pantalla5 = new LocalVolunAssignCVC(gestor);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(OpcionesCVC.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                    pantalla5.mostrarVista();
+                    break;
+                case "Asignacion programas ICCP":
+                    ICCPAssignCVC pantalla6 = null;
+            try {
+                pantalla6 = new ICCPAssignCVC(gestor);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(OpcionesCVC.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                    pantalla6.mostrarVista();
                     break;
             }
         }

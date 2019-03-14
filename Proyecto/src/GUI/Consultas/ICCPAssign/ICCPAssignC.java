@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI.Consultas.ProgramasICCP;
+package GUI.Consultas.ICCPAssign;
 
-import GUI.Consultas.ProgramasVoluntariado.*;
+import GUI.Consultas.ProgramsAssignC.*;
 import GUI.Consultas.ProgramasColombia.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -30,23 +30,31 @@ import javafx.stage.Stage;
  *
  * @author Asus
  */
-public class ProgramsICCPC {
+public class ICCPAssignC {
     private Scene escena;
     
     private VBox vbox;
     private HBox hbox;
+    private RadioButton namePers;
+    private TextField namePersTF;
+    private RadioButton idPers;
+    private TextField idPersTF;
     private RadioButton nameCamp;
     private TextField nameCampTF;
-    private RadioButton idCamp;
-    private TextField idCampTF;
-    private RadioButton year;
-    private TextField yearTF;
     
     private HBox hbox2;
-    private RadioButton campDate;
-    private TextField campDateTF;
-    private RadioButton direccion;
-    private TextField direccionTF;
+    private RadioButton rol;
+    private TextField rolTF;
+    private RadioButton calification;
+    private TextField calificationTF;
+    private RadioButton note;
+    private TextField noteTF;
+    
+    private HBox hbox3;
+    private RadioButton fechaIni;
+    private TextField fechaIniTF;
+    private RadioButton fechaFin;
+    private TextField fechaFinTF;
     
     private Button consultar;
     private Button atras;
@@ -60,17 +68,17 @@ public class ProgramsICCPC {
     private Text nombreE;
     private StackPane fondos;
 
-    public ProgramsICCPC() throws FileNotFoundException {
+    public ICCPAssignC() throws FileNotFoundException {
         this.vbox = new VBox();
         vbox.setSpacing(60);
         vbox.setPadding(new Insets(100, 0, 0, 20));
         this.opciones = new ComboBox<>();
         opciones.getItems().addAll("Informacion personal","Programas Colombia",
-                "Programas voluntariado","Programas ICCP", "Asignacion programas Colombia"
+                "programas voluntariado","Programas ICCP", "Asignacion programas Colombia"
                 ,"Asignacion programas voluntariado","Asignacion programas ICCP");
         this.seleccionar = new Button("Seleccionar tabla");
         this.atras = new Button("Atras");
-        opciones.setPromptText("Programas ICCP");
+        opciones.setPromptText("Asignacion programas Colombia");
         this.menu = new HBox();
         menu.setSpacing(100);
         Label info = new Label("Ingrese la tabla en la cual quiere hacer la consulta: ", opciones);
@@ -81,24 +89,35 @@ public class ProgramsICCPC {
         
         this.hbox = new HBox();
         hbox.setSpacing(20);
+        this.namePers = new RadioButton("Nombre de la persona: ");
+        this.namePersTF = new TextField();
+        this.idPers = new RadioButton("Id de la persona: ");
+        this.idPersTF = new TextField();
         this.nameCamp = new RadioButton("Nombre del campamento: ");
         this.nameCampTF = new TextField();
-        this.idCamp = new RadioButton("Id del campamento: ");
-        this.idCampTF = new TextField();
-        this.year = new RadioButton("Annio del programa: ");
-        this.yearTF = new TextField();
-        hbox.getChildren().addAll(nameCamp,nameCampTF,idCamp,idCampTF,year,yearTF);
+        hbox.getChildren().addAll(namePers,namePersTF,idPers,idPersTF, nameCamp,nameCampTF);
         vbox.getChildren().add(hbox);
         
         this.hbox2 = new HBox();
         hbox2.setSpacing(20);
-        this.campDate = new RadioButton("Edicion del campamento: ");
-        this.campDateTF = new TextField();
-        this.direccion = new RadioButton("Duracion del campamento: ");
-        this.direccionTF = new TextField();
-        hbox2.getChildren().addAll(campDate,campDateTF, direccion,direccionTF);
+        this.rol = new RadioButton("Rol: ");
+        this.rolTF = new TextField();
+        this.calification = new RadioButton("Calificacion: ");
+        this.calificationTF = new TextField();
+        this.note = new RadioButton("Nota: ");
+        this.noteTF = new TextField();
+        hbox2.getChildren().addAll(rol, rolTF,calification,calificationTF,note,noteTF);
         vbox.getChildren().add(hbox2);
-
+        
+        this.hbox3 = new HBox();
+        hbox3.setSpacing(20);
+        this.fechaIni = new RadioButton("Fecha Inicio: ");
+        this.fechaIniTF = new TextField();
+        this.fechaFin = new RadioButton("Fecha Fin: ");
+        this.fechaFinTF = new TextField();
+        hbox3.getChildren().addAll(fechaIni, fechaIniTF, fechaFin, fechaFinTF);
+        vbox.getChildren().add(hbox3);
+        
         this.consultar = new Button("Consultar");
         vbox.getChildren().add(consultar);
         
@@ -138,38 +157,46 @@ public class ProgramsICCPC {
         return nameCampTF;
     }
 
-    public RadioButton getIdCamp() {
-        return idCamp;
+    public RadioButton getNamePers() {
+        return namePers;
     }
 
-    public TextField getIdCampTF() {
-        return idCampTF;
+    public TextField getNamePersTF() {
+        return namePersTF;
     }
 
-    public RadioButton getCampDate() {
-        return campDate;
+    public RadioButton getIdPers() {
+        return idPers;
     }
 
-    public TextField getCampDateTF() {
-        return campDateTF;
+    public TextField getIdPersTF() {
+        return idPersTF;
     }
 
-    public RadioButton getYear() {
-        return year;
+    public RadioButton getRol() {
+        return rol;
     }
 
-    public TextField getYearTF() {
-        return yearTF;
+    public TextField getRolTF() {
+        return rolTF;
     }
 
-    public RadioButton getDireccion() {
-        return direccion;
+    public RadioButton getCalification() {
+        return calification;
     }
 
-    public TextField getDireccionTF() {
-        return direccionTF;
+    public TextField getCalificationTF() {
+        return calificationTF;
     }
 
+    public RadioButton getNote() {
+        return note;
+    }
+
+    public TextField getNoteTF() {
+        return noteTF;
+    }
+    
     public Button getConsultar() {
         return consultar;
     }
@@ -180,6 +207,22 @@ public class ProgramsICCPC {
 
     public Text getNombreE() {
         return nombreE;
+    }
+
+    public RadioButton getFechaIni() {
+        return fechaIni;
+    }
+
+    public TextField getFechaIniTF() {
+        return fechaIniTF;
+    }
+
+    public RadioButton getFechaFin() {
+        return fechaFin;
+    }
+
+    public TextField getFechaFinTF() {
+        return fechaFinTF;
     }
     
     
