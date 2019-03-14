@@ -22,12 +22,21 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+
+import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 /**
  *
  * @author Lenovo
  */
 public class GestorPlataforma {
-    
+private String excelFilePath = "JavaBooks.xls";
     private static Database bd;
     private ArrayList<PersonalInformation> personas;
     private ArrayList<ProgramsCampsColombia> programasColombia;
@@ -448,6 +457,44 @@ public class GestorPlataforma {
             catch (SQLException sqlex) {
                 sqlex.printStackTrace();
             }
+
+    }
+    
+    public void crearEscrituraExcel() throws FileNotFoundException, IOException{
+        FileInputStream inputStream = new FileInputStream(new File(excelFilePath));
+            //Referencia al libro
+            Workbook workbook = WorkbookFactory.create(inputStream);
+            //Referencia a la primera hoja
+            Sheet sheet = workbook.getSheetAt(0);
+
+            //Capturar los datos que le ingresan de la interfaz.
+            //Armar el Vector y listo.
+            Object[] bookData = {"Fabian", "Giraldo.", 16};
+          
+            //Ir a la ultima final
+            int rowCount = sheet.getLastRowNum();
+            //Crear una nueva fila
+            org.apache.poi.ss.usermodel.Row row = sheet.createRow(++rowCount);
+
+            int columnCount = 0;
+            Cell cell = row.createCell(columnCount);
+            cell.setCellValue(rowCount);
+
+            //Almacenar los datos existentes
+            for (Object field : bookData) {
+                cell = row.createCell(++columnCount);
+                if (field instanceof String) {
+                    cell.setCellValue((String) field);
+                } else if (field instanceof Integer) {
+                    cell.setCellValue((Integer) field);
+                }
+            }
+            inputStream.close();
+            FileOutputStream outputStream = new FileOutputStream("Fabian.xls");
+            workbook.write(outputStream);
+            workbook.close();
+            outputStream.close();
+
 
     }
 }
