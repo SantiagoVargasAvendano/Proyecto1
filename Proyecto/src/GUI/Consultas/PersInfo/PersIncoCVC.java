@@ -133,11 +133,7 @@ public class PersIncoCVC {
             }
             String nombre = "Personal Information"; 
             ResultSet result = null;
-            try {
-                result = gestor.generarConsulta(gestor.getStringConsulta(nombre, nombreAtributo, condiciones, "AND"));
-            } catch (SQLException ex) {
-                Logger.getLogger(PersIncoCVC.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            GestorPlataforma.generarConsulta(gestor.getStringConsulta(nombre, nombreAtributo, condiciones, "AND"));
             try {
                 while(result.next()){
                     System.out.println(result.getString(1));
