@@ -7,6 +7,7 @@ package GUI.Inicio;
 
 import GUI.Formularios.FormulariosOpc.OpcionesVC;
 import GUI.Consultas.Opciones.OpcionesCVC;
+import GUI.Estadisticas.Torta.TortaVC;
 import GUI.Singleton;
 import ModeloNegocio.GestorPlataforma;
 import java.io.FileNotFoundException;
@@ -28,6 +29,7 @@ public class InicioVC {
     public InicioVC(GestorPlataforma gestor) throws FileNotFoundException {
         this.gestor = gestor;
         this.inicio = new Inicio();
+        inicio.getBoton().setOnMousePressed(new EventoEstadistica());
         inicio.getBoton3().setOnMousePressed(new EventoFormulario());
         inicio.getBoton4().setOnMousePressed(new EventoConsulta());
     }
@@ -58,6 +60,20 @@ public class InicioVC {
             OpcionesCVC vista = null;
             try {
                 vista = new OpcionesCVC(gestor);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(InicioVC.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            vista.mostrarVista();
+        }      
+   }
+    
+    class EventoEstadistica implements EventHandler<Event>{
+
+        @Override
+        public void handle(Event event) {
+            TortaVC vista = null;
+            try {
+                vista = new TortaVC(gestor);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(InicioVC.class.getName()).log(Level.SEVERE, null, ex);
             }
