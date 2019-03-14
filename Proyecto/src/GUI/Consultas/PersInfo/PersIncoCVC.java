@@ -10,6 +10,7 @@ import GUI.Singleton;
 import ModeloNegocio.GestorPlataforma;
 import java.io.FileNotFoundException;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -131,7 +132,19 @@ public class PersIncoCVC {
                 condiciones[j] = condicion.get(j);
             }
             String nombre = "Personal Information"; 
-            //ResultSet result = gestor
+            ResultSet result = null;
+            try {
+                result = gestor.generarConsulta(gestor.getStringConsulta(nombre, nombreAtributo, condiciones, "AND"));
+            } catch (SQLException ex) {
+                Logger.getLogger(PersIncoCVC.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                while(result.next()){
+                    System.out.println(result.getString(1));
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(PersIncoCVC.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         
     }
