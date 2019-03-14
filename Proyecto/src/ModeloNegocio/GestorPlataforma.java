@@ -42,6 +42,11 @@ public class GestorPlataforma {
     private Table programsAssignment;
     private Table programasBDVoluntariado;
     private Table voluntariadoAssignment;
+    private Scanner lectura;
+        // variables
+    private Connection connection;
+    private Statement statement;
+    private ResultSet resultSet;
 
     public GestorPlataforma() {
         this.personas = new ArrayList<>();
@@ -51,6 +56,11 @@ public class GestorPlataforma {
         this.programasColombiaAssignment = new ArrayList<>();
         this.ICCPAssignments = new ArrayList<>();
         this.volunteerAssignment = new ArrayList<>();
+        this. lectura = new Scanner(System.in);
+        // variables
+        this. connection = null;
+        this.statement = null;
+        this.resultSet = null;
         try {
             this.bd = DatabaseBuilder.open(new File("bd proyecto final.accdb"));
             Table personaInformation = bd.getTable("Personal Information");
@@ -440,4 +450,19 @@ public class GestorPlataforma {
         return asignacionVoluntariado;
     }
     
+    private ResultSet generarConsulta(String consulta) throws SQLException{
+            String msAccDB = "Contacts_Demo_V1.01.mdb";
+            String dbURL = "jdbc:ucanaccess://"+ msAccDB; 
+            // Step 2.A: Create and 
+            // get connection using DriverManager class
+            connection = DriverManager.getConnection(dbURL); 
+            // Step 2.B: Creating JDBC Statement 
+            statement = connection.createStatement();
+            // Step 2.C: Executing SQL and 
+            // retrieve data into ResultSet
+            System.out.println("Ingrese el apellido");
+            String apellido = lectura.next();
+            resultSet = statement.executeQuery(consulta);
+            return resultSet;
+    }    
 }
