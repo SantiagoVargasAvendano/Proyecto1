@@ -29,9 +29,52 @@ public class ProgramsCampsColombia extends Programas{
         this.population = population;
     }
 
+    public String getTypeProgram() {
+        return typeProgram;
+    }
 
+    public void setTypeProgram(String typeProgram) {
+        this.typeProgram = typeProgram;
+    }
 
-   
+    public String getCompany() {
+        return company;
+    }
 
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public String getCampDate() {
+        return campDate;
+    }
+
+    public void setCampDate(String campDate) {
+        this.campDate = campDate;
+    }
+
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
+    public String getPlaceDeveloped() {
+        return placeDeveloped;
+    }
+
+    public void setPlaceDeveloped(String placeDeveloped) {
+        this.placeDeveloped = placeDeveloped;
+    }
+
+    public String getPopulation() {
+        return population;
+    }
+
+    public void setPopulation(String population) {
+        this.population = population;
+    }
     
 }
