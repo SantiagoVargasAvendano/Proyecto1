@@ -67,12 +67,12 @@ public class GestorPlataforma {
 
     public GestorPlataforma() {
         this.nuevaspersonas = new ArrayList<>();
-    this.nuevosprogramasColombia = new ArrayList<>();
-    this.nuevosprogramasVoluntariado = new ArrayList<>();
-    this.nuevosprogramasICCP = new ArrayList<>();
-    this.nuevosprogramasColombiaAssignment=new ArrayList<>();
-    this.nuevosICCPAssignments=new ArrayList<>();
-    this.nuevosvolunteerAssignment=new ArrayList<>();
+        this.nuevosprogramasColombia = new ArrayList<>();
+        this.nuevosprogramasVoluntariado = new ArrayList<>();
+        this.nuevosprogramasICCP = new ArrayList<>();
+        this.nuevosprogramasColombiaAssignment=new ArrayList<>();
+        this.nuevosICCPAssignments=new ArrayList<>();
+        this.nuevosvolunteerAssignment=new ArrayList<>();
         this.personas = new ArrayList<>();
         this.programasColombia = new ArrayList<>();
         this.programasVoluntariado = new ArrayList<>();
@@ -134,24 +134,34 @@ public class GestorPlataforma {
         return ICCPAssignments.add(asignacion);
     }
     
-    public void addPersonaDb(PersonalInformation persona) throws IOException{
-        personaInformation.addRow(persona);
+    public void addPersonaDb(ArrayList<PersonalInformation> persona) throws IOException{
+        for (int i = 0; i < persona.size(); i++) {
+            personaInformation.addRow(persona.get(i));
+        }
     }
     
-    public void addProgramaColombiaDb(ProgramsCampsColombia programa) throws IOException{
-        programasBDColombia.addRow(programa);
+    public void addProgramaColombiaDb(ArrayList<ProgramsCampsColombia> programa) throws IOException{
+        for (int i = 0; i < programa.size(); i++) {
+            programasBDColombia.addRow(programa.get(i));
+        }
     }
     
-    public void addVoluntariadoDb(VolunteerPrograms voluntariado) throws IOException{
-        programasBDVoluntariado.addRow(voluntariado);
+    public void addVoluntariadoDb(ArrayList<VolunteerPrograms> voluntariado) throws IOException{
+        for (int i = 0; i < voluntariado.size(); i++) {
+            programasBDVoluntariado.addRow(voluntariado.get(i));
+        }
     }
     
-    public void addProgramaICCPDb(CampsICCP campamento) throws IOException{
-        campsICCP.addRow(campamento);
+    public void addProgramaICCPDb(ArrayList<CampsICCP> campamento) throws IOException{
+        for (int i = 0; i < campamento.size(); i++) {
+            campsICCP.addRow(campamento.get(i));
+        }
     }
     
-    public void addColombiaAssignmentDb(ProgramsAssignment asignacion) throws IOException{
-        programsAssignment.addRow(asignacion);
+    public void addColombiaAssignmentDb(ArrayList<ProgramsAssignment> asignacion) throws IOException{
+        for (int i = 0; i < asignacion.size(); i++) {
+            programsAssignment.addRow(asignacion.get(i));
+        }
     }
     
     public void addVoluntariadoAssignmentDb(LocalVolunteerAssignment asignacion) throws IOException{
