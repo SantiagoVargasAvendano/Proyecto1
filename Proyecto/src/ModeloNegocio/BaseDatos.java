@@ -193,4 +193,49 @@ public class BaseDatos {
         }
         return campamentosColombia;
     }
+    
+    public ArrayList<VolunteerPrograms> getVoluntariado() throws IOException{
+        ArrayList<VolunteerPrograms> voluntariado=new ArrayList<>();
+        String voluntariadoID;
+        String nameProgram;
+        String tipoVoluntariado;
+        String company;
+        String fechaGrado;
+        String duration;
+        Table programasVoluntariado = bd.getTable("Volunteer Programs");
+        for(Row row : programasVoluntariado) {
+            voluntariadoID=row.getString("Voluntariado ID");
+            nameProgram=row.getString("Name of Program");
+            company=row.getString("Company");
+            fechaGrado=row.getString("Fecha Grado");
+            duration=row.getString("Duration");
+            tipoVoluntariado=row.getString("Tipo Voluntariado");
+            VolunteerPrograms Agregar=new VolunteerPrograms(company, fechaGrado, duration, tipoVoluntariado, voluntariadoID);
+            Agregar.setNombre(nameProgram);
+            voluntariado.add(Agregar);
+        }
+        return voluntariado;
+    }
+    
+    public ArrayList<LocalVolunteerAssignment> getAssignmentVoluntariado() throws IOException{
+        ArrayList<LocalVolunteerAssignment> asignacionVoluntariado=new ArrayList<>();
+        String nombreVoluntario;
+        String codigoVoluntario;
+        String codigoVoluntariado;
+        String role;
+        String calificacion;
+        String note;
+        Table voluntariadoAssignment = bd.getTable("Local Volunteer Programs Assignment");
+        for(Row row : voluntariadoAssignment) {
+            nombreVoluntario=row.getString("Volunteer ID");
+            codigoVoluntario=row.getString("Volunteer Name");
+            codigoVoluntariado=row.getString("Voluntariado ID");
+            role=row.getString("Role");
+            calificacion=row.getString("Calification");
+            note=row.getString("Note");
+            LocalVolunteerAssignment Agregar=new LocalVolunteerAssignment(codigoVoluntario, nombreVoluntario, codigoVoluntariado, role, calificacion, note);
+            asignacionVoluntariado.add(Agregar);
+        }
+        return asignacionVoluntariado;
+    }
 }
