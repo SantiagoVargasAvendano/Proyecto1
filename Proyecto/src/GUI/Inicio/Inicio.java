@@ -51,7 +51,7 @@ public class Inicio {
         this.boton = new Button("Estadisticas", new ImageView(imagen));
         FileInputStream input1 = new FileInputStream("src/GUI/Inicio/Informes.png");
         this.imagen1 = new Image(input1);
-        this.boton2 = new Button("Informes", new ImageView(imagen1));
+        this.boton2 = new Button("Guardar informacion", new ImageView(imagen1));
         FileInputStream input2 = new FileInputStream("src/GUI/Inicio/Formulario.png");
         this.imagen2 = new Image(input2);
         this.boton3 = new Button("Formularios", new ImageView(imagen2));

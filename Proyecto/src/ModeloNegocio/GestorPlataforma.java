@@ -45,6 +45,13 @@ public class GestorPlataforma {
     private ArrayList<ProgramsAssignment> programasColombiaAssignment;
     private ArrayList<ICCPAssignment> ICCPAssignments;
     private ArrayList<LocalVolunteerAssignment> volunteerAssignment;
+    private ArrayList<PersonalInformation> nuevaspersonas;
+    private ArrayList<ProgramsCampsColombia> nuevosprogramasColombia;
+    private ArrayList<VolunteerPrograms> nuevosprogramasVoluntariado;
+    private ArrayList<CampsICCP> nuevosprogramasICCP;
+    private ArrayList<ProgramsAssignment> nuevosprogramasColombiaAssignment;
+    private ArrayList<ICCPAssignment> nuevosICCPAssignments;
+    private ArrayList<LocalVolunteerAssignment> nuevosvolunteerAssignment;
     private Table personaInformation;
     private Table campsICCP;
     private Table ICCPAssignment;
@@ -59,6 +66,13 @@ public class GestorPlataforma {
     private ResultSet resultSet;
 
     public GestorPlataforma() {
+        this.nuevaspersonas = new ArrayList<>();
+    this.nuevosprogramasColombia = new ArrayList<>();
+    this.nuevosprogramasVoluntariado = new ArrayList<>();
+    this.nuevosprogramasICCP = new ArrayList<>();
+    this.nuevosprogramasColombiaAssignment=new ArrayList<>();
+    this.nuevosICCPAssignments=new ArrayList<>();
+    this.nuevosvolunteerAssignment=new ArrayList<>();
         this.personas = new ArrayList<>();
         this.programasColombia = new ArrayList<>();
         this.programasVoluntariado = new ArrayList<>();
@@ -83,6 +97,41 @@ public class GestorPlataforma {
         } catch (IOException ex) {
             Logger.getLogger(GestorPlataforma.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public boolean addPersona(PersonalInformation persona) throws IOException{
+        nuevaspersonas.add(persona);
+        return personas.add(persona);
+    }
+    
+    public boolean addProgramaColombia(ProgramsCampsColombia programa) throws IOException{
+        nuevosprogramasColombia.add(programa);
+        return programasColombia.add(programa);
+    }
+    
+    public boolean addVoluntariado(VolunteerPrograms voluntariado) throws IOException{
+        nuevosprogramasVoluntariado.add(voluntariado);
+        return programasVoluntariado.add(voluntariado);
+    }
+    
+    public boolean addProgramaICCP(CampsICCP campamento) throws IOException{
+        nuevosprogramasICCP.add(campamento);
+        return programasICCP.add(campamento);
+    }
+    
+    public boolean addColombiaAssignment(ProgramsAssignment asignacion) throws IOException{
+        nuevosprogramasColombiaAssignment.add(asignacion);
+        return addColombiaAssignment(asignacion);
+    }
+    
+    public boolean addVoluntariadoAssignment(LocalVolunteerAssignment asignacion) throws IOException{
+        nuevosvolunteerAssignment.add(asignacion);
+        return volunteerAssignment.add(asignacion);
+    }
+    
+    public boolean addICCPAssignment(ICCPAssignment asignacion) throws IOException{
+        nuevosICCPAssignments.add(asignacion);
+        return ICCPAssignments.add(asignacion);
     }
     
     public void addPersonaDb(PersonalInformation persona) throws IOException{

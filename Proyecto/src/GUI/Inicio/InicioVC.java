@@ -31,6 +31,7 @@ public class InicioVC {
         this.gestor = gestor;
         this.inicio = new Inicio();
         inicio.getBoton().setOnMousePressed(new EventoEstadistica());
+        //inicio.getBoton2().setOnMousePressed(new EventoGuardar());
         inicio.getBoton3().setOnMousePressed(new EventoFormulario());
         inicio.getBoton4().setOnMousePressed(new EventoConsulta());
     }
@@ -81,4 +82,12 @@ public class InicioVC {
             vista.mostrarVista();
         }      
    }
+    
+    /*class EventoGuardar implements EventHandler<Event>{
+
+        @Override
+        public void handle(Event event) {
+            gestor.addColombiaAssignmentDb(asignacion);
+        }      
+   }*/
 }

@@ -121,27 +121,4 @@ public class TipoVC {
         
     }
     
-    class Barras implements EventHandler<Event>{
-
-        @Override
-        public void handle(Event event) {
-            int h= 0; int m=0;
-            for(int i=0;i<gestor.getProgramasColombiaAssignment().size();i++){
-                String c = gestor.getProgramasColombiaAssignment().get(i).getIdPersona();
-                for(int j=0;j<gestor.getPersonas().size();j++){
-                    if(gestor.getPersonas().get(j).getId().equals(c)){
-                        if(gestor.getPersonas().get(j).getGender().equals("Male")){
-                            h++;
-                        }else{
-                            m++;
-                        }
-                        
-                    }
-                }
-            }
-            BarrasVC pantalla = new BarrasVC(gestor,h,m);
-            pantalla.mostrarVista();
-        }
-        
-    }
 }
