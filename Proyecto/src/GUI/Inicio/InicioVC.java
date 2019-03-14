@@ -7,6 +7,7 @@ package GUI.Inicio;
 
 import GUI.Formularios.FormulariosOpc.OpcionesVC;
 import GUI.Consultas.Opciones.OpcionesCVC;
+import GUI.Estadisticas.Opciones.TipoVC;
 import GUI.Estadisticas.Torta.TortaVC;
 import GUI.Singleton;
 import ModeloNegocio.GestorPlataforma;
@@ -71,9 +72,9 @@ public class InicioVC {
 
         @Override
         public void handle(Event event) {
-            TortaVC vista = null;
+            TipoVC vista = null;
             try {
-                vista = new TortaVC(gestor);
+                vista = new TipoVC(gestor);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(InicioVC.class.getName()).log(Level.SEVERE, null, ex);
             }

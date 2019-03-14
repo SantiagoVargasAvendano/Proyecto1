@@ -9,6 +9,7 @@ import GUI.Consultas.Opciones.OpcionesCVC;
 import GUI.Consultas.PersInfo.PersIncoCVC;
 import GUI.Consultas.ProgramsAssignC.ProgramsAssignC;
 import GUI.Consultas.ProgramsAssignC.ProgramsAssignCVC;
+import GUI.Inicio.InicioVC;
 import GUI.Singleton;
 import ModeloNegocio.GestorPlataforma;
 import java.io.FileNotFoundException;
@@ -40,9 +41,9 @@ public class TortaVC {
 
         @Override
         public void handle(Event event) {
-            OpcionesCVC pantalla = null;
+            InicioVC pantalla = null;
             try {
-                pantalla = new OpcionesCVC(gestor);
+                pantalla = new InicioVC(gestor);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(PersIncoCVC.class.getName()).log(Level.SEVERE, null, ex);
             }
