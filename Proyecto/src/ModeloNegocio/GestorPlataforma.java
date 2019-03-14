@@ -397,8 +397,6 @@ public class GestorPlataforma {
             statement = connection.createStatement();
             // Step 2.C: Executing SQL and 
             // retrieve data into ResultSet
-            System.out.println("Ingrese el apellido");
-            String apellido = lectura.next();
             resultSet = statement.executeQuery(consulta);
             return resultSet;
     }    
