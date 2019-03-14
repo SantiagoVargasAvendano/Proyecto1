@@ -27,7 +27,8 @@ import java.util.logging.Logger;
  * @author Lenovo
  */
 public class GestorPlataforma {
-    private Database bd;
+    
+    private static Database bd;
     private ArrayList<PersonalInformation> personas;
     private ArrayList<ProgramsCampsColombia> programasColombia;
     private ArrayList<VolunteerPrograms> programasVoluntariado;
@@ -42,11 +43,11 @@ public class GestorPlataforma {
     private Table programsAssignment;
     private Table programasBDVoluntariado;
     private Table voluntariadoAssignment;
-    private Scanner lectura;
+    
         // variables
-    private Connection connection;
-    private Statement statement;
-    private ResultSet resultSet;
+    private static Connection connection;
+    private static Statement statement;
+    private static ResultSet resultSet;
 
     public GestorPlataforma() {
         this.personas = new ArrayList<>();
@@ -374,9 +375,10 @@ public class GestorPlataforma {
         }
     }
     
-    public ResultSet generarConsulta(String consulta) throws SQLException{
-            String msAccDB = "bd proyecto final.accdb";
-            String dbURL = "jdbc:ucanaccess://"+ msAccDB; 
+    public static void generarConsulta(String consulta){
+            try{
+                String msAccDB = "bd proyecto final.accdb";
+                 String dbURL = "jdbc:ucanaccess://"+ msAccDB; 
             // Step 2.A: Create and 
             // get connection using DriverManager class
             connection = DriverManager.getConnection(dbURL); 
@@ -385,6 +387,43 @@ public class GestorPlataforma {
             // Step 2.C: Executing SQL and 
             // retrieve data into ResultSet
             resultSet = statement.executeQuery(consulta);
-            return resultSet;
+            while(resultSet.next()) {
+                
+                 //Escribe en EXCEL    
+                
+                
+                System.out.println(resultSet.getString(1));
+            }
+            }catch(SQLException sqlex){
+                sqlex.printStackTrace();
+            }
     }    
+    
+    public static void ejecutarConexion(){
+        try{
+            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+        }
+        catch(ClassNotFoundException cnfex) {
+ 
+            System.out.println("Problem in loading or "
+                    + "registering MS Access JDBC driver");
+            cnfex.printStackTrace();
+        }
+    }
+    
+    public static void cerrarConexion(){
+        try {
+                if(null != connection) {
+                    // cleanup resources, once after processing
+                    resultSet.close();
+                    statement.close();
+ 
+                    // and then finally close connection
+                    connection.close();
+                }
+            }
+            catch (SQLException sqlex) {
+                sqlex.printStackTrace();
+            }
+    }
 }
