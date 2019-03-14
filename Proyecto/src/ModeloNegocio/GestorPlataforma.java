@@ -186,7 +186,7 @@ public class GestorPlataforma {
         if (nombreAtributos.length==condiciones.length) {
             valorConsulta="SELECT * FROM "+nombreTabla+" WHERE";
             for (int i = 0; i < (nombreAtributos.length)-1 ; i++){
-                condicion=condicion+" "+nombreTabla+"."+nombreAtributos[i]+"="+condiciones[i]+" "+condicional;
+                condicion= condicion+" "+nombreTabla+"."+nombreAtributos[i]+" = '"+condiciones[i]+"' ";
             }
             condicion=condicion+" "+nombreTabla+"."+nombreAtributos[nombreAtributos.length-1]+"="+condiciones[condiciones.length-1]+"";
         }
@@ -375,16 +375,25 @@ public class GestorPlataforma {
     }
     
     public ResultSet generarConsulta(String consulta) throws SQLException{
-            String msAccDB = "bd proyecto final.accdb";
-            String dbURL = "jdbc:ucanaccess://"+ msAccDB; 
-            // Step 2.A: Create and 
-            // get connection using DriverManager class
-            connection = DriverManager.getConnection(dbURL); 
-            // Step 2.B: Creating JDBC Statement 
-            statement = connection.createStatement();
-            // Step 2.C: Executing SQL and 
-            // retrieve data into ResultSet
-            resultSet = statement.executeQuery(consulta);
-            return resultSet;
-    }    
+        try {
+
+            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+        } catch (ClassNotFoundException cnfex) {
+
+            System.out.println("Problem in loading or "
+                    + "registering MS Access JDBC driver");
+            cnfex.printStackTrace();
+        }
+        String msAccDB = "bd proyecto final.accdb";
+        String dbURL = "jdbc:ucanaccess://" + msAccDB;
+        // Step 2.A: Create and 
+        // get connection using DriverManager class
+        connection = DriverManager.getConnection(dbURL);
+        // Step 2.B: Creating JDBC Statement 
+        statement = connection.createStatement();
+        // Step 2.C: Executing SQL and 
+        // retrieve data into ResultSet
+        resultSet = statement.executeQuery(consulta);
+        return resultSet;
+    }
 }
