@@ -182,13 +182,15 @@ public class GestorPlataforma {
     
     public String getStringConsulta(String nombreTabla, String[] nombreAtributos, String[] condiciones, String condicional){
         String valorConsulta=null;
+        String condicion=null;
         if (nombreAtributos.length==condiciones.length) {
-            valorConsulta="SELECT * FROM "+nombreTabla+" WHERE ";
+            valorConsulta="SELECT * FROM "+nombreTabla+" WHERE";
             for (int i = 0; i < (nombreAtributos.length)-1 ; i++){
-                valorConsulta=valorConsulta+" "+nombreTabla+"."+nombreAtributos[i]+"='"+condiciones[i]+"' "+condicional;
+                condicion=condicion+" "+nombreTabla+"."+nombreAtributos[i]+"='"+condiciones[i]+"' "+condicional;
             }
-            valorConsulta=valorConsulta+" "+nombreTabla+"."+nombreAtributos[nombreAtributos.length]+"='"+condiciones[condiciones.length]+"'";
+            condicion=condicion+" "+nombreTabla+"."+nombreAtributos[nombreAtributos.length]+"='"+condiciones[condiciones.length]+"'";
         }
+        valorConsulta=valorConsulta+condicion;
         return valorConsulta;
     }
     
