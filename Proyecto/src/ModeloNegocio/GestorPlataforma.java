@@ -140,12 +140,53 @@ public class GestorPlataforma {
         return valorConsulta;
     }
 
-    public boolean addPersInfFormDb(ArrayList<PersonalInformation> personas){
-        for(int i=0;i<personas.size();i++){
-            this.personas.add(personas.get(i));
+    public boolean addPersInfFromDb(ArrayList<PersonalInformation> personasBd){
+        for(int i=0;i<personasBd.size();i++){
+            this.personas.add(personasBd.get(i));
         }
         return true;
     }
     
+    public boolean addCampsICCPFromDb(ArrayList<CampsICCP> campsICCPBd){
+        for(int i=0;i<campsICCPBd.size();i++){
+            this.programasICCP.add(campsICCPBd.get(i));
+        }
+        return true;
+    }
+    
+    public boolean addICCPAssignFromDb(ArrayList<ICCPAssignment> ICCPAssignBd){
+        for(int i=0;i<ICCPAssignBd.size();i++){
+            this.ICCPAssignments.add(ICCPAssignBd.get(i));
+        }
+        return true;
+    }
+    
+    public boolean addLocVolunAssignFromDb(ArrayList<LocalVolunteerAssignment> LocalVolunAssignBd){
+        for(int i=0;i<LocalVolunAssignBd.size();i++){
+            this.volunteerAssignment.add(LocalVolunAssignBd.get(i));
+        }
+        return true;
+    }
+    
+    public boolean addVolunteerProgFromDb(ArrayList<VolunteerPrograms> VolunteerProgBd){
+        for(int i=0;i<VolunteerProgBd.size();i++){
+            this.programasVoluntariado.add(VolunteerProgBd.get(i));
+        }
+        return true;
+    }
+    
+    public boolean addProgCampsColomFromDb(ArrayList<ProgramsCampsColombia> ProgCampsColomBd){
+        for(int i=0;i<ProgCampsColomBd.size();i++){
+            this.programasColombia.add(ProgCampsColomBd.get(i));
+        }
+        return true;
+    }
+    
+    public boolean addProgramsAssignFromDb(ArrayList<ProgramsAssignment> ProgramsAssignBd){
+        for(int i=0;i<ProgramsAssignBd.size();i++){
+            this.programasColombiaAssignment.add(ProgramsAssignBd.get(i));
+        }
+        return true;
+    }
     
 }
